@@ -64,7 +64,35 @@ CREATE TABLE IF NOT EXISTS `guitar` (
   `model` VARCHAR(100) NULL,
   `year` INT NULL,
   `color` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
+  `deleted` TINYINT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_guitar_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_guitar_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `guitar_picture`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `guitar_picture` ;
+
+CREATE TABLE IF NOT EXISTS `guitar_picture` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `filename` VARCHAR(100) NULL,
+  `guitar_id` INT NOT NULL,
+  `order` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_guitar_picture_guitar_idx` (`guitar_id` ASC),
+  CONSTRAINT `fk_guitar_picture_guitar`
+    FOREIGN KEY (`guitar_id`)
+    REFERENCES `guitar` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
@@ -84,6 +112,16 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `guitartechdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`, `created_at`, `updated_at`, `last_login`, `email`) VALUES (1, 'jmartz', 'changeme', 'admin', 1, '2023-09-20 15:55:23', '2023-09-20 15:55:23', '2023-09-20 15:55:23', 'justin@justinmartz.dev');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `guitar`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `guitartechdb`;
+INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`) VALUES (1, 'Gibson', 'Les Paul Custom', 2017, 'Ebony', 0, 1);
 
 COMMIT;
 

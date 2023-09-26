@@ -1,6 +1,7 @@
 package dev.justinmartz.guitartech.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class User {
@@ -30,14 +33,16 @@ public class User {
 	private LocalDateTime createdAt;
 	
 	@Column(name = "updated_at")
-	@CreationTimestamp
+	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
 	@Column(name = "last_login")
-	@CreationTimestamp
 	private LocalDateTime lastLogin;
 	
 	private String email;
+	
+	@OneToMany(mappedBy = "owner")
+	private List<Guitar> guitars;
 
 	public int getId() {
 		return id;
@@ -109,6 +114,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Guitar> getGuitars() {
+		return guitars;
+	}
+
+	public void setGuitars(List<Guitar> guitars) {
+		this.guitars = guitars;
 	}
 
 	@Override

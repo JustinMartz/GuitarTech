@@ -14,10 +14,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class GuitarTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Guitar guitar;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,27 +32,26 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		guitar = em.find(Guitar.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		guitar = null;
 	}
 
 	@Test
-	void test_User_basic_mappings() {
-		assertNotNull(user);
-		assertEquals("jmartz", user.getUsername());
-		assertEquals("admin", user.getRole());
-		assertTrue(user.isActive());
+	void test_Guitar_basic_mappings() {
+		assertNotNull(guitar);
+		assertEquals("Gibson", guitar.getMake());
+		assertTrue(!guitar.isDeleted());
 	}
 	
 	@Test
-	void test_User_relational_mappings() {
-		assertNotNull(user.getGuitars());
-		assertTrue(user.getGuitars().size() > 0);
+	void test_Guitar_relational_mappings() {
+		assertNotNull(guitar.getOwner());
+		assertEquals("jmartz", guitar.getOwner().getUsername());	
 	}
 
 }
