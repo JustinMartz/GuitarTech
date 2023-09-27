@@ -2,6 +2,10 @@
   <app-nav-bar></app-nav-bar>
 
   <div class="main-container">
+    <ng-container *ngIf="!checkLogin()">
+      <app-landing></app-landing>
+    </ng-container>
+    <ng-container *ngIf="checkLogin()">
       <div class="guitars-container">
           <div class="guitar-container">
           </div>
@@ -20,5 +24,6 @@
           <p>Setups</p>
         </div>
       </div>
+    </ng-container>
   </div>
 </div>

@@ -1,0 +1,33 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Login</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Login click')">Login</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Register click')">Register</button>
+
+	</div>
+</ng-template>
+
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+
+
+<a (click)="open(content)"><div class="login-register-icon-container"></div></a>
+<!-- <pre>{{ closeResult }}</pre> -->
+
+

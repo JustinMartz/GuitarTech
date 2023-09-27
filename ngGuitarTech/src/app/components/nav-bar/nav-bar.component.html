@@ -1,7 +1,7 @@
 <div class="nav-bar">
   <div class="nav-dropdown"></div>
   <ng-container *ngIf="!checkLogin()">
-    <a href=""><div class="login"></div></a>
+    <app-login-register-modal></app-login-register-modal>
   </ng-container>
   <ng-container *ngIf="checkLogin()">
     <a href=""><div class="logout"></div></a>
