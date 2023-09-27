@@ -1,0 +1,9 @@
+<div class="nav-bar">
+  <div class="nav-dropdown"></div>
+  <ng-container *ngIf="!checkLogin()">
+    <a href=""><div class="login"></div></a>
+  </ng-container>
+  <ng-container *ngIf="checkLogin()">
+    <a href=""><div class="logout"></div></a>
+  </ng-container>
+</div>

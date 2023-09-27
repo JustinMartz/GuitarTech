@@ -1,1 +1,150 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  html {
+    height: 100dvh;
+    overscroll-behavior: none;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: whitesmoke;
+  }
+
+  .site-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: brown;
+  }
+
+  .nav-bar {
+    height: 10vh;
+    width: 100%;
+    background-color: pink;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-dropdown {
+    height: 100%;
+    width: 10vh;
+    background-color: aquamarine;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath d='M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .login {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath d='M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13Z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 100%;
+    width: 10vh;
+    background-color: yellow;
+    /* margin: auto; */
+  }
+
+  .logout {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath d='M5 22C4.44772 22 4 21.5523 4 21V3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V21C20 21.5523 19.5523 22 19 22H5ZM15 16L20 12L15 8V11H9V13H15V16Z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 100%;
+    width: 10vh;
+    background-color: yellow;
+
+  }
+
+  .main-container {
+    height: 85dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* flex-flow: row nowrap; */
+    /* scroll-snap-type: x mandatory; */
+    /* touch-action: pan-x; */
+  }
+
+  .guitars-container {
+    height: 100%;
+    width: 100%;
+    background-color: azure;
+    overflow-y: scroll;
+    overscroll-behavior: none;
+    scroll-snap-align: start;
+  }
+
+  .guitar-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .guitar-container:nth-child(even) {
+    background-color: cornflowerblue;
+  }
+
+  .guitar-container:nth-child(odd) {
+    background-color: darkseagreen;
+  }
+
+  .setups-container {
+    height: 100%;
+    width: 100%;
+    background-color: lightcoral;
+    overflow-y: scroll;
+    overscroll-behavior: none;
+    /* scroll-snap-align: start; */
+  }
+
+  .setup-container {
+    background-color: lemonchiffon;
+    height: 100%;
+    width: 100%;
+  }
+
+  .setup-container:nth-child(even) {
+    background-color: cornflowerblue;
+  }
+
+  .main-container > div {
+    scroll-snap-align: center;
+    flex: none;
+  }
+
+  .indicator-container {
+    height: 5dvh;
+    width: 100%;
+    background-color: brown;
+    display: flex;
+    overflow: visible;
+  }
+
+  .guitars-indicator {
+    height: 100%;
+    width: 40%;
+    background-color: greenyellow;
+  }
+
+  .indicator {
+    height: 100%;
+    width: 20%;
+    background-color: olivedrab;
+  }
+
+  .setups-indicator {
+    height: 100%;
+    width:40%;
+    background-color: greenyellow;
+  }
+  .indicator::before {
+    content: '\2022';
+  }
+}
