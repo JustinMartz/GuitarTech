@@ -73,7 +73,7 @@
     /* touch-action: pan-x; */
   }
 
-  .guitars-container {
+  /* .guitars-container {
     height: 100%;
     width: 100%;
     background-color: azure;
@@ -93,7 +93,7 @@
 
   .guitar-container:nth-child(odd) {
     background-color: darkseagreen;
-  }
+  } */
 
   .setups-container {
     height: 100%;

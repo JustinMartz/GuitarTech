@@ -4,6 +4,6 @@
     <app-login-register-modal></app-login-register-modal>
   </ng-container>
   <ng-container *ngIf="checkLogin()">
-    <a href=""><div class="logout"></div></a>
+    <a href=""><div class="logout" (click)="logout()"></div></a>
   </ng-container>
 </div>

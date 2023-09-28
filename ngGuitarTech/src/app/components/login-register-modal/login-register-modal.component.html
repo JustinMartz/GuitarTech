@@ -1,33 +1,77 @@
-<ng-template #content let-modal>
+<ng-template #login let-modal>
 	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Login</h4>
+		<h4 class="modal-title" id="modal-basic-title">Log in</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
 		<form>
       <div class="form-group">
-        <label for="exampleInputEmail1">Username</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" [(ngModel)]="user.username">
       </div>
       <br>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="user.password">
       </div>
-
 		</form>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <br>
+          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            I want to...
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>Log in</button>
+            <button ngbDropdownItem (click)="onRegisterClick(register)">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
 	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Login click')">Login</button>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Register click')">Register</button>
 
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="onSubmitClick()">Submit</button>
 	</div>
 </ng-template>
 
-<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+<ng-template #register let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Register a new account</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" [(ngModel)]="user.username">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="user.password">
+      </div>
+		</form>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <br>
+          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            I want to...
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="onLoginClick(login)">Log in</button>
+            <button ngbDropdownItem>Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
 
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="onSubmitClick()">Submit</button>
+	</div>
+</ng-template>
 
-<a (click)="open(content)"><div class="login-register-icon-container"></div></a>
-<!-- <pre>{{ closeResult }}</pre> -->
-
-
+<a (click)="open(login)"><div class="login-register-icon-container"></div></a>

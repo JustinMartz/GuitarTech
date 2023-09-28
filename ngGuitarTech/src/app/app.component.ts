@@ -14,4 +14,8 @@ export class AppComponent {
   checkLogin() {
     return this.authService.checkLogin();
   }
+
+  checkViewIsGuitars() {
+    return true;
+  }
 }

@@ -1,19 +1,12 @@
 <div class="site-container">
   <app-nav-bar></app-nav-bar>
 
-  <div class="main-container">
-    <ng-container *ngIf="!checkLogin()">
-      <app-landing></app-landing>
-    </ng-container>
-    <ng-container *ngIf="checkLogin()">
-      <div class="guitars-container">
-          <div class="guitar-container">
-          </div>
-          <div class="guitar-container">
-          </div>
-          <div class="guitar-container">
-          </div>
-      </div>
+  <ng-container *ngIf="!checkLogin()">
+    <app-landing></app-landing>
+  </ng-container>
+  <div class="main-container" *ngIf="checkLogin()">
+    <ng-container *ngIf="checkViewIsGuitars()">
+      <app-guitars></app-guitars>
       <div class="indicator-container">
         <div class="guitars-indicator">
           <p>Guitars</p>
@@ -24,6 +17,9 @@
           <p>Setups</p>
         </div>
       </div>
+    </ng-container>
+    <ng-container *ngIf="!checkViewIsGuitars()">
+      // setups component
     </ng-container>
   </div>
 </div>
