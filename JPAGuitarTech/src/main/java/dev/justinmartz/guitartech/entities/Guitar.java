@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Guitar {
 	
@@ -26,6 +28,7 @@ public class Guitar {
 	
 	private boolean deleted;
 	
+	@JsonIgnore
 	@JoinColumn(name="user_id")
 	@ManyToOne
 	private User owner;
