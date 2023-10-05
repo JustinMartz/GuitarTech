@@ -1,25 +1,4 @@
 <div class="site-container">
+  <router-outlet></router-outlet>
   <app-nav-bar></app-nav-bar>
-
-  <ng-container *ngIf="!checkLogin()">
-    <app-landing></app-landing>
-  </ng-container>
-  <div class="main-container" *ngIf="checkLogin()">
-    <ng-container *ngIf="checkViewIsGuitars()">
-      <app-guitars></app-guitars>
-      <div class="indicator-container">
-        <div class="guitars-indicator">
-          <p>Guitars</p>
-        </div>
-        <div class="indicator">
-        </div>
-        <div class="setups-indicator">
-          <p>Setups</p>
-        </div>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="!checkViewIsGuitars()">
-      // setups component
-    </ng-container>
-  </div>
 </div>

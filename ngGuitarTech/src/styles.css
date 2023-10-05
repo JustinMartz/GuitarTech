@@ -5,15 +5,21 @@
   box-sizing: border-box;
 }
 
+app-root {
+  display: block;
+  height: 100dvh;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
   html {
     height: 100dvh;
     overscroll-behavior: none;
+    background-color: blue;
   }
 
   body {
     min-height: 100dvh;
-    background-color: whitesmoke;
+    overflow: hidden;
   }
 
   .site-container {
@@ -24,7 +30,7 @@
     background-color: brown;
   }
 
-  .nav-bar {
+  /* .nav-bar {
     height: 10vh;
     width: 100%;
     background-color: pink;
@@ -39,7 +45,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath d='M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z'%3E%3C/path%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
-  }
+  } */
 
   /* .login {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath d='M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13Z'%3E%3C/path%3E%3C/svg%3E");
@@ -52,7 +58,7 @@
     margin: auto;
   } */
 
-  .logout {
+  /* .logout {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Cpath d='M5 22C4.44772 22 4 21.5523 4 21V3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V21C20 21.5523 19.5523 22 19 22H5ZM15 16L20 12L15 8V11H9V13H15V16Z'%3E%3C/path%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
@@ -61,7 +67,7 @@
     width: 10vh;
     background-color: yellow;
 
-  }
+  } */
 
   .main-container {
     height: 85dvh;
