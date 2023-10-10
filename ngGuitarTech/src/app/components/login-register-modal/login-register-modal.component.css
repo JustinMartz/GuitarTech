@@ -6,6 +6,6 @@
     display: inline-block;
     height: 100%;
     width: 10vh;
-    background-color: gray;
+    cursor: pointer;
   }
 }

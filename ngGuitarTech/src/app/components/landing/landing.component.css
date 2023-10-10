@@ -3,6 +3,7 @@
   p {
     font-size: .8rem;
   }
+
   .landing-container {
     height: 90dvh;
     width: 100%;
@@ -37,8 +38,13 @@
     width: 80%;
   }
 
-  /* ul {
-    width: 80%;
-    border: 1px solid black;
-  } */
+  @counter-style guitars {
+    system: cyclic;
+    symbols: "\1f3b8" "\1F3A8" "\1F52E" ;
+    suffix: " ";
+  }
+
+  ul {
+    list-style: guitars;
+  }
 }
