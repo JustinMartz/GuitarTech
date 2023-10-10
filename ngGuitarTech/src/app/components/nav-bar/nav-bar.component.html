@@ -6,7 +6,7 @@
   </ng-container>
   <ng-container *ngIf="checkLogin()">
     <a [routerLink]="['/guitars']"><div class="home-icon-selected"></div></a>
-    <a href=""><div class="setups-icon"></div></a>
+    <a [routerLink]="['/setups']"><div class="setups-icon"></div></a>
     <a href=""><div class="logout" (click)="logout()"></div></a>
   </ng-container>
 </div>

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { GuitarsComponent } from './components/guitars/guitars.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SetupsComponent } from './components/setups/setups.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     LoginRegisterModalComponent,
     MainComponent,
     GuitarsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SetupsComponent
   ],
   imports: [
     BrowserModule,
