@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, Output } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { ViewService } from './services/view.service';
 
 @Component({
   selector: 'app-root',
@@ -18,4 +19,5 @@ export class AppComponent {
   checkViewIsGuitars() {
     return true;
   }
+
 }

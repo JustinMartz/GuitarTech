@@ -1,3 +1,4 @@
+import { ViewService } from './../../services/view.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -7,10 +8,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class GuitarsComponent implements OnInit {
 
-  guitarsSelected: boolean = false;
-  @Output() emitter: EventEmitter<string> = new EventEmitter<string>();
+  constructor(private viewService: ViewService) {}
 
   ngOnInit(): void {
-    this.guitarsSelected = true;
+    console.log('in GuitarsComponent.ngOnInit()');
+    this.viewService.setGuitarsSelected(true);
   }
 }

@@ -1,12 +1,12 @@
 <div class="nav-bar">
   <ng-container *ngIf="!checkLogin()">
-    <a [routerLink]="['/landing']"><div ngClass="home-icon-deselected"></div></a>
-    <a href=""><div class="setups-icon"></div></a>
+    <a [routerLink]="['/landing']"><div class="home-icon-deselected"></div></a>
+    <a href=""><div class="setups-icon-deselected"></div></a>
     <app-login-register-modal></app-login-register-modal>
   </ng-container>
   <ng-container *ngIf="checkLogin()">
-    <a [routerLink]="['/guitars']"><div class="home-icon-selected"></div></a>
-    <a [routerLink]="['/setups']"><div class="setups-icon"></div></a>
+    <a [routerLink]="['/guitars']"><div [ngClass]="checkGuitarsView()"></div></a>
+    <a [routerLink]="['/setups']"><div [ngClass]="checkSetupsView()"></div></a>
     <a href=""><div class="logout" (click)="logout()"></div></a>
   </ng-container>
 </div>
