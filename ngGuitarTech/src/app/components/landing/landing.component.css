@@ -38,6 +38,9 @@
     width: 80%;
   }
 
+  .landing-text-mobile > p {
+    text-align: center;
+  }
   @counter-style guitars {
     system: cyclic;
     symbols: "\1f3b8" "\1F3A8" "\1F52E" ;

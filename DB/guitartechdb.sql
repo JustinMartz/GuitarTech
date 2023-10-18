@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `updated_at` DATETIME NULL,
   `last_login` DATETIME NULL,
   `email` VARCHAR(100) NULL,
+  `visible` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -49,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `updated_at` DATETIME NULL,
   `last_login` DATETIME NULL,
   `email` VARCHAR(100) NULL,
+  `visible` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -111,7 +113,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `guitartechdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`, `created_at`, `updated_at`, `last_login`, `email`) VALUES (1, 'jmartz', 'changeme', 'admin', 1, '2023-09-20 15:55:23', '2023-09-20 15:55:23', '2023-09-20 15:55:23', 'justin@justinmartz.dev');
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`, `created_at`, `updated_at`, `last_login`, `email`, `visible`) VALUES (1, 'jmartz', '$2a$10$m6QVCQEkIxjCmIgakgf6UufroZ1l3SNynyYiKRUy.inLSzVxjMk5S', 'admin', 1, '2023-09-20 15:55:23', '2023-09-20 15:55:23', '2023-09-20 15:55:23', 'justin@justinmartz.dev', 1);
 
 COMMIT;
 
@@ -122,6 +124,18 @@ COMMIT;
 START TRANSACTION;
 USE `guitartechdb`;
 INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`) VALUES (1, 'Gibson', 'Les Paul Custom', 2017, 'Ebony', 0, 1);
+INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`) VALUES (2, 'Gibson', 'Explorer', 2022, 'Ebony', 0, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `guitar_picture`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `guitartechdb`;
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`) VALUES (1, 'lpc.jpg', 1, 1);
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`) VALUES (2, 'explorer.png', 2, 1);
 
 COMMIT;
 

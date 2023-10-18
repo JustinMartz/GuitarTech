@@ -41,8 +41,10 @@ public class User {
 	
 	private String email;
 	
+	/*
 	@OneToMany(mappedBy = "owner")
 	private List<Guitar> guitars;
+	*/
 
 	public int getId() {
 		return id;
@@ -116,6 +118,7 @@ public class User {
 		this.email = email;
 	}
 
+	/*
 	public List<Guitar> getGuitars() {
 		return guitars;
 	}
@@ -123,6 +126,8 @@ public class User {
 	public void setGuitars(List<Guitar> guitars) {
 		this.guitars = guitars;
 	}
+	
+	*/
 
 	@Override
 	public int hashCode() {
