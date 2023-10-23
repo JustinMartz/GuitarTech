@@ -1,7 +1,6 @@
 package dev.justinmartz.guitartech.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -40,11 +38,6 @@ public class User {
 	private LocalDateTime lastLogin;
 	
 	private String email;
-	
-	/*
-	@OneToMany(mappedBy = "owner")
-	private List<Guitar> guitars;
-	*/
 
 	public int getId() {
 		return id;

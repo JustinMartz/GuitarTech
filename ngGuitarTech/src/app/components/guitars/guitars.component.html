@@ -1,8 +1,5 @@
 <div class="guitars-container">
-  <div class="guitar-container">
-  </div>
-  <div class="guitar-container">
-  </div>
-  <div class="guitar-container">
-  </div>
+  <ng-container *ngFor="let g of guitarsList">
+    <app-guitar-detail [guitar]="g"></app-guitar-detail>
+  </ng-container>
 </div>

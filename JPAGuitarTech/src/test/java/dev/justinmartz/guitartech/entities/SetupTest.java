@@ -2,7 +2,6 @@ package dev.justinmartz.guitartech.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,10 +13,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class GuitarTest {
+class SetupTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Guitar guitar;
+	private Setup setup;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,31 +31,28 @@ class GuitarTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		guitar = em.find(Guitar.class, 1);
+		setup = em.find(Setup.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		guitar = null;
+		setup = null;
 	}
 
 	@Test
-	void test_Guitar_basic_mappings() {
-		assertNotNull(guitar);
-		assertEquals("Gibson", guitar.getMake());
-		assertTrue(!guitar.getDeleted());
-		assertEquals(4499.00, guitar.getPurchasePrice());
+	void test_Setup_basic_mappings() {
+		assertNotNull(setup);
+		assertEquals("10-46", setup.getStringGauge());
+		assertEquals(2023, setup.getDateOfSetup().getYear());
 	}
 	
 	@Test
-	void test_Guitar_relational_mappings() {
-		assertNotNull(guitar.getOwner());
-		assertEquals("jmartz", guitar.getOwner().getUsername());
-		assertNotNull(guitar.getTuning());
-		assertEquals("Eb Standard", guitar.getTuning().getName());
-		assertNotNull(guitar.getSetups());
-		assertTrue(guitar.getSetups().size() > 0);
+	void test_Setup_relational_mappings() {
+		assertNotNull(setup.getGuitar());
+		assertEquals("Les Paul Custom", setup.getGuitar().getModel());
+		assertNotNull(setup.getTuning());
+		assertEquals("Eb Standard", setup.getTuning().getName());
 	}
 
 }

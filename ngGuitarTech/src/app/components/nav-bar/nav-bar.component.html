@@ -1,7 +1,7 @@
 <div class="nav-bar">
   <ng-container *ngIf="!checkLogin()">
     <a [routerLink]="['/landing']"><div class="home-icon-deselected"></div></a>
-    <a href=""><div class="setups-icon-deselected"></div></a>
+    <div class="setups-icon-deselected"></div>
     <app-login-register-modal></app-login-register-modal>
   </ng-container>
   <ng-container *ngIf="checkLogin()">

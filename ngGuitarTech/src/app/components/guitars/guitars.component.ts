@@ -1,3 +1,4 @@
+import { Guitar } from 'src/app/models/guitar';
 import { ViewService } from './../../services/view.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
@@ -7,6 +8,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./guitars.component.css']
 })
 export class GuitarsComponent implements OnInit {
+
+  guitarsList: Guitar[] = [];
+
 
   constructor(private viewService: ViewService) {}
 

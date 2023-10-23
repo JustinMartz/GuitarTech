@@ -6,16 +6,3 @@
   overscroll-behavior: none;
   scroll-snap-align: start;
 }
-
-.guitar-container {
-  height: 100%;
-  width: 100%;
-}
-
-.guitar-container:nth-child(even) {
-  background-color: cornflowerblue;
-}
-
-.guitar-container:nth-child(odd) {
-  background-color: darkseagreen;
-}

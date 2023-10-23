@@ -14,10 +14,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class GuitarTest {
+class TuningTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Guitar guitar;
+	private Tuning tuning;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,31 +32,27 @@ class GuitarTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		guitar = em.find(Guitar.class, 1);
+		tuning = em.find(Tuning.class, 2);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		guitar = null;
+		tuning = null;
 	}
 
 	@Test
-	void test_Guitar_basic_mappings() {
-		assertNotNull(guitar);
-		assertEquals("Gibson", guitar.getMake());
-		assertTrue(!guitar.getDeleted());
-		assertEquals(4499.00, guitar.getPurchasePrice());
+	void test_Tuning_basic_mappings() {
+		assertNotNull(tuning);
+		assertEquals("Eb Standard", tuning.getName());
 	}
 	
 	@Test
-	void test_Guitar_relational_mappings() {
-		assertNotNull(guitar.getOwner());
-		assertEquals("jmartz", guitar.getOwner().getUsername());
-		assertNotNull(guitar.getTuning());
-		assertEquals("Eb Standard", guitar.getTuning().getName());
-		assertNotNull(guitar.getSetups());
-		assertTrue(guitar.getSetups().size() > 0);
+	void test_Tuning_relational_mappings() {
+		assertNotNull(tuning.getSetups());
+		assertTrue(tuning.getSetups().size() > 0);
+		assertNotNull(tuning.getGuitars());
+		assertTrue(tuning.getGuitars().size() > 0);
 	}
 
 }
