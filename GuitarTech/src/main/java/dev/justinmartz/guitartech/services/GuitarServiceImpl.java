@@ -12,6 +12,7 @@ import dev.justinmartz.guitartech.entities.Tuning;
 import dev.justinmartz.guitartech.repositories.GuitarRepository;
 import dev.justinmartz.guitartech.repositories.SetupRepository;
 import dev.justinmartz.guitartech.repositories.TuningRepository;
+import dev.justinmartz.guitartech.repositories.UserRepository;
 
 @Service
 public class GuitarServiceImpl implements GuitarService {
@@ -24,6 +25,9 @@ public class GuitarServiceImpl implements GuitarService {
 	
 	@Autowired
 	private TuningRepository tuningRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public Guitar findGuitar(int id) {
@@ -205,6 +209,26 @@ public class GuitarServiceImpl implements GuitarService {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public List<Guitar> findAllByUser(int userId) {
+		if (userRepo.existsById(userId)) {
+			List<Guitar> guitars = guitarRepo.findByOwner_Id(userId);
+			return guitars;
+		}
+		
+		return null;
+	}
+
+	@Override
+	public List<Guitar> findAllByUserNotDeleted(int userId) {
+		if (userRepo.existsById(userId)) {
+			List<Guitar> guitars = guitarRepo.findByOwner_IdAndDeletedFalse(userId);
+			return guitars;
+		}
+		
+		return null;
 	}
 	
 	

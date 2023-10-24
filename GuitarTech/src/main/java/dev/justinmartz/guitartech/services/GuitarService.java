@@ -7,6 +7,8 @@ import dev.justinmartz.guitartech.entities.Guitar;
 public interface GuitarService {
 	public Guitar findGuitar(int id);
 	public List<Guitar> findAllGuitars();
+	public List<Guitar> findAllByUser(int userId);
+	public List<Guitar> findAllByUserNotDeleted(int userId);
 	public List<Guitar> findAllByTuning(int tuningId);
 	public List<Guitar> findAllByBridge(String bridge);
 	public List<Guitar> findAllByColor(String color);

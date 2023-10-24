@@ -28,6 +28,7 @@ public class AuthController {
 	     res.setStatus(400);
 	     return null;
 	  }
+	  
 	  user = authService.register(user);
 	  return user;
 	}
@@ -39,6 +40,7 @@ public class AuthController {
 	     res.setHeader("WWW-Authenticate", "Basic");
 	     return null;
 	  }
+	  
 	  return authService.getUserByUsername(principal.getName());
 	}
 }

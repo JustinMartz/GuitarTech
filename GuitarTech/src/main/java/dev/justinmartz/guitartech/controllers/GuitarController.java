@@ -1,5 +1,6 @@
 package dev.justinmartz.guitartech.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.justinmartz.guitartech.entities.Guitar;
+import dev.justinmartz.guitartech.entities.User;
 import dev.justinmartz.guitartech.services.GuitarService;
+import dev.justinmartz.guitartech.services.UserService;
 
 @CrossOrigin({"*", "http://localhost/"})
 @RestController
@@ -27,27 +30,52 @@ public class GuitarController {
 	@Autowired
 	private GuitarService guitarServ;
 	
+	@Autowired
+	private UserService userServ;
+	
 	@GetMapping("guitars/{guitarId}")
 	public Guitar getGuitar(@PathVariable int guitarId) {
+		// TODO Set headers
 		return guitarServ.findGuitar(guitarId);
 	}
 	
 	@GetMapping("guitars")
 	public List<Guitar> getAllGuitars() {
+		// Admin functionality. Should use principal to check if user role is admin first.
+		// TODO Set headers
 		return guitarServ.findAllGuitars();
 	}
 	
-	@GetMapping("guitars/tuning/{tuningId}")
+	@GetMapping("guitars/users")
+	public List<Guitar> getAllGuitarsOfLoggedInUser(Principal principal, HttpServletResponse response) {
+		User user = userServ.getLoggedInUser(principal.getName());
+		
+		if (user != null) {
+			response.setStatus(200);
+			return guitarServ.findAllByUserNotDeleted(user.getId());			
+		} else {
+			response.setStatus(404);
+			return null;
+		}
+	}
+
+//	TODO: Endpoint for users to get another user's guitars if profile set to public
+//	@GetMapping("guitars/users/{userId}")
+//	public List<Guitar> getAllGuitarsOfLoggedInUser(Principal principal, @PathVariable int userId) {
+//		return guitarServ.findAllByUser(userId);
+//	}
+	
+	@GetMapping("guitars/tunings/{tuningId}")
 	public List<Guitar> getAllGuitarsTuning(@PathVariable int tuningId) {
 		return guitarServ.findAllByTuning(tuningId);
 	}
 	
-	@GetMapping("guitars/bridge/{bridge}")
+	@GetMapping("guitars/bridges/{bridge}")
 	public List<Guitar> getAllGuitarsBridge(@PathVariable String bridge) {
 		return guitarServ.findAllByBridge(bridge);
 	}
 	
-	@GetMapping("guitars/color/{color}")
+	@GetMapping("guitars/colors/{color}")
 	public List<Guitar> getAllGuitarsColor(@PathVariable String color, HttpServletResponse response) {
 		List<Guitar> guitars = guitarServ.findAllByColor(color);
 		response.setStatus(200);

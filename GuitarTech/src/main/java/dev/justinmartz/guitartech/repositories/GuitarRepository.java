@@ -10,4 +10,6 @@ public interface GuitarRepository extends JpaRepository<Guitar, Integer> {
 	public List<Guitar> findByTuning_Id(int tuningId);
 	public List<Guitar> findByBridgeLike(String bridge);
 	public List<Guitar> findByColorLike(String color);
+	public List<Guitar> findByOwner_Id(int userId);
+	public List<Guitar> findByOwner_IdAndDeletedFalse(int userId);
 }
