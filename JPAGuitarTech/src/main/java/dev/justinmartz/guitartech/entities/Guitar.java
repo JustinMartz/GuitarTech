@@ -43,7 +43,7 @@ public class Guitar {
 	private Tuning tuning;
 	
 	@Column(name = "scale_length")
-	private Integer scaleLength;
+	private Double scaleLength;
 	
 	@Column(name = "number_of_frets")
 	private Integer numberOfFrets;
@@ -137,11 +137,11 @@ public class Guitar {
 		this.tuning = tuning;
 	}
 
-	public Integer getScaleLength() {
+	public Double getScaleLength() {
 		return scaleLength;
 	}
 
-	public void setScaleLength(Integer scaleLength) {
+	public void setScaleLength(Double scaleLength) {
 		this.scaleLength = scaleLength;
 	}
 

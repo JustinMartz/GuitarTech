@@ -1,6 +1,17 @@
 .guitar-container {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 10vh 5vh 1fr 1fr 1fr 10vh;
+  gap: 0px 0px;
+  grid-template-areas:
+    "add . ."
+    "makemodel makemodel makemodel"
+    "image specs specs"
+    "image specs specs"
+    "image specs specs"
+    "image icons icons";
 }
 
 .guitar-container:nth-child(even) {
@@ -9,4 +20,33 @@
 
 .guitar-container:nth-child(odd) {
   background-color: darkseagreen;
+}
+
+.guitar-image {
+  width: 100%;
+  height: 100%;
+  grid-area: image;
+}
+
+.guitar-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left top;
+}
+
+.guitar-text {
+  background-color: coral;
+  grid-area: specs;
+}
+
+.make-model {
+  grid-area: makemodel;
+  background-color: darksalmon;
+  text-align: center;
+}
+.icons { grid-area: icons; }
+.add {
+  grid-area: add;
+  background-color: lightcyan;
 }

@@ -1,7 +1,6 @@
 .guitars-container {
   height: 90vh;
   width: 100%;
-  background-color: azure;
   overflow-y: scroll;
   overscroll-behavior: none;
   scroll-snap-align: start;

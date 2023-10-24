@@ -1,8 +1,28 @@
 <div class="guitar-container">
-  <div class="guitar-image">
-  </div>
-  <div class="guitar-text">
+  <div class="add"></div>
+  <div class="make-model">
     <h3>{{guitar.make}} {{guitar.model}}</h3>
   </div>
+  <div class="guitar-image">
+    <img src="assets/lpc.jpg" />
+  </div>
+  <div class="guitar-text">
+    <h6>Year: {{guitar.year}}</h6>
+    <h6>Color: {{guitar.color}}</h6>
+    <h6>Current tuning: {{guitar.tuning.name}}</h6>
+    <h6>Scale length: {{guitar.scaleLength}}</h6>
+    <h6>Number of frets: {{guitar.numberOfFrets}}</h6>
+    <h6>Number of strings: {{guitar.numberOfStrings}}</h6>
+    <h6>Purchase price: {{guitar.purchasePrice}}</h6>
+    <h6>Bridge: {{guitar.bridge}}</h6>
+    <h6 *ngIf="guitar.neckPickup">Neck pickup: {{guitar.neckPickup}}</h6>
+    <h6 *ngIf="guitar.middlePickup">Middle pickup: {{guitar.middlePickup}}</h6>
+    <h6>Bridge pickup: {{guitar.bridgePickup}}</h6>
+    <h6>Serial number: {{guitar.serialNumber}}</h6>
+
+  </div>
+  <div></div>
+  <div class="icons">
   <app-guitar-detail-icons></app-guitar-detail-icons>
+  </div>
 </div>
