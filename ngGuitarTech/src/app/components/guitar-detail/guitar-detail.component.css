@@ -3,23 +3,14 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 10vh 5vh 1fr 1fr 1fr 10vh;
+  grid-template-rows: 10vh 1fr 1fr 1fr 10vh;
   gap: 0px 0px;
   grid-template-areas:
-    "add . ."
     "makemodel makemodel makemodel"
     "image specs specs"
     "image specs specs"
     "image specs specs"
     "image icons icons";
-}
-
-.guitar-container:nth-child(even) {
-  background-color: cornflowerblue;
-}
-
-.guitar-container:nth-child(odd) {
-  background-color: darkseagreen;
 }
 
 .guitar-image {
@@ -36,7 +27,6 @@
 }
 
 .guitar-text {
-  background-color: coral;
   grid-area: specs;
 }
 
@@ -45,8 +35,7 @@
   background-color: darksalmon;
   text-align: center;
 }
-.icons { grid-area: icons; }
-.add {
-  grid-area: add;
-  background-color: lightcyan;
+.icons {
+  grid-area: icons;
 }
+

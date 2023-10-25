@@ -15,6 +15,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SetupsComponent } from './components/setups/setups.component';
 import { GuitarDetailComponent } from './components/guitar-detail/guitar-detail.component';
 import { GuitarDetailIconsComponent } from './components/guitar-detail-icons/guitar-detail-icons.component';
+import { GuitarTopNavComponent } from './components/guitar-top-nav/guitar-top-nav.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { GuitarDetailIconsComponent } from './components/guitar-detail-icons/gui
     NotFoundComponent,
     SetupsComponent,
     GuitarDetailComponent,
-    GuitarDetailIconsComponent
+    GuitarDetailIconsComponent,
+    GuitarTopNavComponent
   ],
   imports: [
     BrowserModule,
