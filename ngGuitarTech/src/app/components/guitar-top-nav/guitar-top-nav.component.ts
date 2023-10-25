@@ -10,4 +10,12 @@ export class GuitarTopNavComponent {
   addGuitar() {
     return false;
   }
+
+  filterColor() {
+    return false;
+  }
+
+  filterTuning() {
+    return false;
+  }
 }

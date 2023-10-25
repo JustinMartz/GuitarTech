@@ -1,8 +1,21 @@
 <div class="guitar-top-nav-container">
   <ng-container *ngIf="addGuitar()">
-
   </ng-container>
   <ng-container *ngIf="!addGuitar()">
     <div class="add-new-guitar-deselected"></div>
+  </ng-container>
+
+  <ng-container *ngIf="filterColor()">
+  </ng-container>
+  <ng-container *ngIf="!filterColor()">
+    <div class="filter-color-deselected">
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="filterTuning()">
+  </ng-container>
+  <ng-container *ngIf="!filterTuning()">
+    <div class="filter-tuning-deselected">
+    </div>
   </ng-container>
 </div>

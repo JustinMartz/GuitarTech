@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@JsonIgnoreProperties({"setups"})
+@JsonIgnoreProperties({"setups", "deleted"})
 public class Guitar {
 	
 	@Id
