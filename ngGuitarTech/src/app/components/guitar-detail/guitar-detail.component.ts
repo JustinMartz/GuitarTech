@@ -8,5 +8,13 @@ import { Guitar } from 'src/app/models/guitar';
 })
 export class GuitarDetailComponent {
   @Input() guitar: Guitar = new Guitar();
+  @Input() isFirstGuitar: boolean = false;
 
+  guitarContainerCSS() {
+    if (this.isFirstGuitar) {
+      return 'first-guitar-container';
+    } else {
+      return 'guitar-container';
+    }
+  }
 }

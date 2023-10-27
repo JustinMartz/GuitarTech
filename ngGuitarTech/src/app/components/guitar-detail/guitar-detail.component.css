@@ -1,41 +1,63 @@
-.guitar-container {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 10vh 1fr 1fr 1fr 10vh;
-  gap: 0px 0px;
-  grid-template-areas:
-    "makemodel makemodel makemodel"
-    "image specs specs"
-    "image specs specs"
-    "image specs specs"
-    "image icons icons";
-}
+@media (min-width: 320px) and (max-width: 480px) {
+  .first-guitar-container {
+    margin-top: 10vh;
+    height: 80vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5vh 30vh 25vh 10vh;
+    gap: 0px 0px;
+    grid-template-areas:
+      "makemodel makemodel makemodel"
+      "image specs specs"
+      "image specs specs"
+      "image-icons detail-icons detail-icons";
+      background-color: aquamarine;
+  }
 
-.guitar-image {
-  width: 100%;
-  height: 100%;
-  grid-area: image;
-}
+  .guitar-container {
+    height: 80vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5vh 30vh 25vh 10vh;
+    gap: 0px 0px;
+    grid-template-areas:
+      "makemodel makemodel makemodel"
+      "image specs specs"
+      "image specs specs"
+      "image-icons detail-icons detail-icons";
+      background-color: darkkhaki;
+  }
 
-.guitar-image > img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: left top;
-}
+  .guitar-image {
+    width: 100%;
+    height: 100%;
+    grid-area: image;
+  }
 
-.guitar-text {
-  grid-area: specs;
-}
+  .guitar-image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left top;
+  }
 
-.make-model {
-  grid-area: makemodel;
-  background-color: darksalmon;
-  text-align: center;
-}
-.icons {
-  grid-area: icons;
-}
+  .guitar-text {
+    grid-area: specs;
+    background-color: darkturquoise;
+  }
 
+  .make-model {
+    grid-area: makemodel;
+    background-color: darksalmon;
+    text-align: center;
+  }
+  .detail-icons {
+    grid-area: detail-icons;
+  }
+
+  .image-icons {
+    background-color: darkolivegreen;
+  }
+}

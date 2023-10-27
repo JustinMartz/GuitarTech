@@ -1,6 +1,6 @@
 <div class="guitars-container">
   <app-guitar-top-nav></app-guitar-top-nav>
-  <ng-container *ngFor="let g of guitarsList">
-    <app-guitar-detail [guitar]="g"></app-guitar-detail>
+  <ng-container *ngFor="let g of guitarsList; first as isFirst">
+    <app-guitar-detail [isFirstGuitar]="isFirst" [guitar]="g"></app-guitar-detail>
   </ng-container>
 </div>

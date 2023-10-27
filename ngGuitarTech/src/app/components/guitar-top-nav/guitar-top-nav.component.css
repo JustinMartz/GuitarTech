@@ -5,6 +5,7 @@
     background-color: #FAF9F6;
     display: flex;
     justify-content: space-between;
+    position: fixed;
   }
 
   .add-new-guitar-deselected {

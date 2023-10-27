@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Guitar } from 'src/app/models/guitar';
 
 @Component({
   selector: 'app-guitar-detail-icons',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./guitar-detail-icons.component.css']
 })
 export class GuitarDetailIconsComponent {
-
+  @Input() selectedGuitar: Guitar = new Guitar();
 }

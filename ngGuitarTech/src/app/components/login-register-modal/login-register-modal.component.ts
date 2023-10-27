@@ -7,10 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-register-modal',
-  // standalone: true,
   templateUrl: './login-register-modal.component.html',
   styleUrls: ['./login-register-modal.component.css'],
-  // imports: [NgbDatepickerModule]
 })
 export class LoginRegisterModalComponent implements OnInit {
   closeResult = '';

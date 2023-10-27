@@ -16,6 +16,7 @@ import { SetupsComponent } from './components/setups/setups.component';
 import { GuitarDetailComponent } from './components/guitar-detail/guitar-detail.component';
 import { GuitarDetailIconsComponent } from './components/guitar-detail-icons/guitar-detail-icons.component';
 import { GuitarTopNavComponent } from './components/guitar-top-nav/guitar-top-nav.component';
+import { DeleteGuitarModalComponent } from './components/delete-guitar-modal/delete-guitar-modal.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { GuitarTopNavComponent } from './components/guitar-top-nav/guitar-top-na
     SetupsComponent,
     GuitarDetailComponent,
     GuitarDetailIconsComponent,
-    GuitarTopNavComponent
+    GuitarTopNavComponent,
+    DeleteGuitarModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+<ng-template #deleteguitar let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Delete guitar?</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+    <p>Are you sure you want to delete this {{guitarToDelete.make}} {{guitarToDelete.model}}?</p>
+    <p>Deleting will remove this guitar and all associated setups.</p>
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="onDeleteClick()">Delete</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Cancel clicked')">Cancel</button>
+	</div>
+</ng-template>
+
+<a (click)="open(deleteguitar)"><div class="delete-guitar-icon-deselected"></div></a>
