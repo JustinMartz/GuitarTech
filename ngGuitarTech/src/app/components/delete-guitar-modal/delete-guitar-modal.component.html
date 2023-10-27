@@ -14,4 +14,4 @@
 	</div>
 </ng-template>
 
-<a (click)="open(deleteguitar)"><div class="delete-guitar-icon-deselected"></div></a>
+<a (click)="open(deleteguitar)"><div [ngClass]="deleteGuitarIcon()"></div></a>

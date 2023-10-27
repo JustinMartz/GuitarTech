@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Guitar } from 'src/app/models/guitar';
@@ -11,16 +11,20 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DeleteGuitarModalComponent {
   @Input() guitarToDelete: Guitar = new Guitar();
+  @Output() deleteClicked: EventEmitter<void> = new EventEmitter();
+  isDeleteSelected: boolean = false;
 
   closeResult = '';
 
   constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) {}
 
   open(content: any) {
+    // this.deleteClicked.emit();
+    this.isDeleteSelected = true;
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
 			(result) => {
 				this.closeResult = `Closed with: ${result}`;
-
+        this.isDeleteSelected = false;
 			},
 			(reason) => {
 				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -40,5 +44,13 @@ export class DeleteGuitarModalComponent {
 
   onDeleteClick() {
 
+  }
+
+  deleteGuitarIcon() {
+    if (this.isDeleteSelected) {
+      return 'delete-guitar-icon-selected';
+    } else {
+      return 'delete-guitar-icon-deselected';
+    }
   }
 }

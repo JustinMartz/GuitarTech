@@ -1,5 +1,4 @@
 <div class="icons-container">
   <div class="edit-guitar-deselected"></div>
-  <!-- <div class="delete-guitar-deselected"></div> -->
-  <app-delete-guitar-modal [guitarToDelete]="selectedGuitar"></app-delete-guitar-modal>
+  <app-delete-guitar-modal (deleteClicked)="deleteSelected = true" [guitarToDelete]="selectedGuitar"></app-delete-guitar-modal>
 </div>
