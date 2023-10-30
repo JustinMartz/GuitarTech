@@ -8,13 +8,24 @@ import { Guitar } from 'src/app/models/guitar';
 })
 export class GuitarDetailIconsComponent {
   @Input() selectedGuitar: Guitar = new Guitar();
+  @Input() deleteSuccessful: boolean = false;
+
   deleteSelected: boolean = false;
+  editSelected: boolean = false;
 
   deleteIcon() {
     if (this.deleteSelected) {
       return 'delete-guitar-selected';
     } else {
       return 'delete-guitar-deselected';
+    }
+  }
+
+  editIcon() {
+    if (this.editSelected) {
+      return 'edit-guitar-selected';
+    } else {
+      return 'edit-guitar-deselected';
     }
   }
 }

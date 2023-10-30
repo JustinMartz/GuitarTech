@@ -17,6 +17,8 @@ import { GuitarDetailComponent } from './components/guitar-detail/guitar-detail.
 import { GuitarDetailIconsComponent } from './components/guitar-detail-icons/guitar-detail-icons.component';
 import { GuitarTopNavComponent } from './components/guitar-top-nav/guitar-top-nav.component';
 import { DeleteGuitarModalComponent } from './components/delete-guitar-modal/delete-guitar-modal.component';
+import { SelfClosingGuitarDeleteAlertComponent } from './components/self-closing-guitar-delete-alert/self-closing-guitar-delete-alert.component';
+import { UpdateGuitarModalComponent } from './components/update-guitar-modal/update-guitar-modal.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { DeleteGuitarModalComponent } from './components/delete-guitar-modal/del
     GuitarDetailComponent,
     GuitarDetailIconsComponent,
     GuitarTopNavComponent,
-    DeleteGuitarModalComponent
+    DeleteGuitarModalComponent,
+    SelfClosingGuitarDeleteAlertComponent,
+    UpdateGuitarModalComponent
   ],
   imports: [
     BrowserModule,

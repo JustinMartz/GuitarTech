@@ -35,4 +35,16 @@ export class GuitarService {
       })
     );
   }
+
+  update(guitarToUpdate: Guitar): Observable<Guitar> {
+    console.log('*** updated guitar');
+    return this.http.put<Guitar>(this.url + '/' + guitarToUpdate.id, guitarToUpdate).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'GuitarService.update(): error updating Guitar: ' + err )
+        );
+      })
+    );
+  }
 }

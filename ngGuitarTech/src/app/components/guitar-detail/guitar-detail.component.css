@@ -12,7 +12,6 @@
       "image specs specs"
       "image specs specs"
       "image-icons detail-icons detail-icons";
-      background-color: aquamarine;
   }
 
   .guitar-container {
@@ -27,7 +26,6 @@
       "image specs specs"
       "image specs specs"
       "image-icons detail-icons detail-icons";
-      background-color: darkkhaki;
   }
 
   .guitar-image {
@@ -45,12 +43,10 @@
 
   .guitar-text {
     grid-area: specs;
-    background-color: darkturquoise;
   }
 
   .make-model {
     grid-area: makemodel;
-    background-color: darksalmon;
     text-align: center;
   }
   .detail-icons {
@@ -58,6 +54,5 @@
   }
 
   .image-icons {
-    background-color: darkolivegreen;
   }
 }

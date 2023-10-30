@@ -1,34 +1,33 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Guitar } from 'src/app/models/guitar';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-delete-guitar-modal',
-  templateUrl: './delete-guitar-modal.component.html',
-  styleUrls: ['./delete-guitar-modal.component.css']
+  selector: 'app-update-guitar-modal',
+  templateUrl: './update-guitar-modal.component.html',
+  styleUrls: ['./update-guitar-modal.component.css']
 })
-export class DeleteGuitarModalComponent {
-  @Input() guitarToDelete: Guitar = new Guitar();
-  @Output() deleteSuccessful: boolean = false;
+export class UpdateGuitarModalComponent {
+  @Input() guitarToUpdate: Guitar = new Guitar();
+  @Output() updateSuccessful: boolean = false;
 
-  isDeleteSelected: boolean = false;
-
+  isEditSelected: boolean = false;
   closeResult = '';
 
   constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) {}
 
   open(content: any) {
-    this.isDeleteSelected = true;
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+    this.isEditSelected = true;
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', scrollable: true }).result.then(
 			(result) => {
 				this.closeResult = `Closed with: ${result}`;
-        this.isDeleteSelected = false;
+        this.isEditSelected = false;
 			},
 			(reason) => {
 				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        this.isDeleteSelected = false;
+        this.isEditSelected = false;
 			},
 		);
 	}
@@ -43,17 +42,18 @@ export class DeleteGuitarModalComponent {
 		}
 	}
 
-  onDeleteClick() {
-    console.log('onDeleteClick()');
+  onUpdateClick() {
+    console.log('onEditClick()');
+    console.log('guitarToUpdate: ' + this.guitarToUpdate.tuning.id);
     // actually delete the guitar
     this.modalService.dismissAll();
   }
 
-  deleteGuitarIcon() {
-    if (this.isDeleteSelected) {
-      return 'delete-guitar-icon-selected';
+  updateGuitarIcon() {
+    if (this.isEditSelected) {
+      return 'edit-guitar-icon-selected';
     } else {
-      return 'delete-guitar-icon-deselected';
+      return 'edit-guitar-icon-deselected';
     }
   }
 }
