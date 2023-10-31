@@ -117,6 +117,7 @@ CREATE TABLE IF NOT EXISTS `guitar_picture` (
   `filename` VARCHAR(100) NULL,
   `guitar_id` INT NOT NULL,
   `order` INT NULL,
+  `deleted` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_guitar_picture_guitar_idx` (`guitar_id` ASC),
   CONSTRAINT `fk_guitar_picture_guitar`
@@ -174,6 +175,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `guitartechdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`, `created_at`, `updated_at`, `last_login`, `email`, `visible`) VALUES (1, 'jmartz', '$2a$10$m6QVCQEkIxjCmIgakgf6UufroZ1l3SNynyYiKRUy.inLSzVxjMk5S', 'admin', 1, '2023-09-20 15:55:23', '2023-09-20 15:55:23', '2023-09-20 15:55:23', 'justin@justinmartz.dev', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`, `created_at`, `updated_at`, `last_login`, `email`, `visible`) VALUES (2, 'sally', '$2a$10$m6QVCQEkIxjCmIgakgf6UufroZ1l3SNynyYiKRUy.inLSzVxjMk5S', 'player', 1, '2023-10-30 22:22:22', '2023-10-30 22:22:22', '2023-10-30 22:22:22', 'sally@test.com', 1);
 
 COMMIT;
 
@@ -198,6 +200,7 @@ START TRANSACTION;
 USE `guitartechdb`;
 INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (1, 'Gibson', 'Les Paul Custom', 2017, 'Ebony', 0, 1, 2, 24.75, 22, 6, 'Tune-O-Matic', 4499.00, 'USD', '498T', NULL, '490R', 'CS703022');
 INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (2, 'Gibson', 'Explorer', 2022, 'Ebony', 0, 1, 3, 24.75, 22, 6, 'Aluminum Nashville Tune-O-Matic', 2499.00, 'USD', '80s Tribute', NULL, '80s Tribute', '207930196');
+INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (3, 'Kramer', 'The 84 Hot Dogger', 2023, 'Mustard Yellow', 0, 2, 1, 25.5, 22, 6, 'Floyd Rose', 999, 'USD', 'SH4 JB', NULL, NULL, '23012901189');
 
 COMMIT;
 
@@ -207,8 +210,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `guitartechdb`;
-INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`) VALUES (1, 'lpc.jpg', 1, 1);
-INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`) VALUES (2, 'explorer.png', 2, 1);
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (1, 'lpc.jpg', 1, 1, 0);
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (2, 'explorer.png', 2, 1, 0);
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (3, 'hotdog.webp', 3, 1, 0);
 
 COMMIT;
 

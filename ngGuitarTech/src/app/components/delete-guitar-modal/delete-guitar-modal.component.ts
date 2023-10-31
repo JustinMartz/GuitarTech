@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Guitar } from 'src/app/models/guitar';
 import { AuthService } from 'src/app/services/auth.service';
+import { GuitarService } from 'src/app/services/guitar.service';
 
 @Component({
   selector: 'app-delete-guitar-modal',
@@ -17,7 +18,11 @@ export class DeleteGuitarModalComponent {
 
   closeResult = '';
 
-  constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) {}
+  constructor(
+    private modalService: NgbModal,
+    private authService: AuthService,
+    private router: Router,
+    private guitarService: GuitarService) {}
 
   open(content: any) {
     this.isDeleteSelected = true;
@@ -46,6 +51,16 @@ export class DeleteGuitarModalComponent {
   onDeleteClick() {
     console.log('onDeleteClick()');
     // actually delete the guitar
+    this.guitarService.delete(this.guitarToDelete.id).subscribe({
+      next: (result) => {
+        // this.reload();
+        this.router.navigateByUrl('guitars');
+      },
+      error: (nojoy) => {
+        console.error('DeleteGuitarModalComponent.onDeleteClick(): error deleting Guitar:');
+        console.error(nojoy);
+      },
+    });
     this.modalService.dismissAll();
   }
 

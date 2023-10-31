@@ -27,6 +27,8 @@ public class GuitarPicture {
 	private Guitar guitar;
 	
 	private Integer order;
+	
+	private Boolean deleted;
 
 	public int getId() {
 		return id;
@@ -58,6 +60,14 @@ public class GuitarPicture {
 
 	public void setOrder(Integer order) {
 		this.order = order;
+	}
+
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	@Override

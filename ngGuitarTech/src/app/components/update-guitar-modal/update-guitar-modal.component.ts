@@ -24,6 +24,7 @@ export class UpdateGuitarModalComponent {
 			(result) => {
 				this.closeResult = `Closed with: ${result}`;
         this.isEditSelected = false;
+        console.log('Cancel click');
 			},
 			(reason) => {
 				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

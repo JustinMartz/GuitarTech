@@ -47,4 +47,15 @@ export class GuitarService {
       })
     );
   }
+
+  delete(id: number) {
+    return this.http.delete(this.url + '/' + id, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'GuitarService.delete(): error utterly destroying Guitar: ' + err )
+        );
+      })
+    );
+  }
 }

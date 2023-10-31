@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.justinmartz.guitartech.entities.Guitar;
+import dev.justinmartz.guitartech.entities.GuitarPicture;
 import dev.justinmartz.guitartech.entities.Setup;
 import dev.justinmartz.guitartech.entities.Tuning;
+import dev.justinmartz.guitartech.repositories.GuitarPictureRepository;
 import dev.justinmartz.guitartech.repositories.GuitarRepository;
 import dev.justinmartz.guitartech.repositories.SetupRepository;
 import dev.justinmartz.guitartech.repositories.TuningRepository;
@@ -28,6 +30,9 @@ public class GuitarServiceImpl implements GuitarService {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired 
+	private GuitarPictureRepository guitarPictureRepo;
 
 	@Override
 	public Guitar findGuitar(int id) {
@@ -194,13 +199,21 @@ public class GuitarServiceImpl implements GuitarService {
 	@Override
 	public boolean deleteGuitar(int guitarId) {
 		// if setup(s) exist for this guitar, delete those first
-		List<Setup> setups = setupRepo.findByGuitar_Id(guitarId);
-		if (setups.size() > 0) {
-			for (Setup setup : setups) {
-				// delete em all
-				setupRepo.delete(setup);
+		// delete pictures tooj
+//		List<Setup> setups = setupRepo.findByGuitar_Id(guitarId);
+//		if (setups.size() > 0) {
+//			for (Setup setup : setups) {
+//				// delete em all
+//				setupRepo.delete(setup);
+//			}
+//		}
+		List<GuitarPicture> pictures = guitarPictureRepo.findByGuitar_Id(guitarId);
+		if (pictures.size() > 0) {
+			for (GuitarPicture picture : pictures) {
+				guitarPictureRepo.delete(picture);
 			}
 		}
+		
 		if (guitarRepo.existsById(guitarId)) {
 			guitarRepo.deleteById(guitarId);
 			if (!guitarRepo.existsById(guitarId)) {

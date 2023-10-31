@@ -112,7 +112,8 @@ public class GuitarController {
 	}
 	
 	@DeleteMapping("guitars/{guitarId}")
-	public void deleteGuitar(@PathVariable int guitarId, HttpServletResponse response) {
+	public void deleteGuitar(Principal principal, @PathVariable int guitarId, HttpServletResponse response) {
+		// TODO only owners of guitars can delete guitars, except for admin
 		if (guitarServ.deleteGuitar(guitarId)) {
 			response.setStatus(204);
 		} else {

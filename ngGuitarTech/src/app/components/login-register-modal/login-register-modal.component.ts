@@ -14,6 +14,7 @@ export class LoginRegisterModalComponent implements OnInit {
   closeResult = '';
   user: User = new User();
   loginOpen: boolean = true;
+  modalOpen: boolean = false;
   newUser: User = new User();
 
 	constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) {}
@@ -23,9 +24,11 @@ export class LoginRegisterModalComponent implements OnInit {
   }
 
 	open(content: any) {
+    this.modalOpen = true;
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
 			(result) => {
 				this.closeResult = `Closed with: ${result}`;
+        this.modalOpen = false;
         if (this.loginOpen) {
 
         } else {
@@ -34,6 +37,7 @@ export class LoginRegisterModalComponent implements OnInit {
 			},
 			(reason) => {
 				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        this.modalOpen = false;
 			},
 		);
 	}
@@ -106,5 +110,13 @@ export class LoginRegisterModalComponent implements OnInit {
         console.error(problem);
       }
     });
+  }
+
+  loginIcon() {
+    if (this.modalOpen) {
+      return 'login-register-icon-selected';
+    } else {
+      return 'login-register-icon-deselected';
+    }
   }
 }
