@@ -245,7 +245,10 @@ public class Guitar {
 	@Override
 	public String toString() {
 		return "Guitar [id=" + id + ", make=" + make + ", model=" + model + ", year=" + year + ", color=" + color
-				+ ", deleted=" + deleted + "]";
+				+ ", deleted=" + deleted + ", scaleLength=" + scaleLength + ", numberOfFrets=" + numberOfFrets
+				+ ", numberOfStrings=" + numberOfStrings + ", bridge=" + bridge + ", purchasePrice=" + purchasePrice
+				+ ", currency=" + currency + ", bridgePickup=" + bridgePickup + ", middlePickup=" + middlePickup
+				+ ", neckPickup=" + neckPickup + ", serialNumber=" + serialNumber + "]";
 	}
 	
 

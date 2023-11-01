@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Guitar } from 'src/app/models/guitar';
 import { AuthService } from 'src/app/services/auth.service';
+import { GuitarService } from 'src/app/services/guitar.service';
 
 @Component({
   selector: 'app-update-guitar-modal',
@@ -18,7 +19,10 @@ export class UpdateGuitarModalComponent {
   isEditSelected: boolean = false;
   closeResult = '';
 
-  constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) {}
+  constructor(private modalService: NgbModal,
+    private authService: AuthService,
+    private router: Router,
+    private guitarService: GuitarService) {}
 
   open(content: any) {
     this.isEditSelected = true;
@@ -48,9 +52,16 @@ export class UpdateGuitarModalComponent {
 	}
 
   onUpdateClick() {
-    console.log('onEditClick()');
-    console.log('guitarToUpdate: ' + this.guitarToUpdate.tuning.id);
-    // actually update the guitar
+    this.guitarService.update(this.originalCopy).subscribe({
+      next: (result) => {
+        // this.reload();
+        window.location.reload();
+      },
+      error: (nojoy) => {
+        console.error('UpdateGuitarModalComponent.onUpdateClick(): error updating Guitar:');
+        console.error(nojoy);
+      },
+    });
     this.modalService.dismissAll();
   }
 

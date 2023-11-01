@@ -100,8 +100,9 @@ public class GuitarController {
 	}
 	
 	@PutMapping("guitars/{guitarId}")
-	public Guitar updateGuitar(@PathVariable int guitarId, @RequestBody Guitar guitar, HttpServletResponse response) {
-		Guitar updatedGuitar = guitarServ.updateGuitar(guitarId, guitar);
+	public Guitar updateGuitar(Principal principal, @PathVariable int guitarId, @RequestBody Guitar guitar, HttpServletResponse response) {
+		Guitar updatedGuitar = guitarServ.updateGuitar(guitarId, guitar, principal.getName());
+		
 		if (updatedGuitar == null) {
 			response.setStatus(400);
 		} else {

@@ -121,76 +121,59 @@ public class GuitarServiceImpl implements GuitarService {
 	}
 
 	@Override
-	public Guitar updateGuitar(int guitarId, Guitar updatedGuitar) {
+	public Guitar updateGuitar(int guitarId, Guitar updatedGuitar, String username) {
 		if (guitarRepo.existsById(guitarId)) {
 			Optional<Guitar> existingOpt = guitarRepo.findById(guitarId);
 			Guitar existingGuitar = existingOpt.get();
 
-			if (!updatedGuitar.getMake().equals("") || updatedGuitar.getMake() != null) {
-				existingGuitar.setMake(updatedGuitar.getMake());
+			if (existingGuitar.getOwner().getUsername().equals(username)) {
+				if (updatedGuitar.getMake() != null || !"".equals(updatedGuitar.getMake())) {
+					existingGuitar.setMake(updatedGuitar.getMake());
+				}
+				if (updatedGuitar.getModel() != null || !"".equals(updatedGuitar.getModel())) {
+					existingGuitar.setModel(updatedGuitar.getModel());
+				}
+				if (updatedGuitar.getYear() != null) {
+					existingGuitar.setYear(updatedGuitar.getYear());
+				}
+				if (updatedGuitar.getColor() != null || !"".equals(updatedGuitar.getColor())) {
+					existingGuitar.setColor(updatedGuitar.getColor());
+				}
+				if (updatedGuitar.getTuning() != null) {
+					existingGuitar.setTuning(updatedGuitar.getTuning());
+				}
+				if (updatedGuitar.getScaleLength() != null) {
+					existingGuitar.setScaleLength(updatedGuitar.getScaleLength());
+				}
+				if (updatedGuitar.getNumberOfFrets() != null) {
+					existingGuitar.setNumberOfFrets(updatedGuitar.getNumberOfFrets());
+				}
+				if (updatedGuitar.getNumberOfStrings() != null) {
+					existingGuitar.setNumberOfStrings(updatedGuitar.getNumberOfStrings());
+				}
+				if (updatedGuitar.getBridge() != null || !"".equals(updatedGuitar.getBridge())) {
+					existingGuitar.setBridge(updatedGuitar.getBridge());
+				}
+				if (updatedGuitar.getPurchasePrice() != null) {
+					existingGuitar.setPurchasePrice(updatedGuitar.getPurchasePrice());
+				}
+				if (updatedGuitar.getCurrency() != null || !"".equals(updatedGuitar.getCurrency())) {
+					existingGuitar.setCurrency(updatedGuitar.getCurrency());
+				}
+				if (updatedGuitar.getBridgePickup() != null || !"".equals(updatedGuitar.getBridgePickup())) {
+					existingGuitar.setBridgePickup(updatedGuitar.getBridgePickup());
+				}
+				if (updatedGuitar.getMiddlePickup() != null || !"".equals(updatedGuitar.getMiddlePickup())) {
+					existingGuitar.setMiddlePickup(updatedGuitar.getMiddlePickup());
+				}
+				if (updatedGuitar.getNeckPickup() != null || !"".equals(updatedGuitar.getNeckPickup())) {
+					existingGuitar.setNeckPickup(updatedGuitar.getNeckPickup());
+				}
+				if (updatedGuitar.getSerialNumber() != null || !"".equals(updatedGuitar.getSerialNumber())) {
+					existingGuitar.setSerialNumber(updatedGuitar.getSerialNumber());
+				}
+				return guitarRepo.saveAndFlush(existingGuitar);
 			}
-
-			if (!updatedGuitar.getModel().equals("") || updatedGuitar.getMake() != null) {
-				existingGuitar.setModel(updatedGuitar.getModel());
-			}
-
-			if (updatedGuitar.getYear() != null) {
-				existingGuitar.setYear(updatedGuitar.getYear());
-			}
-
-			if (!updatedGuitar.getColor().equals("") || updatedGuitar.getColor() != null) {
-				existingGuitar.setColor(updatedGuitar.getColor());
-			}
-
-			if (updatedGuitar.getDeleted() != null) {
-				existingGuitar.setDeleted(updatedGuitar.getDeleted());
-			}
-
-			if (updatedGuitar.getTuning() != null) {
-				existingGuitar.setTuning(updatedGuitar.getTuning());
-			}
-
-			if (updatedGuitar.getScaleLength() != null) {
-				existingGuitar.setScaleLength(updatedGuitar.getScaleLength());
-			}
-
-			if (updatedGuitar.getNumberOfFrets() != null) {
-				existingGuitar.setNumberOfFrets(updatedGuitar.getNumberOfFrets());
-			}
-
-			if (updatedGuitar.getNumberOfStrings() != null) {
-				existingGuitar.setNumberOfStrings(updatedGuitar.getNumberOfStrings());
-			}
-
-			if (!updatedGuitar.getBridge().equals("") || updatedGuitar.getBridge() != null) {
-				existingGuitar.setBridge(updatedGuitar.getBridge());
-			}
-
-			if (updatedGuitar.getPurchasePrice() != null) {
-				existingGuitar.setPurchasePrice(updatedGuitar.getPurchasePrice());
-			}
-
-			if (!updatedGuitar.getCurrency().equals("") || updatedGuitar.getCurrency() != null) {
-				existingGuitar.setCurrency(updatedGuitar.getCurrency());
-			}
-
-			if (!updatedGuitar.getBridgePickup().equals("") || updatedGuitar.getBridgePickup() != null) {
-				existingGuitar.setBridgePickup(updatedGuitar.getBridgePickup());
-			}
-
-			if (!updatedGuitar.getMiddlePickup().equals("") || updatedGuitar.getMiddlePickup() != null) {
-				existingGuitar.setMiddlePickup(updatedGuitar.getMiddlePickup());
-			}
-
-			if (!updatedGuitar.getNeckPickup().equals("") || updatedGuitar.getNeckPickup() != null) {
-				existingGuitar.setNeckPickup(updatedGuitar.getNeckPickup());
-			}
-
-			if (!updatedGuitar.getSerialNumber().equals("") || updatedGuitar.getSerialNumber() != null) {
-				existingGuitar.setSerialNumber(updatedGuitar.getSerialNumber());
-			}
-
-			return guitarRepo.saveAndFlush(existingGuitar);
 		}
 
 		return null;

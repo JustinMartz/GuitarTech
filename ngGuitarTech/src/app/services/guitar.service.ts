@@ -38,7 +38,7 @@ export class GuitarService {
 
   update(guitarToUpdate: Guitar): Observable<Guitar> {
     console.log('*** updated guitar');
-    return this.http.put<Guitar>(this.url + '/' + guitarToUpdate.id, guitarToUpdate).pipe(
+    return this.http.put<Guitar>(this.url + '/' + guitarToUpdate.id, guitarToUpdate, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(
