@@ -10,39 +10,39 @@
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Make</span>
         </div>
-        <input aria-label="Guitar make" type="text" class="form-control" [(ngModel)]="guitarToUpdate.make" name="make" aria-label="Username" aria-describedby="basic-addon1">
+        <input aria-label="Guitar make" type="text" class="form-control" [(ngModel)]="originalCopy.make" name="make" aria-label="Username" aria-describedby="basic-addon1">
       </div>
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Model</span>
         </div>
-        <input aria-label="Guitar model" type="text" class="form-control" [(ngModel)]="guitarToUpdate.model" name="model" aria-label="Username" aria-describedby="basic-addon1">
+        <input aria-label="Guitar model" type="text" class="form-control" [(ngModel)]="originalCopy.model" name="model" aria-label="Username" aria-describedby="basic-addon1">
       </div>
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Year</span>
         </div>
-        <input aria-label="Year of manufacture" type="number" class="form-control" id="year" name="year" min="1900" max="2023" [(ngModel)]="guitarToUpdate.year">
+        <input aria-label="Year of manufacture" type="number" class="form-control" id="year" name="year" min="1900" max="2023" [(ngModel)]="originalCopy.year">
       </div>
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Color</span>
         </div>
-        <input type="text" class="form-control" id="color" name="color" [(ngModel)]="guitarToUpdate.color">
+        <input type="text" class="form-control" id="color" name="color" [(ngModel)]="originalCopy.color">
       </div>
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Tuning</span>
         </div>
-        <select aria-label="Current tuning" class="form-control" name="tuning" [(ngModel)]="guitarToUpdate.tuning.id">
-          <option [ngValue]="1" [selected]="guitarToUpdate.tuning.id === 1">E Standard</option>
-          <option [ngValue]="2" [selected]="guitarToUpdate.tuning.id === 2">Eb Standard</option>
-          <option [ngValue]="3" [selected]="guitarToUpdate.tuning.id === 3">D Standard</option>
-          <option [ngValue]="4" [selected]="guitarToUpdate.tuning.id === 4">C# Standard</option>
+        <select aria-label="Current tuning" class="form-control" name="tuning" [(ngModel)]="originalCopy.tuning.id">
+          <option [ngValue]="1" [selected]="originalCopy.tuning.id === 1">E Standard</option>
+          <option [ngValue]="2" [selected]="originalCopy.tuning.id === 2">Eb Standard</option>
+          <option [ngValue]="3" [selected]="originalCopy.tuning.id === 3">D Standard</option>
+          <option [ngValue]="4" [selected]="originalCopy.tuning.id === 4">C# Standard</option>
         </select>
       </div>
 
@@ -50,9 +50,9 @@
         <div class="input-group-prepend col-6">
           <span class="input-group-text">Scale length</span>
         </div>
-        <select aria-label="Scale length" class="form-control" name="scaleLength" [(ngModel)]="guitarToUpdate.scaleLength">
-          <option [ngValue]="24.75" [selected]="guitarToUpdate.scaleLength === 24.75">24.75"</option>
-          <option [ngValue]="25.5" [selected]="guitarToUpdate.scaleLength === 25.5">25.5"</option>
+        <select aria-label="Scale length" class="form-control" name="scaleLength" [(ngModel)]="originalCopy.scaleLength">
+          <option [ngValue]="24.75" [selected]="originalCopy.scaleLength === 24.75">24.75"</option>
+          <option [ngValue]="25.5" [selected]="originalCopy.scaleLength === 25.5">25.5"</option>
         </select>
       </div>
 
@@ -60,17 +60,17 @@
         <div class="input-group-prepend col-6">
           <span class="input-group-text"># of frets</span>
         </div>
-        <select aria-label="Number of frets" class="form-control" name="numberOfFrets" [(ngModel)]="guitarToUpdate.numberOfFrets">
-          <option [ngValue]="19" [selected]="guitarToUpdate.numberOfFrets === 19">19</option>
-          <option [ngValue]="20" [selected]="guitarToUpdate.numberOfFrets === 20">20</option>
-          <option [ngValue]="21" [selected]="guitarToUpdate.numberOfFrets === 21">21</option>
-          <option [ngValue]="22" [selected]="guitarToUpdate.numberOfFrets === 22">22</option>
-          <option [ngValue]="23" [selected]="guitarToUpdate.numberOfFrets === 23">23</option>
-          <option [ngValue]="24" [selected]="guitarToUpdate.numberOfFrets === 24">24</option>
-          <option [ngValue]="25" [selected]="guitarToUpdate.numberOfFrets === 25">25</option>
-          <option [ngValue]="26" [selected]="guitarToUpdate.numberOfFrets === 26">26</option>
-          <option [ngValue]="27" [selected]="guitarToUpdate.numberOfFrets === 27">27</option>
-          <option [ngValue]="28" [selected]="guitarToUpdate.numberOfFrets === 28">28</option>
+        <select aria-label="Number of frets" class="form-control" name="numberOfFrets" [(ngModel)]="originalCopy.numberOfFrets">
+          <option [ngValue]="19" [selected]="originalCopy.numberOfFrets === 19">19</option>
+          <option [ngValue]="20" [selected]="originalCopy.numberOfFrets === 20">20</option>
+          <option [ngValue]="21" [selected]="originalCopy.numberOfFrets === 21">21</option>
+          <option [ngValue]="22" [selected]="originalCopy.numberOfFrets === 22">22</option>
+          <option [ngValue]="23" [selected]="originalCopy.numberOfFrets === 23">23</option>
+          <option [ngValue]="24" [selected]="originalCopy.numberOfFrets === 24">24</option>
+          <option [ngValue]="25" [selected]="originalCopy.numberOfFrets === 25">25</option>
+          <option [ngValue]="26" [selected]="originalCopy.numberOfFrets === 26">26</option>
+          <option [ngValue]="27" [selected]="originalCopy.numberOfFrets === 27">27</option>
+          <option [ngValue]="28" [selected]="originalCopy.numberOfFrets === 28">28</option>
         </select>
       </div>
 
@@ -78,10 +78,10 @@
         <div class="input-group-prepend col-6">
           <span class="input-group-text"># of strings</span>
         </div>
-        <select aria-label="Number of strings" class="form-control" name="numberOfStrings" [(ngModel)]="guitarToUpdate.numberOfStrings">
-          <option [ngValue]="6" [selected]="guitarToUpdate.numberOfStrings === 6">6</option>
-          <option [ngValue]="7" [selected]="guitarToUpdate.numberOfStrings === 7">7</option>
-          <option [ngValue]="8" [selected]="guitarToUpdate.numberOfStrings === 8">8</option>
+        <select aria-label="Number of strings" class="form-control" name="numberOfStrings" [(ngModel)]="originalCopy.numberOfStrings">
+          <option [ngValue]="6" [selected]="originalCopy.numberOfStrings === 6">6</option>
+          <option [ngValue]="7" [selected]="originalCopy.numberOfStrings === 7">7</option>
+          <option [ngValue]="8" [selected]="originalCopy.numberOfStrings === 8">8</option>
         </select>
       </div>
 
@@ -89,17 +89,17 @@
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Cost</span>
         </div>
-        <input type="text" name="purchasePrice" class="form-control" aria-label="Purchase price" [(ngModel)]="guitarToUpdate.purchasePrice">
+        <input type="text" name="purchasePrice" class="form-control" aria-label="Purchase price" [(ngModel)]="originalCopy.purchasePrice">
       </div>
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Bridge</span>
         </div>
-        <select aria-label="Bridge type" class="form-control" name="bridge" [(ngModel)]="guitarToUpdate.bridge">
-          <option [ngValue]="'Tune-O-Matic'" [selected]="guitarToUpdate.bridge === 'Tune-O-Matic'">Tune-O-Matic</option>
-          <option [ngValue]="'Floyd Rose'" [selected]="guitarToUpdate.bridge === 'Floyd Rose'">Floyd Rose</option>
-          <option [ngValue]="'3-Saddle'" [selected]="guitarToUpdate.bridge === '3-Saddle'">3-Saddle</option>
+        <select aria-label="Bridge type" class="form-control" name="bridge" [(ngModel)]="originalCopy.bridge">
+          <option [ngValue]="'Tune-O-Matic'" [selected]="originalCopy.bridge === 'Tune-O-Matic'">Tune-O-Matic</option>
+          <option [ngValue]="'Floyd Rose'" [selected]="originalCopy.bridge === 'Floyd Rose'">Floyd Rose</option>
+          <option [ngValue]="'3-Saddle'" [selected]="originalCopy.bridge === '3-Saddle'">3-Saddle</option>
         </select>
       </div>
 
@@ -107,28 +107,28 @@
         <div class="input-group-prepend col-6">
           <span class="input-group-text">Neck pickup</span>
         </div>
-        <input type="text" name="neckPickup" class="form-control" aria-label="Neck pickup" [(ngModel)]="guitarToUpdate.neckPickup">
+        <input type="text" name="neckPickup" class="form-control" aria-label="Neck pickup" [(ngModel)]="originalCopy.neckPickup">
       </div>
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-6">
           <span class="input-group-text">Middle pickup</span>
         </div>
-        <input type="text" name="middlePickup" class="form-control" aria-label="Middle pickup" [(ngModel)]="guitarToUpdate.middlePickup">
+        <input type="text" name="middlePickup" class="form-control" aria-label="Middle pickup" [(ngModel)]="originalCopy.middlePickup">
       </div>
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-6">
           <span class="input-group-text">Bridge pickup</span>
         </div>
-        <input type="text" name="bridgePickup" class="form-control" aria-label="Bridge pickup" [(ngModel)]="guitarToUpdate.bridgePickup">
+        <input type="text" name="bridgePickup" class="form-control" aria-label="Bridge pickup" [(ngModel)]="originalCopy.bridgePickup">
       </div>
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-6">
           <span class="input-group-text">Serial number</span>
         </div>
-        <input type="text" name="serialNumber" class="form-control" aria-label="Serial number" [(ngModel)]="guitarToUpdate.serialNumber">
+        <input type="text" name="serialNumber" class="form-control" aria-label="Serial number" [(ngModel)]="originalCopy.serialNumber">
       </div>
 		</form>
 	</div>

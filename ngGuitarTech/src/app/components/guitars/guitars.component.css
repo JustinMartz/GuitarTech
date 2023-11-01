@@ -1,7 +1,14 @@
-.guitars-container {
-  height: 90vh;
-  width: 100%;
-  overflow-y: scroll;
-  overscroll-behavior: none;
-  scroll-snap-align: start;
+@media (min-width: 320px) and (max-width: 480px) {
+  .guitars-container {
+    height: 90vh;
+    width: 100%;
+    overflow-y: scroll;
+    overscroll-behavior: none;
+    scroll-snap-align: start;
+  }
+
+  .no-guitars-card {
+    margin-top: 10vh;
+    padding: 1rem;
+  }
 }

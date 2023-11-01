@@ -21,28 +21,28 @@ public class GuitarServiceImpl implements GuitarService {
 
 	@Autowired
 	private GuitarRepository guitarRepo;
-	
+
 	@Autowired
 	private SetupRepository setupRepo;
-	
+
 	@Autowired
 	private TuningRepository tuningRepo;
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
-	@Autowired 
+
+	@Autowired
 	private GuitarPictureRepository guitarPictureRepo;
 
 	@Override
 	public Guitar findGuitar(int id) {
 		Guitar guitar = null;
 		Optional<Guitar> guitarOpt = guitarRepo.findById(id);
-		
+
 		if (guitarOpt.isPresent()) {
 			guitar = guitarOpt.get();
 		}
-		
+
 		return guitar;
 	}
 
@@ -54,7 +54,7 @@ public class GuitarServiceImpl implements GuitarService {
 	@Override
 	public List<Guitar> findAllByTuning(int tuningId) {
 		System.out.println("*** Getting passed tuningId: " + tuningId);
-		
+
 		// needs to be: if tuning exists by id, not guitar
 		if (tuningRepo.existsById(tuningId)) {
 			System.out.println("*** Tuning " + tuningId + " exists!");
@@ -65,7 +65,7 @@ public class GuitarServiceImpl implements GuitarService {
 		} else {
 			System.out.println("*** Guitar with tuning " + tuningId + " not found :(");
 		}
-		
+
 		return null;
 	}
 
@@ -75,7 +75,7 @@ public class GuitarServiceImpl implements GuitarService {
 			bridge = "%" + bridge + "%";
 			return guitarRepo.findByBridgeLike(bridge);
 		}
-		
+
 		return null;
 	}
 
@@ -85,7 +85,7 @@ public class GuitarServiceImpl implements GuitarService {
 			color = "%" + color + "%";
 			return guitarRepo.findByColorLike(color);
 		}
-		
+
 		return null;
 	}
 
@@ -97,11 +97,11 @@ public class GuitarServiceImpl implements GuitarService {
 			if (guitar.getMake().equals("") || guitar.getMake() == null) {
 				return null;
 			}
-			
+
 			if (guitar.getModel().equals("") || guitar.getModel() == null) {
 				return null;
 			}
-			
+
 			if (guitar.getTuning() == null) {
 				// FIXME use tuningRepo to pull existing tuning entity
 				Tuning tuning = new Tuning();
@@ -109,14 +109,14 @@ public class GuitarServiceImpl implements GuitarService {
 				tuning.setName("E Standard");
 				guitar.setTuning(tuning);
 			}
-			
+
 			if (guitar.getCurrency() == null || guitar.getCurrency().equals("")) {
 				guitar.setCurrency("USD");
 			}
-			
+
 			return guitarRepo.saveAndFlush(guitar);
 		}
-		
+
 		return null;
 	}
 
@@ -125,81 +125,80 @@ public class GuitarServiceImpl implements GuitarService {
 		if (guitarRepo.existsById(guitarId)) {
 			Optional<Guitar> existingOpt = guitarRepo.findById(guitarId);
 			Guitar existingGuitar = existingOpt.get();
-			
+
 			if (!updatedGuitar.getMake().equals("") || updatedGuitar.getMake() != null) {
 				existingGuitar.setMake(updatedGuitar.getMake());
 			}
-			
+
 			if (!updatedGuitar.getModel().equals("") || updatedGuitar.getMake() != null) {
 				existingGuitar.setModel(updatedGuitar.getModel());
 			}
-			
+
 			if (updatedGuitar.getYear() != null) {
 				existingGuitar.setYear(updatedGuitar.getYear());
 			}
-			
+
 			if (!updatedGuitar.getColor().equals("") || updatedGuitar.getColor() != null) {
 				existingGuitar.setColor(updatedGuitar.getColor());
 			}
-			
+
 			if (updatedGuitar.getDeleted() != null) {
 				existingGuitar.setDeleted(updatedGuitar.getDeleted());
 			}
-			
+
 			if (updatedGuitar.getTuning() != null) {
 				existingGuitar.setTuning(updatedGuitar.getTuning());
 			}
-			
+
 			if (updatedGuitar.getScaleLength() != null) {
 				existingGuitar.setScaleLength(updatedGuitar.getScaleLength());
 			}
-			
+
 			if (updatedGuitar.getNumberOfFrets() != null) {
 				existingGuitar.setNumberOfFrets(updatedGuitar.getNumberOfFrets());
 			}
-			
+
 			if (updatedGuitar.getNumberOfStrings() != null) {
 				existingGuitar.setNumberOfStrings(updatedGuitar.getNumberOfStrings());
 			}
-			
+
 			if (!updatedGuitar.getBridge().equals("") || updatedGuitar.getBridge() != null) {
 				existingGuitar.setBridge(updatedGuitar.getBridge());
 			}
-			
+
 			if (updatedGuitar.getPurchasePrice() != null) {
 				existingGuitar.setPurchasePrice(updatedGuitar.getPurchasePrice());
 			}
-			
-			if (!updatedGuitar.getCurrency().equals("")  || updatedGuitar.getCurrency() != null) {
+
+			if (!updatedGuitar.getCurrency().equals("") || updatedGuitar.getCurrency() != null) {
 				existingGuitar.setCurrency(updatedGuitar.getCurrency());
 			}
-			
+
 			if (!updatedGuitar.getBridgePickup().equals("") || updatedGuitar.getBridgePickup() != null) {
 				existingGuitar.setBridgePickup(updatedGuitar.getBridgePickup());
 			}
-			
+
 			if (!updatedGuitar.getMiddlePickup().equals("") || updatedGuitar.getMiddlePickup() != null) {
 				existingGuitar.setMiddlePickup(updatedGuitar.getMiddlePickup());
 			}
-			
+
 			if (!updatedGuitar.getNeckPickup().equals("") || updatedGuitar.getNeckPickup() != null) {
 				existingGuitar.setNeckPickup(updatedGuitar.getNeckPickup());
 			}
-			
+
 			if (!updatedGuitar.getSerialNumber().equals("") || updatedGuitar.getSerialNumber() != null) {
 				existingGuitar.setSerialNumber(updatedGuitar.getSerialNumber());
 			}
-			
+
 			return guitarRepo.saveAndFlush(existingGuitar);
 		}
-		
+
 		return null;
 	}
 
 	@Override
-	public boolean deleteGuitar(int guitarId) {
+	public boolean deleteGuitar(int guitarId, String username) {
 		// if setup(s) exist for this guitar, delete those first
-		// delete pictures tooj
 //		List<Setup> setups = setupRepo.findByGuitar_Id(guitarId);
 //		if (setups.size() > 0) {
 //			for (Setup setup : setups) {
@@ -207,20 +206,27 @@ public class GuitarServiceImpl implements GuitarService {
 //				setupRepo.delete(setup);
 //			}
 //		}
+		// delete pictures too
 		List<GuitarPicture> pictures = guitarPictureRepo.findByGuitar_Id(guitarId);
 		if (pictures.size() > 0) {
 			for (GuitarPicture picture : pictures) {
 				guitarPictureRepo.delete(picture);
 			}
 		}
-		
-		if (guitarRepo.existsById(guitarId)) {
-			guitarRepo.deleteById(guitarId);
-			if (!guitarRepo.existsById(guitarId)) {
-				System.out.print("Guitar " + guitarId + " is deleted!");
-				return true;
+
+		Optional<Guitar> guitarOpt = guitarRepo.findById(guitarId);
+		if (guitarOpt.isPresent()) {
+			Guitar guitar = guitarOpt.get();
+			if (guitar.getOwner().getUsername().equals(username)) {
+				System.out.println("Deleting guitar: " + guitar.getId());
+				guitarRepo.deleteById(guitarId);
+				if (!guitarRepo.existsById(guitarId)) {
+					System.out.print("Guitar " + guitarId + " is deleted!");
+					return true;
+				}
 			}
 		}
+
 		return false;
 	}
 
@@ -230,7 +236,7 @@ public class GuitarServiceImpl implements GuitarService {
 			List<Guitar> guitars = guitarRepo.findByOwner_Id(userId);
 			return guitars;
 		}
-		
+
 		return null;
 	}
 
@@ -240,10 +246,8 @@ public class GuitarServiceImpl implements GuitarService {
 			List<Guitar> guitars = guitarRepo.findByOwner_IdAndDeletedFalse(userId);
 			return guitars;
 		}
-		
+
 		return null;
 	}
-	
-	
-	
+
 }

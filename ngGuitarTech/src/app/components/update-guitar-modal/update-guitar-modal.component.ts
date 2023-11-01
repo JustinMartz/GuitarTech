@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Guitar } from 'src/app/models/guitar';
@@ -13,6 +13,8 @@ export class UpdateGuitarModalComponent {
   @Input() guitarToUpdate: Guitar = new Guitar();
   @Output() updateSuccessful: boolean = false;
 
+  originalCopy: Guitar = new Guitar();
+
   isEditSelected: boolean = false;
   closeResult = '';
 
@@ -20,6 +22,8 @@ export class UpdateGuitarModalComponent {
 
   open(content: any) {
     this.isEditSelected = true;
+    this.originalCopy = structuredClone(this.guitarToUpdate);
+
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', scrollable: true }).result.then(
 			(result) => {
 				this.closeResult = `Closed with: ${result}`;
@@ -46,7 +50,7 @@ export class UpdateGuitarModalComponent {
   onUpdateClick() {
     console.log('onEditClick()');
     console.log('guitarToUpdate: ' + this.guitarToUpdate.tuning.id);
-    // actually delete the guitar
+    // actually update the guitar
     this.modalService.dismissAll();
   }
 

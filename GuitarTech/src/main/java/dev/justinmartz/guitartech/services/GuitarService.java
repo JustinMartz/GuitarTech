@@ -14,5 +14,5 @@ public interface GuitarService {
 	public List<Guitar> findAllByColor(String color);
 	public Guitar createNewGuitar(Guitar guitar);
 	public Guitar updateGuitar(int guitarId, Guitar guitar);
-	public boolean deleteGuitar(int guitarId);
+	public boolean deleteGuitar(int guitarId, String username);
 }

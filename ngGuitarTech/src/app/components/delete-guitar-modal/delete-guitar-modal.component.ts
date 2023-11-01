@@ -49,12 +49,10 @@ export class DeleteGuitarModalComponent {
 	}
 
   onDeleteClick() {
-    console.log('onDeleteClick()');
-    // actually delete the guitar
     this.guitarService.delete(this.guitarToDelete.id).subscribe({
       next: (result) => {
         // this.reload();
-        this.router.navigateByUrl('guitars');
+        window.location.reload();
       },
       error: (nojoy) => {
         console.error('DeleteGuitarModalComponent.onDeleteClick(): error deleting Guitar:');

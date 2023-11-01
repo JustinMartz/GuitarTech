@@ -18,7 +18,6 @@ export class GuitarsComponent implements OnInit {
   constructor(private viewService: ViewService, private guitarServ: GuitarService, private authServ: AuthService) {}
 
   ngOnInit(): void {
-    console.log('in GuitarsComponent.ngOnInit()');
     this.viewService.setGuitarsSelected(true);
 
     if (this.authServ.checkLogin()) {
@@ -45,5 +44,13 @@ export class GuitarsComponent implements OnInit {
         console.error(fail);
       },
     });
+  }
+
+  guitarsListEmpty() {
+    if (this.guitarsList.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

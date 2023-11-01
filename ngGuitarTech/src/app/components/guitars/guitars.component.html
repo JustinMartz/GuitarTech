@@ -1,5 +1,9 @@
 <div class="guitars-container">
-  <app-guitar-top-nav></app-guitar-top-nav>
+  <app-guitar-top-nav [userHasGuitars]="guitarsListEmpty()"></app-guitar-top-nav>
+  <div class="no-guitars-card" *ngIf="guitarsList.length === 0">
+    <h1>No guitars!</h1>
+    <p>Get your collection started by clicking the icon on the top left!</p>
+  </div>
   <ng-container *ngFor="let g of guitarsList; first as isFirst">
     <app-guitar-detail [isFirstGuitar]="isFirst" [guitar]="g"></app-guitar-detail>
   </ng-container>

@@ -17,4 +17,5 @@ export class GuitarDetailComponent {
       return 'guitar-container';
     }
   }
+
 }

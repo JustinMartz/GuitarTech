@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-guitar-top-nav',
@@ -6,9 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./guitar-top-nav.component.css']
 })
 export class GuitarTopNavComponent {
+  @Input() userHasGuitars: boolean = false;
 
-  addGuitar() {
-    return false;
+  addGuitarIcon() {
+    if (this.userHasGuitars) {
+      return 'add-new-guitar-deselected';
+    } else {
+      return 'add-new-guitar-pulsing';
+    }
   }
 
   filterColor() {
