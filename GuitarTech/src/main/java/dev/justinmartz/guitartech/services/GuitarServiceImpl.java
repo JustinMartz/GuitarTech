@@ -182,13 +182,13 @@ public class GuitarServiceImpl implements GuitarService {
 	@Override
 	public boolean deleteGuitar(int guitarId, String username) {
 		// if setup(s) exist for this guitar, delete those first
-//		List<Setup> setups = setupRepo.findByGuitar_Id(guitarId);
-//		if (setups.size() > 0) {
-//			for (Setup setup : setups) {
-//				// delete em all
-//				setupRepo.delete(setup);
-//			}
-//		}
+		List<Setup> setups = setupRepo.findByGuitar_Id(guitarId);
+		if (setups.size() > 0) {
+			for (Setup setup : setups) {
+				// delete em all
+				setupRepo.delete(setup);
+			}
+		}
 		// delete pictures too
 		List<GuitarPicture> pictures = guitarPictureRepo.findByGuitar_Id(guitarId);
 		if (pictures.size() > 0) {
