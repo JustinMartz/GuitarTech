@@ -1,0 +1,115 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Guitar } from 'src/app/models/guitar';
+import { AuthService } from 'src/app/services/auth.service';
+import { GuitarService } from 'src/app/services/guitar.service';
+import { FormControl, FormGroup, RequiredValidator } from '@angular/forms';
+import { Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-add-guitar-modal',
+  templateUrl: './add-guitar-modal.component.html',
+  styleUrls: ['./add-guitar-modal.component.css']
+})
+export class AddGuitarModalComponent implements OnInit {
+  @Input() userHasGuitars: boolean = false;
+  newGuitar: Guitar = new Guitar();
+  isAddSelected: boolean = false;
+  closeResult = '';
+  // make = new FormControl('');
+  // model = new FormControl('');
+
+  guitarForm = new FormGroup({
+    make: new FormControl('', Validators.required),
+    model: new FormControl('', Validators.required),
+    year: new FormControl(''),
+    color: new FormControl(''),
+    tuning: new FormControl(''),
+    scaleLength: new FormControl(''),
+    numberOfFrets: new FormControl(''),
+    numberOfStrings: new FormControl(''),
+    purchasePrice: new FormControl(''),
+    bridge: new FormControl(''),
+    bridgePickup: new FormControl(''),
+    middlePickup: new FormControl(''),
+    neckPickup: new FormControl(''),
+    serialNumber: new FormControl('')
+  })
+
+  constructor(private modalService: NgbModal,
+    private authService: AuthService,
+    private router: Router,
+    private guitarService: GuitarService) {}
+
+  ngOnInit(): void {
+    this.resetForm();
+    console.log('*** guitarForm' + this.guitarForm.value);
+  }
+
+  addGuitarIcon() {
+    if (!this.userHasGuitars && !this.isAddSelected) {
+      return 'add-guitar-icon-pulsing';
+    } else if (this.isAddSelected) {
+      return 'add-guitar-icon-selected';
+    } else {
+      return 'add-guitar-icon-deselected';
+    }
+  }
+
+  onAddClick() {
+    this.guitarService.update(this.newGuitar).subscribe({
+      next: (result) => {
+        // this.reload();
+        window.location.reload();
+      },
+      error: (nojoy) => {
+        console.error('AddGuitarModalComponent.onAddClick(): error creating Guitar:');
+        console.error(nojoy);
+      },
+    });
+    this.modalService.dismissAll();
+  }
+
+  open(content: any) {
+    this.isAddSelected = true;
+
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', scrollable: true }).result.then(
+			(result) => {
+				this.closeResult = `Closed with: ${result}`;
+        this.isAddSelected = false;
+        console.log('Cancel click');
+        this.resetForm();
+			},
+			(reason) => {
+				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        this.isAddSelected = false;
+        this.resetForm();
+			},
+		);
+	}
+
+  private getDismissReason(reason: any): string {
+		if (reason === ModalDismissReasons.ESC) {
+			return 'by pressing ESC';
+		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+			return 'by clicking on a backdrop';
+		} else {
+			return `with: ${reason}`;
+		}
+	}
+
+  resetForm() {
+    this.guitarForm.reset();
+    this.guitarForm.get('tuning')?.setValue('1');
+    this.guitarForm.get('scaleLength')?.setValue('25.5');
+    this.guitarForm.get('numberOfFrets')?.setValue('22');
+    this.guitarForm.get('year')?.setValue('2023');
+    this.guitarForm.get('numberOfStrings')?.setValue('6');
+  }
+
+  get make() { return this.guitarForm.get('make'); }
+
+  get model() { return this.guitarForm.get('model'); }
+
+}

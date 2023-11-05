@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginRegisterModalComponent } from './components/login-register-modal/login-register-modal.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { GuitarsComponent } from './components/guitars/guitars.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -19,6 +20,7 @@ import { GuitarTopNavComponent } from './components/guitar-top-nav/guitar-top-na
 import { DeleteGuitarModalComponent } from './components/delete-guitar-modal/delete-guitar-modal.component';
 import { SelfClosingGuitarDeleteAlertComponent } from './components/self-closing-guitar-delete-alert/self-closing-guitar-delete-alert.component';
 import { UpdateGuitarModalComponent } from './components/update-guitar-modal/update-guitar-modal.component';
+import { AddGuitarModalComponent } from './components/add-guitar-modal/add-guitar-modal.component';
 
 
 @NgModule({
@@ -36,14 +38,16 @@ import { UpdateGuitarModalComponent } from './components/update-guitar-modal/upd
     GuitarTopNavComponent,
     DeleteGuitarModalComponent,
     SelfClosingGuitarDeleteAlertComponent,
-    UpdateGuitarModalComponent
+    UpdateGuitarModalComponent,
+    AddGuitarModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

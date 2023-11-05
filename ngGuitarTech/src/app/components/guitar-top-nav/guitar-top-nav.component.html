@@ -1,5 +1,5 @@
 <div class="guitar-top-nav-container">
-  <div [ngClass]="addGuitarIcon()"></div>
+  <app-add-guitar-modal [userHasGuitars]="userHasGuitars"></app-add-guitar-modal>
 
   <ng-container *ngIf="filterColor()">
   </ng-container>
