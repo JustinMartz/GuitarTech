@@ -86,8 +86,8 @@ public class GuitarController {
 	}
 	
 	@PostMapping("guitars")
-	public Guitar createNewGuitar(@RequestBody Guitar guitar, HttpServletResponse response, HttpServletRequest request) {
-		Guitar newGuitar = guitarServ.createNewGuitar(guitar);
+	public Guitar createNewGuitar(Principal principal, @RequestBody Guitar guitar, HttpServletResponse response, HttpServletRequest request) {
+		Guitar newGuitar = guitarServ.createNewGuitar(guitar, principal.getName());
 		if (newGuitar == null) {
 			response.setStatus(400);
 		} else {

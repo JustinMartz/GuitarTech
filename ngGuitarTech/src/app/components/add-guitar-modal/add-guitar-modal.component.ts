@@ -6,6 +6,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { GuitarService } from 'src/app/services/guitar.service';
 import { FormControl, FormGroup, RequiredValidator } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { NonNullAssert } from '@angular/compiler';
+import { User } from 'src/app/models/user';
+import { Tuning } from 'src/app/models/tuning';
 
 @Component({
   selector: 'app-add-guitar-modal',
@@ -14,7 +17,7 @@ import { Validators } from '@angular/forms';
 })
 export class AddGuitarModalComponent implements OnInit {
   @Input() userHasGuitars: boolean = false;
-  newGuitar: Guitar = new Guitar();
+  // newGuitar: Guitar = new Guitar();
   isAddSelected: boolean = false;
   closeResult = '';
   // make = new FormControl('');
@@ -29,7 +32,7 @@ export class AddGuitarModalComponent implements OnInit {
     scaleLength: new FormControl(''),
     numberOfFrets: new FormControl(''),
     numberOfStrings: new FormControl(''),
-    purchasePrice: new FormControl(''),
+    purchasePrice: new FormControl('', Validators.pattern("^[0-9]*$")),
     bridge: new FormControl(''),
     bridgePickup: new FormControl(''),
     middlePickup: new FormControl(''),
@@ -44,7 +47,6 @@ export class AddGuitarModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    console.log('*** guitarForm' + this.guitarForm.value);
   }
 
   addGuitarIcon() {
@@ -58,7 +60,30 @@ export class AddGuitarModalComponent implements OnInit {
   }
 
   onAddClick() {
-    this.guitarService.update(this.newGuitar).subscribe({
+    console.log('Add clicked');
+
+    let tmpMake = this.guitarForm.value.make;
+
+    let tmpYear: any = this.guitarForm.value.year;
+
+    if (tmpMake !== null) {
+      console.log(tmpMake + ' is a string!');
+      this.newGuitar.make = tmpMake!;
+    }
+
+    if (this.guitarForm.value.model !== null) {
+      console.log("model is not null and contains " + this.guitarForm.value.model)
+      this.newGuitar.model = this.newGuitar.model;
+    }
+    console.log(this.newGuitar);
+
+    console.log('year: ' + this.guitarForm.value.year);
+    if (/^\d+$/.test(tmpYear)) {
+      console.log(tmpYear + ' is a number!');
+    }
+
+    console.log('newGuitar(): ' + JSON.stringify(this.newGuitar));
+    this.guitarService.create(this.newGuitar).subscribe({
       next: (result) => {
         // this.reload();
         window.location.reload();
@@ -111,5 +136,16 @@ export class AddGuitarModalComponent implements OnInit {
   get make() { return this.guitarForm.get('make'); }
 
   get model() { return this.guitarForm.get('model'); }
+
+  get purchasePrice() { return this.guitarForm.get('purchasePrice'); }
+
+  get newGuitar() {
+    const o: any = {};
+    Object.assign(o, this.guitarForm.value);
+    return new Guitar(0, o.make, o.model, parseInt(o.year), o.color, false, new User(),
+    new Tuning(parseInt(o.tuning), ''), parseFloat(o.scaleLength), parseInt(o.numberOfFrets),
+    parseInt(o.numberOfStrings), o.bridge, parseInt(o.purchasePrice), o.currency,
+    o.bridgePickup, o.middlePickup, o.neckPickup, o.serialNumber);
+  }
 
 }

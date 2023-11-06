@@ -90,29 +90,36 @@ public class GuitarServiceImpl implements GuitarService {
 	}
 
 	@Override
-	public Guitar createNewGuitar(Guitar guitar) {
+	public Guitar createNewGuitar(Guitar guitar, String username) {
 		System.out.println("**********************************");
 		System.out.println(guitar);
+		
 		if (guitar != null && !guitarRepo.existsById(guitar.getId())) {
-			if (guitar.getMake().equals("") || guitar.getMake() == null) {
+			if (guitar.getMake() == null || "".equals(guitar.getMake())) {
 				return null;
 			}
 
-			if (guitar.getModel().equals("") || guitar.getModel() == null) {
+			if (guitar.getModel() == null || "".equals(guitar.getModel())) {
 				return null;
 			}
 
-			if (guitar.getTuning() == null) {
-				// FIXME use tuningRepo to pull existing tuning entity
+			if (tuningRepo.existsById(guitar.getTuning().getId())) {
+				Optional<Tuning> tuningOpt = tuningRepo.findById(guitar.getTuning().getId());
+				guitar.setTuning(tuningOpt.get());	
+			} else if (guitar.getTuning() == null) {
 				Tuning tuning = new Tuning();
 				tuning.setId(1);
 				tuning.setName("E Standard");
 				guitar.setTuning(tuning);
 			}
 
-			if (guitar.getCurrency() == null || guitar.getCurrency().equals("")) {
+			if ("".equals(guitar.getCurrency()) || guitar.getCurrency() == null) {
 				guitar.setCurrency("USD");
 			}
+			
+			guitar.setOwner(userRepo.findByUsername(username));
+			guitar.setDeleted(false);
+			System.out.println("new guitar: " + guitar);
 
 			return guitarRepo.saveAndFlush(guitar);
 		}

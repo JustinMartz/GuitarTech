@@ -58,4 +58,15 @@ export class GuitarService {
       })
     );
   }
+
+  create(newGuitar: Guitar): Observable<Guitar> {
+    return this.http.post<Guitar>(this.url, newGuitar, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'GuitarService.create(): error creating Guitar: ' + err )
+        );
+      })
+    );
+  }
 }

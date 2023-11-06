@@ -4,6 +4,9 @@
 	
 	    <class>dev.justinmartz.guitartech.entities.User</class>
 	    <class>dev.justinmartz.guitartech.entities.Guitar</class>
+	    <class>dev.justinmartz.guitartech.entities.GuitarPicture</class>
+	    <class>dev.justinmartz.guitartech.entities.Setup</class>
+	    <class>dev.justinmartz.guitartech.entities.Tuning</class>
     
     <!-- end entities -->
 	 <properties>

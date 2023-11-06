@@ -104,6 +104,12 @@
         <input formControlName="purchasePrice" type="text" name="purchasePrice" class="form-control" aria-label="Purchase price">
       </div>
 
+      <div *ngIf="purchasePrice?.invalid && (purchasePrice?.dirty || purchasePrice?.touched)" class="alert alert-danger">
+        <div *ngIf="purchasePrice?.errors?.['pattern']">
+          Enter cost in decimals.
+        </div>
+      </div>
+
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Bridge</span>
@@ -142,14 +148,14 @@
         </div>
         <input formControlName="serialNumber" type="text" name="serialNumber" class="form-control" aria-label="Serial number">
       </div>
-		</form>
-	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" type="submit" [disabled]="!guitarForm.valid">Add</button>
+        <button type="button" class="btn btn-light" (click)="modal.close('Cancel clicked')">Cancel</button>
+      </div>
+    </form>
+    </div>
   </div>
 
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" type="submit" [disabled]="!guitarForm.valid">Add</button>
-    <button type="button" class="btn btn-light" (click)="modal.close('Cancel clicked')">Cancel</button>
-	</div>
 </ng-template>
 
 <a (click)="open(addguitar)"><div [ngClass]="addGuitarIcon()"></div></a>

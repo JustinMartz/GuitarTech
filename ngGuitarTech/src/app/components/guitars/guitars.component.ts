@@ -38,6 +38,7 @@ export class GuitarsComponent implements OnInit {
     this.guitarServ.indexByUser().subscribe({
       next: (guitarsFromDB) => {
         this.guitarsList = guitarsFromDB;
+        console.log('loaded guitars: ' + JSON.stringify(this.guitarsList));
       },
       error: (fail) => {
         console.error('GuitarsComponent.loadUserGuitars(): Error getting guitars');
