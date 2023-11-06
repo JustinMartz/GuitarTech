@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import dev.justinmartz.guitartech.entities.Guitar;
 import dev.justinmartz.guitartech.entities.GuitarPicture;
+import dev.justinmartz.guitartech.entities.User;
 import dev.justinmartz.guitartech.repositories.GuitarPictureRepository;
 import dev.justinmartz.guitartech.repositories.GuitarRepository;
+import dev.justinmartz.guitartech.repositories.UserRepository;
 
 @Service
 public class GuitarPictureServiceImpl implements GuitarPictureService {
@@ -19,6 +21,9 @@ public class GuitarPictureServiceImpl implements GuitarPictureService {
 	
 	@Autowired
 	private GuitarRepository guitarRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public List<GuitarPicture> findAllByGuitarAndOwner(int guitarId, String username) {
@@ -44,6 +49,13 @@ public class GuitarPictureServiceImpl implements GuitarPictureService {
 		}
 		
 		return null;
+	}
+
+	@Override
+	public List<GuitarPicture> findAllByOwner(String username) {
+		User owner = userRepo.findByUsername(username);
+		List<GuitarPicture> pictures = guitarPictureRepo.findByGuitar_Owner(owner);
+		return pictures;
 	}
 		
 }

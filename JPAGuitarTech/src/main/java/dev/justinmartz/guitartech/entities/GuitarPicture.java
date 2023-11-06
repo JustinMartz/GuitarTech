@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "guitar_picture")
-@JsonIgnoreProperties({"guitar"})
+@JsonIgnoreProperties({"deleted"})
 public class GuitarPicture {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

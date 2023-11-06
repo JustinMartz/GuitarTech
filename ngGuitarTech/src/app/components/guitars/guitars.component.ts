@@ -4,6 +4,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GuitarService } from 'src/app/services/guitar.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
+import { GuitarPicture } from 'src/app/models/guitar-picture';
+import { GuitarPictureService } from 'src/app/services/guitar-picture.service';
 
 @Component({
   selector: 'app-guitars',
@@ -13,10 +15,13 @@ import { User } from 'src/app/models/user';
 export class GuitarsComponent implements OnInit {
 
   guitarsList: Guitar[] = [new Guitar()];
-  pictures: string[] = [];
+  pictures: GuitarPicture[] = [];
   loggedInUser: User = new User();
 
-  constructor(private viewService: ViewService, private guitarServ: GuitarService, private authServ: AuthService) {}
+  constructor(private viewService: ViewService,
+    private guitarServ: GuitarService,
+    private authServ: AuthService,
+    private pictureServ: GuitarPictureService) {}
 
   ngOnInit(): void {
     this.viewService.setGuitarsSelected(true);
@@ -26,6 +31,7 @@ export class GuitarsComponent implements OnInit {
         next: (user) => {
           this.loggedInUser = user;
           this.loadUserGuitars();
+          // this.loadUserGuitarPictures();
         },
         error: (fail) => {
           console.error('ngOnInit(): Error getting user');
@@ -39,6 +45,8 @@ export class GuitarsComponent implements OnInit {
     this.guitarServ.indexByUser().subscribe({
       next: (guitarsFromDB) => {
         this.guitarsList = guitarsFromDB;
+        console.log('successfully got guitars');
+        this.loadUserGuitarPictures();
       },
       error: (fail) => {
         console.error('GuitarsComponent.loadUserGuitars(): Error getting guitars');
@@ -48,9 +56,32 @@ export class GuitarsComponent implements OnInit {
   }
 
   loadUserGuitarPictures() {
-    // loop through guitars
-    // if guitar.id matches guitarPicture.guitar.id
-    // add it to guitarsList[i].guitarPicture
+    this.pictureServ.indexByUser().subscribe({
+      next: (picturesFromDB) => {
+        this.pictures = picturesFromDB;
+        console.log('successfully got pictures');
+        this.addPicturesToGuitars();
+      },
+      error: (fail) => {
+        console.error('GuitarsComponent.loadUserGuitarPictures(): Error getting pictures');
+        console.error(fail);
+      },
+    });
+  }
+
+  addPicturesToGuitars() {
+    console.log('in addPicturesToGuitars()');
+    for (let p of this.pictures) {
+      console.log('in first loop with ' + p.filename);
+      for (let g of this.guitarsList) {
+        console.log('in second loop with ' + g.make + ' ' + g.model);
+        if (p.guitar.id === g.id) {
+          g.picture = 'assets/' + p.filename;
+          console.log('adding ' + p.filename + ' to ' + g.make);
+        }
+      }
+    }
+
   }
 
   guitarsListEmpty() {

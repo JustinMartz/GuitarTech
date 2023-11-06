@@ -6,5 +6,6 @@ import dev.justinmartz.guitartech.entities.GuitarPicture;
 
 public interface GuitarPictureService {
 	public List<GuitarPicture> findAllByGuitarAndOwner(int guitarId, String username);
+	public List<GuitarPicture> findAllByOwner(String username);
 	public GuitarPicture findById(int guitarPictureId);
 }

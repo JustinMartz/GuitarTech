@@ -9,6 +9,7 @@ import { Validators } from '@angular/forms';
 import { NonNullAssert } from '@angular/compiler';
 import { User } from 'src/app/models/user';
 import { Tuning } from 'src/app/models/tuning';
+import { GuitarPicture } from 'src/app/models/guitar-picture';
 
 @Component({
   selector: 'app-add-guitar-modal',
@@ -145,7 +146,7 @@ export class AddGuitarModalComponent implements OnInit {
     return new Guitar(0, o.make, o.model, parseInt(o.year), o.color, false, new User(),
     new Tuning(parseInt(o.tuning), ''), parseFloat(o.scaleLength), parseInt(o.numberOfFrets),
     parseInt(o.numberOfStrings), o.bridge, parseInt(o.purchasePrice), o.currency,
-    o.bridgePickup, o.middlePickup, o.neckPickup, o.serialNumber, '');
+    o.bridgePickup, o.middlePickup, o.neckPickup, o.serialNumber);
   }
 
 }

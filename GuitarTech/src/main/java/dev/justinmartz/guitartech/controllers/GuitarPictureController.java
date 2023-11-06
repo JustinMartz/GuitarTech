@@ -23,9 +23,9 @@ public class GuitarPictureController {
 	@Autowired
 	private GuitarPictureService guitarPictureServ;
 	
-	@GetMapping("guitars/pictures/guitar/{guitarId}")
-	public List<GuitarPicture> getAllByGuitarAndOwner(Principal principal, @PathVariable int guitarId, HttpServletResponse response) {
-		List<GuitarPicture> pictures = guitarPictureServ.findAllByGuitarAndOwner(guitarId, principal.getName());
+	@GetMapping("guitars/pictures")
+	public List<GuitarPicture> getAllByOwner(Principal principal, HttpServletResponse response) {
+		List<GuitarPicture> pictures = guitarPictureServ.findAllByOwner(principal.getName());
 		
 		if (pictures == null) {
 			response.setStatus(404);

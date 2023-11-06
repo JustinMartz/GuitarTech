@@ -1,3 +1,4 @@
+import { GuitarPicture } from "./guitar-picture";
 import { Tuning } from "./tuning";
 import { User } from "./user";
 

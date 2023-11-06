@@ -1,14 +1,14 @@
 import { Guitar } from "./guitar";
 
 export class GuitarPicture {
-  id: number = 0;
-  filename: string = '';
-  guitar: Guitar = new Guitar();
-  order: number = 0;
-  deleted: boolean = false;
+  id: number;
+  filename: string;
+  guitar: Guitar;
+  order: number;
+  deleted: boolean;
 
   constructor(
-    id: number,
+    id: number = 0,
     filename: string = '',
     guitar: Guitar = new Guitar(),
     order: number = 0,
