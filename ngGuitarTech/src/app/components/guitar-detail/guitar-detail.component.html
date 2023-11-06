@@ -3,23 +3,21 @@
     <h3>{{ guitar.make }} {{ guitar.model }}</h3>
   </div>
   <div class="guitar-image">
-    <img src="assets/lpc.jpg" />
+    <img [src]="guitar.picture" />
   </div>
   <div class="guitar-text">
-    <h6>Year: {{ guitar.year }}</h6>
-    <h6>Color: {{ guitar.color }}</h6>
-    <h6>Current tuning: {{ guitar.tuning.name }}</h6>
-    <h6>Scale length: {{ guitar.scaleLength }}</h6>
-    <h6>Number of frets: {{ guitar.numberOfFrets }}</h6>
-    <h6>Number of strings: {{ guitar.numberOfStrings }}</h6>
-    <h6>Purchase price: {{ guitar.purchasePrice }}</h6>
-    <h6>Bridge: {{ guitar.bridge }}</h6>
+    <h6 *ngIf="guitar.year">Year: {{ guitar.year }}</h6>
+    <h6 *ngIf="guitar.color">Color: {{ guitar.color }}</h6>
+    <h6 *ngIf="guitar.tuning.name">Current tuning: {{ guitar.tuning.name }}</h6>
+    <h6 *ngIf="guitar.scaleLength">Scale length: {{ guitar.scaleLength }}</h6>
+    <h6 *ngIf="guitar.numberOfFrets">Number of frets: {{ guitar.numberOfFrets }}</h6>
+    <h6 *ngIf="guitar.numberOfStrings">Number of strings: {{ guitar.numberOfStrings }}</h6>
+    <h6 *ngIf="guitar.purchasePrice">Purchase price: {{ guitar.purchasePrice }}</h6>
+    <h6 *ngIf="guitar.bridge">Bridge: {{ guitar.bridge }}</h6>
+    <h6 *ngIf="guitar.neckPickup">Bridge pickup: {{ guitar.bridgePickup }}</h6>
+    <h6 *ngIf="guitar.middlePickup">Middle pickup: {{ guitar.middlePickup }}</h6>
     <h6 *ngIf="guitar.neckPickup">Neck pickup: {{ guitar.neckPickup }}</h6>
-    <h6 *ngIf="guitar.middlePickup">
-      Middle pickup: {{ guitar.middlePickup }}
-    </h6>
-    <h6>Bridge pickup: {{ guitar.bridgePickup }}</h6>
-    <h6>Serial number: {{ guitar.serialNumber }}</h6>
+    <h6 *ngIf="guitar.serialNumber">Serial number: {{ guitar.serialNumber }}</h6>
   </div>
   <div class="image-icons"></div>
   <div class="detail-icons">

@@ -1,5 +1,6 @@
 package dev.justinmartz.guitartech.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,8 +24,8 @@ public class GuitarPictureController {
 	private GuitarPictureService guitarPictureServ;
 	
 	@GetMapping("guitars/pictures/guitar/{guitarId}")
-	public List<GuitarPicture> getAllByGuitar(@PathVariable int guitarId, HttpServletResponse response) {
-		List<GuitarPicture> pictures = guitarPictureServ.findAllByGuitar(guitarId);
+	public List<GuitarPicture> getAllByGuitarAndOwner(Principal principal, @PathVariable int guitarId, HttpServletResponse response) {
+		List<GuitarPicture> pictures = guitarPictureServ.findAllByGuitarAndOwner(guitarId, principal.getName());
 		
 		if (pictures == null) {
 			response.setStatus(404);

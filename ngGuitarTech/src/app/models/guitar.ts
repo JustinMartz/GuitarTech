@@ -20,6 +20,7 @@ export class Guitar {
   middlePickup: string;
   neckPickup: string;
   serialNumber: string;
+  picture: string;
 
   constructor(
     id: number = 0,
@@ -39,7 +40,8 @@ export class Guitar {
     bridgePickup: string = "",
     middlePickup: string = "",
     neckPickup: string = "",
-    serialNumber: string = ""
+    serialNumber: string = "",
+    picture: string = ""
   ) {
     this.id = id;
     this.make = make;
@@ -59,5 +61,6 @@ export class Guitar {
     this.middlePickup = middlePickup;
     this.neckPickup = neckPickup;
     this.serialNumber = serialNumber;
+    this.picture = picture;
   }
 }

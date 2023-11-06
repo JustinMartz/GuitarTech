@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dev.justinmartz.guitartech.entities.Guitar;
 import dev.justinmartz.guitartech.entities.GuitarPicture;
 import dev.justinmartz.guitartech.repositories.GuitarPictureRepository;
 import dev.justinmartz.guitartech.repositories.GuitarRepository;
@@ -20,9 +21,15 @@ public class GuitarPictureServiceImpl implements GuitarPictureService {
 	private GuitarRepository guitarRepo;
 
 	@Override
-	public List<GuitarPicture> findAllByGuitar(int guitarId) {
-		if (guitarRepo.existsById(guitarId)) {
-			return guitarPictureRepo.findByGuitar_Id(guitarId);
+	public List<GuitarPicture> findAllByGuitarAndOwner(int guitarId, String username) {
+		Optional<Guitar> guitarOpt = guitarRepo.findById(guitarId);
+		
+		if (guitarOpt.isPresent()) {
+			// if guitar belongs to logged-in user
+			Guitar guitar = guitarOpt.get();
+			if (guitar.getOwner().getUsername() == username) {
+				return guitarPictureRepo.findByGuitar_Id(guitarId);				
+			}
 		}
 		
 		return null;

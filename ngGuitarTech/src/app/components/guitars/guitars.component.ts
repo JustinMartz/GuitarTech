@@ -13,6 +13,7 @@ import { User } from 'src/app/models/user';
 export class GuitarsComponent implements OnInit {
 
   guitarsList: Guitar[] = [new Guitar()];
+  pictures: string[] = [];
   loggedInUser: User = new User();
 
   constructor(private viewService: ViewService, private guitarServ: GuitarService, private authServ: AuthService) {}
@@ -44,6 +45,12 @@ export class GuitarsComponent implements OnInit {
         console.error(fail);
       },
     });
+  }
+
+  loadUserGuitarPictures() {
+    // loop through guitars
+    // if guitar.id matches guitarPicture.guitar.id
+    // add it to guitarsList[i].guitarPicture
   }
 
   guitarsListEmpty() {

@@ -145,7 +145,7 @@ export class AddGuitarModalComponent implements OnInit {
     return new Guitar(0, o.make, o.model, parseInt(o.year), o.color, false, new User(),
     new Tuning(parseInt(o.tuning), ''), parseFloat(o.scaleLength), parseInt(o.numberOfFrets),
     parseInt(o.numberOfStrings), o.bridge, parseInt(o.purchasePrice), o.currency,
-    o.bridgePickup, o.middlePickup, o.neckPickup, o.serialNumber);
+    o.bridgePickup, o.middlePickup, o.neckPickup, o.serialNumber, '');
   }
 
 }
