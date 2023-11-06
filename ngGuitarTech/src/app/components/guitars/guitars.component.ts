@@ -12,7 +12,7 @@ import { User } from 'src/app/models/user';
 })
 export class GuitarsComponent implements OnInit {
 
-  guitarsList: Guitar[] = [];
+  guitarsList: Guitar[] = [new Guitar()];
   loggedInUser: User = new User();
 
   constructor(private viewService: ViewService, private guitarServ: GuitarService, private authServ: AuthService) {}
@@ -38,7 +38,6 @@ export class GuitarsComponent implements OnInit {
     this.guitarServ.indexByUser().subscribe({
       next: (guitarsFromDB) => {
         this.guitarsList = guitarsFromDB;
-        console.log('loaded guitars: ' + JSON.stringify(this.guitarsList));
       },
       error: (fail) => {
         console.error('GuitarsComponent.loadUserGuitars(): Error getting guitars');
