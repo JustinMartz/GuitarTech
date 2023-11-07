@@ -199,8 +199,12 @@ COMMIT;
 START TRANSACTION;
 USE `guitartechdb`;
 INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (1, 'Gibson', 'Les Paul Custom', 2017, 'Ebony', 0, 1, 2, 24.75, 22, 6, 'Tune-O-Matic', 4499.00, 'USD', '498T', NULL, '490R', 'CS703022');
-INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (2, 'Gibson', 'Explorer', 2022, 'Ebony', 0, 1, 3, 24.75, 22, 6, 'Aluminum Nashville Tune-O-Matic', 2499.00, 'USD', '80s Tribute', NULL, '80s Tribute', '207930196');
+INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (2, 'Gibson', 'Explorer', 2022, 'Ebony', 0, 1, 3, 24.75, 22, 6, 'Tune-O-Matic', 2499.00, 'USD', '80s Tribute', NULL, '80s Tribute', '207930196');
 INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (3, 'Kramer', 'The 84 Hot Dogger', 2023, 'Mustard Yellow', 0, 2, 1, 25.5, 22, 6, 'Floyd Rose', 999, 'USD', 'SH4 JB', NULL, NULL, '23012901189');
+INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (4, 'Fender', 'Stratocaster', 2023, 'Aged White', 0, 2, 2, 25.5, 22, 6, '2-Point Tremolo', 1399, 'USD', 'Yosemite single-coil', 'Yosemite single-coil', 'Yosemite single-coil', NULL);
+INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (5, 'Fender', 'Telecaster', 2023, 'Butterscotch Blonde', 0, 2, 1, 25.5, 22, 6, '3-Saddle', 1799, 'USD', 'Fender V-Mod II single-coil', NULL, 'Fender V-Mod II single-coil', NULL);
+INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (6, 'B. C. Rich', 'Mockingbird', 2022, 'Electric Purple', 0, 2, 3, 24.75, 24, 6, 'Hardtail', 1304, 'EUR', 'DiMarzio D Activator', NULL, 'DiMarzio D Activator', NULL);
+INSERT INTO `guitar` (`id`, `make`, `model`, `year`, `color`, `deleted`, `user_id`, `tuning_id`, `scale_length`, `number_of_frets`, `number_of_strings`, `bridge`, `purchase_price`, `currency`, `bridge_pickup`, `middle_pickup`, `neck_pickup`, `serial_number`) VALUES (7, 'Ibanez', 'GRG7221', 2022, 'White', 0, 2, 4, 25.5, 24, 7, 'Ibanez 7-Saddle', 4369, 'MXN', 'PSND-7', NULL, NULL, NULL);
 
 COMMIT;
 
@@ -213,6 +217,10 @@ USE `guitartechdb`;
 INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (1, 'lpc.jpg', 1, 1, 0);
 INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (2, 'explorer.png', 2, 1, 0);
 INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (3, 'hotdog.webp', 3, 1, 0);
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (4, 'strat_white.jpg', 4, 1, 0);
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (5, 'tele_butterscotch.jpg', 5, 1, 0);
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (6, 'mockingbird_purple.jpg', 6, 1, 0);
+INSERT INTO `guitar_picture` (`id`, `filename`, `guitar_id`, `order`, `deleted`) VALUES (7, 'ibanez_white.jpg', 7, 1, 0);
 
 COMMIT;
 

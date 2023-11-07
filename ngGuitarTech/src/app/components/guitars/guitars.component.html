@@ -5,6 +5,6 @@
     <p>Get your collection started by clicking the icon on the top left!</p>
   </div>
   <ng-container *ngFor="let g of guitarsList; first as isFirst">
-    <app-guitar-detail *ngIf="g.id > 0" [isFirstGuitar]="isFirst" [guitar]="g"></app-guitar-detail>
+    <app-guitar-detail *ngIf="g.id > 0 && pictures.length > 0" [isFirstGuitar]="isFirst" [guitar]="g"></app-guitar-detail>
   </ng-container>
 </div>

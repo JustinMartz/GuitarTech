@@ -31,7 +31,6 @@ export class GuitarsComponent implements OnInit {
         next: (user) => {
           this.loggedInUser = user;
           this.loadUserGuitars();
-          // this.loadUserGuitarPictures();
         },
         error: (fail) => {
           console.error('ngOnInit(): Error getting user');
@@ -45,7 +44,6 @@ export class GuitarsComponent implements OnInit {
     this.guitarServ.indexByUser().subscribe({
       next: (guitarsFromDB) => {
         this.guitarsList = guitarsFromDB;
-        console.log('successfully got guitars');
         this.loadUserGuitarPictures();
       },
       error: (fail) => {
@@ -59,7 +57,6 @@ export class GuitarsComponent implements OnInit {
     this.pictureServ.indexByUser().subscribe({
       next: (picturesFromDB) => {
         this.pictures = picturesFromDB;
-        console.log('successfully got pictures');
         this.addPicturesToGuitars();
       },
       error: (fail) => {
@@ -70,14 +67,10 @@ export class GuitarsComponent implements OnInit {
   }
 
   addPicturesToGuitars() {
-    console.log('in addPicturesToGuitars()');
     for (let p of this.pictures) {
-      console.log('in first loop with ' + p.filename);
       for (let g of this.guitarsList) {
-        console.log('in second loop with ' + g.make + ' ' + g.model);
         if (p.guitar.id === g.id) {
           g.picture = 'assets/' + p.filename;
-          console.log('adding ' + p.filename + ' to ' + g.make);
         }
       }
     }
