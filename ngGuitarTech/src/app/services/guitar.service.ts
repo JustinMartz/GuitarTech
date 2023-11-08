@@ -11,7 +11,9 @@ import { AuthService } from './auth.service';
 export class GuitarService {
   private url = environment.baseUrl + 'api/guitars';
 
-  constructor(private http: HttpClient, private authServ: AuthService) { }
+  private primaryGuitarsList: Guitar[] = [new Guitar()];
+
+  constructor(private http: HttpClient, private authServ: AuthService) { console.log('in GuitarService constructor'); }
 
   getHttpOptions() {
     let options = {
@@ -68,5 +70,21 @@ export class GuitarService {
         );
       })
     );
+  }
+
+  get guitarsList(): Guitar[] {
+    return this.primaryGuitarsList;
+  }
+
+  fetchGuitarsList(): Guitar[] {
+    console.log('fetching guitars from service');
+    console.log(this.primaryGuitarsList);
+    return this.primaryGuitarsList;
+  }
+
+  loadGuitars(guitars: Guitar[]) {
+    this.primaryGuitarsList = guitars;
+    console.log('guitars loaded in service');
+    console.log(this.primaryGuitarsList);
   }
 }

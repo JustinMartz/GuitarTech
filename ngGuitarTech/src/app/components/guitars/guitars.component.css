@@ -11,4 +11,9 @@
     margin-top: 10vh;
     padding: 1rem;
   }
+
+  .no-access {
+    height: 90vh;
+    width: 100%;
+  }
 }
