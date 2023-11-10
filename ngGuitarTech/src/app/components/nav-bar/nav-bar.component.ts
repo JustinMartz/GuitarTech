@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -9,13 +8,11 @@ import { ViewService } from 'src/app/services/view.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
 
-  constructor(private authService: AuthService, private router: Router, private viewService: ViewService) {}
-
-  ngOnInit(): void {
-
-  }
+  constructor(private authService: AuthService,
+    private router: Router,
+    private viewService: ViewService) {}
 
   checkLogin() {
     return this.authService.checkLogin();
@@ -25,7 +22,7 @@ export class NavBarComponent implements OnInit {
     console.log('logout');
     this.authService.logout();
     if (!localStorage['credentials']) {
-      this.router.navigateByUrl('/landing');
+      this.router.navigateByUrl('/');
     }
   }
 

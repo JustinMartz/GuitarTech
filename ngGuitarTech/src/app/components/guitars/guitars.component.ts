@@ -55,7 +55,7 @@ export class GuitarsComponent implements OnInit, OnDestroy {
             this.userIsLoggedIn = false;
             console.error('constructor(): Error getting user');
             console.error(fail);
-            this.router.navigateByUrl('/landing');
+            this.router.navigateByUrl('/');
           },
         });
       }
