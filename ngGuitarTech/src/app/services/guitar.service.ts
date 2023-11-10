@@ -13,7 +13,7 @@ export class GuitarService {
 
   private primaryGuitarsList: Guitar[] = [new Guitar()];
 
-  constructor(private http: HttpClient, private authServ: AuthService) { console.log('in GuitarService constructor'); }
+  constructor(private http: HttpClient, private authServ: AuthService) {}
 
   getHttpOptions() {
     let options = {
@@ -73,8 +73,6 @@ export class GuitarService {
 
   loadGuitars(guitars: Guitar[]) {
     this.primaryGuitarsList = guitars;
-    console.log('guitars loaded in service');
-    console.log(this.primaryGuitarsList);
   }
 
   get guitarsList(): Guitar[] {

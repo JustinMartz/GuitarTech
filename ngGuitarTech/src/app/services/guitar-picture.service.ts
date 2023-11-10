@@ -15,7 +15,7 @@ export class GuitarPictureService {
   private url = environment.baseUrl + 'api/guitars/pictures';
   private primaryPicturesList: GuitarPicture[] = [];
 
-  constructor(private http: HttpClient, private authServ: AuthService, private guitarServ: GuitarService) { console.log('in GuitarPictureService constructor'); }
+  constructor(private http: HttpClient, private authServ: AuthService, private guitarServ: GuitarService) {}
 
   getHttpOptions() {
     let options = {

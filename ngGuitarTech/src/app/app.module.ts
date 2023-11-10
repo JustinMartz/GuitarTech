@@ -22,6 +22,7 @@ import { SelfClosingGuitarDeleteAlertComponent } from './components/self-closing
 import { UpdateGuitarModalComponent } from './components/update-guitar-modal/update-guitar-modal.component';
 import { AddGuitarModalComponent } from './components/add-guitar-modal/add-guitar-modal.component';
 import { FilterGuitarColorModalComponent } from './components/filter-guitar-color-modal/filter-guitar-color-modal.component';
+import { ToastContainerComponent } from './components/toast-container/toast-container.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { FilterGuitarColorModalComponent } from './components/filter-guitar-colo
     SelfClosingGuitarDeleteAlertComponent,
     UpdateGuitarModalComponent,
     AddGuitarModalComponent,
-    FilterGuitarColorModalComponent
+    FilterGuitarColorModalComponent,
+    ToastContainerComponent
   ],
   imports: [
     BrowserModule,

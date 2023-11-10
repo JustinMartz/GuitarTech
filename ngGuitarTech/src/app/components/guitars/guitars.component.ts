@@ -1,19 +1,21 @@
+import { ToastContainerComponent } from './../toast-container/toast-container.component';
 import { Guitar } from 'src/app/models/guitar';
 import { ViewService } from './../../services/view.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { GuitarService } from 'src/app/services/guitar.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
 import { GuitarPicture } from 'src/app/models/guitar-picture';
 import { GuitarPictureService } from 'src/app/services/guitar-picture.service';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-guitars',
   templateUrl: './guitars.component.html',
   styleUrls: ['./guitars.component.css'],
 })
-export class GuitarsComponent implements OnInit {
+export class GuitarsComponent implements OnInit, OnDestroy {
 
   loggedInUser: User = new User();
   userIsLoggedIn: boolean = false;
@@ -22,7 +24,8 @@ export class GuitarsComponent implements OnInit {
     private router: Router,
     private guitarServ: GuitarService,
     private authServ: AuthService,
-    private pictureServ: GuitarPictureService) {
+    private pictureServ: GuitarPictureService,
+    private toastServ: ToastService) {
       if (this.guitarServ.guitarsList.length === 0 || this.guitarServ.guitarsList[0].id === 0) {
         guitarServ.indexByUser().subscribe({
           next: (guitarsFromDB) => {
@@ -48,6 +51,7 @@ export class GuitarsComponent implements OnInit {
           },
           error: (fail) => {
             // TODO Toast 'error getting user / must be logged in to view this'
+            toastServ.show('Must be logged in to view guitars.', { classname: 'bg-danger text-light', delay: 3000 });
             this.userIsLoggedIn = false;
             console.error('constructor(): Error getting user');
             console.error(fail);
@@ -60,6 +64,10 @@ export class GuitarsComponent implements OnInit {
   ngOnInit(): void {
     this.viewService.setGuitarsSelected(true);
   }
+
+  ngOnDestroy(): void {
+		// this.toastServ.clear();
+	}
 
   loadUserGuitarPictures() {
     this.pictureServ.indexByUser().subscribe({
