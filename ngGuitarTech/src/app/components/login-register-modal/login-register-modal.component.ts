@@ -108,7 +108,6 @@ export class LoginRegisterModalComponent implements OnInit {
   login(user: User) {
     this.authService.login(user.username, user.password).subscribe({
       next: (loggedInUser) => {
-        this.loadUserGuitars();
         this.router.navigateByUrl('/guitars');
       },
       error: (problem) => {

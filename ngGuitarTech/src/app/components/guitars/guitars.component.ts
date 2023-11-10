@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 })
 export class GuitarsComponent implements OnInit {
 
-  pictures: GuitarPicture[] = [];
   loggedInUser: User = new User();
   userIsLoggedIn: boolean = false;
 
@@ -24,25 +23,18 @@ export class GuitarsComponent implements OnInit {
     private guitarServ: GuitarService,
     private authServ: AuthService,
     private pictureServ: GuitarPictureService) {
-      console.log('in GuitarsComponent.constructor()');
-      console.log('primaryGuitarsList = ' + this.guitars.length);
       if (this.guitarServ.guitarsList.length === 0 || this.guitarServ.guitarsList[0].id === 0) {
-        console.log('no guitars loaded yet');
         guitarServ.indexByUser().subscribe({
           next: (guitarsFromDB) => {
-            console.log('loading guitars from GuitarsComponent constructor');
             guitarServ.loadGuitars(guitarsFromDB);
             this.loadUserGuitarPictures();
           },
           error: (massiveFail) => {
-            console.log('GuitarsComponent.constructor(): Error getting guitars from database');
+            console.error('GuitarsComponent.constructor(): Error getting guitars from database');
+            console.error(massiveFail);
           }
         });
       }
-
-      console.log('constructor: userIsLoggedIn: ' + this.userIsLoggedIn);
-      // if (!this.userIsLoggedIn) {
-      console.log('constructor: checkLogin(): ' + authServ.checkLogin());
 
       if (authServ.checkLogin()) {
         this.userIsLoggedIn = true;
@@ -53,7 +45,6 @@ export class GuitarsComponent implements OnInit {
           next: (user) => {
             this.loggedInUser = user;
             this.userIsLoggedIn = true;
-            console.log('setting userIsLoggedIn to true: ' + this.userIsLoggedIn);
           },
           error: (fail) => {
             // TODO Toast 'error getting user / must be logged in to view this'
@@ -66,37 +57,14 @@ export class GuitarsComponent implements OnInit {
       }
     }
 
-    ngOnInit(): void {
-    console.log('in GuitarsComponent ngOnInit()');
+  ngOnInit(): void {
     this.viewService.setGuitarsSelected(true);
-
-    // console.log('ngOnInit(): checkLogin(): ' + this.authServ.checkLogin());
-      // if (!this.authServ.checkLogin()) {
-      //   console.log('*** inside if statement');
-      //   this.authServ.getLoggedInUser().subscribe({
-      //     next: (user) => {
-      //       this.loggedInUser = user;
-      //       this.userIsLoggedIn = true;
-      //       console.log('setting userIsLoggedIn to true: ' + this.userIsLoggedIn);
-      //     },
-      //     error: (fail) => {
-      //       // TODO Toast 'error getting user / must be logged in to view this'
-      //       this.userIsLoggedIn = false;
-      //       console.error('ngOnInit(): Error getting user');
-      //       console.error(fail);
-      //       this.router.navigateByUrl('/landing');
-      //     },
-      //   });
-      // }
-
   }
 
   loadUserGuitarPictures() {
     this.pictureServ.indexByUser().subscribe({
       next: (picturesFromDB) => {
         this.pictureServ.loadPictures(picturesFromDB, this.guitarServ.guitarsList);
-        // this.addPicturesToGuitars();
-        console.log('pictures loaded');
       },
       error: (fail) => {
         console.error('GuitarsComponent.loadUserGuitarPictures(): Error getting pictures');

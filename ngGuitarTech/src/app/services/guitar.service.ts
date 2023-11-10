@@ -39,7 +39,6 @@ export class GuitarService {
   }
 
   update(guitarToUpdate: Guitar): Observable<Guitar> {
-    console.log('*** updated guitar');
     return this.http.put<Guitar>(this.url + '/' + guitarToUpdate.id, guitarToUpdate, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
@@ -72,19 +71,13 @@ export class GuitarService {
     );
   }
 
-  get guitarsList(): Guitar[] {
-    return this.primaryGuitarsList;
-  }
-
-  fetchGuitarsList(): Guitar[] {
-    console.log('fetching guitars from service');
-    console.log(this.primaryGuitarsList);
-    return this.primaryGuitarsList;
-  }
-
   loadGuitars(guitars: Guitar[]) {
     this.primaryGuitarsList = guitars;
     console.log('guitars loaded in service');
     console.log(this.primaryGuitarsList);
+  }
+
+  get guitarsList(): Guitar[] {
+    return this.primaryGuitarsList;
   }
 }
