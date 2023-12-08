@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { ViewService } from 'src/app/services/view.service';
 
 @Component({
@@ -12,7 +14,9 @@ export class NavBarComponent {
 
   constructor(private authService: AuthService,
     private router: Router,
-    private viewService: ViewService) {}
+    private viewService: ViewService,
+    private appServ: AppService,
+    private toastServ: ToastService) {}
 
   checkLogin() {
     return this.authService.checkLogin();
@@ -22,6 +26,9 @@ export class NavBarComponent {
     console.log('logout');
     this.authService.logout();
     if (!localStorage['credentials']) {
+      localStorage.setItem('justLoggedOut', 'yes');
+      console.log('setting justLoggedOut: ' + localStorage.getItem('justLoggedOut'));
+      this.toastServ.show('Successfully logged out.', { classname: 'bg-danger text-light', delay: 3000 });
       this.router.navigateByUrl('/');
     }
   }

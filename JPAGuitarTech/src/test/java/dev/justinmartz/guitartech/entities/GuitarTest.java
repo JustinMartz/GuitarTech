@@ -55,8 +55,8 @@ class GuitarTest {
 		assertEquals("jmartz", guitar.getOwner().getUsername());
 		assertNotNull(guitar.getTuning());
 		assertEquals("Eb Standard", guitar.getTuning().getName());
-		assertNotNull(guitar.getSetups());
-		assertTrue(guitar.getSetups().size() > 0);
+//		assertNotNull(guitar.getSetups());
+//		assertTrue(guitar.getSetups().size() > 0);
 	}
 
 }

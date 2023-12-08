@@ -70,8 +70,8 @@ public class Guitar {
 	@Column(name = "serial_number")
 	private String serialNumber;
 	
-	@OneToMany(mappedBy = "guitar")
-	private List<Setup> setups;
+//	@OneToMany(mappedBy = "guitar")
+//	private List<Setup> setups;
 
 	public int getId() {
 		return id;
@@ -217,13 +217,13 @@ public class Guitar {
 		this.serialNumber = serialNumber;
 	}
 
-	public List<Setup> getSetups() {
-		return setups;
-	}
-
-	public void setSetups(List<Setup> setups) {
-		this.setups = setups;
-	}
+//	public List<Setup> getSetups() {
+//		return setups;
+//	}
+//
+//	public void setSetups(List<Setup> setups) {
+//		this.setups = setups;
+//	}
 
 	@Override
 	public int hashCode() {

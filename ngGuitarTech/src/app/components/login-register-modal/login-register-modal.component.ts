@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Guitar } from 'src/app/models/guitar';
 import { GuitarPicture } from 'src/app/models/guitar-picture';
 import { User } from 'src/app/models/user';
+import { AppService } from 'src/app/services/app.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { GuitarPictureService } from 'src/app/services/guitar-picture.service';
 import { GuitarService } from 'src/app/services/guitar.service';
@@ -16,18 +18,32 @@ import { GuitarService } from 'src/app/services/guitar.service';
 })
 export class LoginRegisterModalComponent implements OnInit {
   closeResult = '';
-  user: User = new User();
+  // user: User = new User();
   loginOpen: boolean = true;
   modalOpen: boolean = false;
   newUser: User = new User();
   preloadGuitars: Guitar[] = [];
   preloadPictures: GuitarPicture[] = [];
 
-	constructor(private modalService: NgbModal, private authService: AuthService, private router: Router, private guitarServ: GuitarService,
-    private pictureServ: GuitarPictureService) {}
+  loginForm = new FormGroup({
+    loginUsername: new FormControl('', Validators.required),
+    loginPassword: new FormControl('', Validators.required)
+  });
+
+  registrationForm = new FormGroup({
+    registrationUsername: new FormControl('', Validators.required),
+    registrationPassword: new FormControl('', Validators.required)
+  });
+
+	constructor(private modalService: NgbModal,
+    private authService: AuthService,
+    private router: Router,
+    private appServ: AppService) {}
 
   ngOnInit(): void {
     this.loginOpen = true;
+    this.loginForm.reset();
+    this.registrationForm.reset();
   }
 
 	open(content: any) {
@@ -63,16 +79,28 @@ export class LoginRegisterModalComponent implements OnInit {
 
   onSubmitClick() {
     if (this.loginOpen) {
-      this.login(this.user);
+      // construct new user object from form values
+      let tmpUser = this.loginForm.value.loginUsername;
+      let tmpPass = this.loginForm.value.loginPassword;
+      if (tmpUser != null) {
+        this.newLoginUser.username = tmpUser;
+      }
+
+      if (tmpPass != null) {
+        this.newLoginUser.password = tmpPass;
+      }
+
+      this.login(this.newLoginUser);
       this.modalService.dismissAll();
     }
-    if (!this.loginOpen) {
-      console.log('modal view is register');
-      console.log('username: ' + this.user.username);
-      console.log('password: ' + this.user.password);
-      this.register(this.user);
-      this.modalService.dismissAll();
-    }
+
+    // if (!this.loginOpen) {
+    //   console.log('modal view is register');
+    //   console.log('username: ' + this.user.username);
+    //   console.log('password: ' + this.user.password);
+    //   this.register(this.user);
+    //   this.modalService.dismissAll();
+    // }
   }
 
 	private getDismissReason(reason: any): string {
@@ -117,36 +145,25 @@ export class LoginRegisterModalComponent implements OnInit {
     });
   }
 
-  loadUserGuitars() {
-    this.guitarServ.indexByUser().subscribe({
-      next: (guitarsFromDB) => {
-        this.guitarServ.loadGuitars(guitarsFromDB);
-        this.loadUserPictures(guitarsFromDB);
-      },
-      error: (fail) => {
-        console.error('GuitarsComponent.loadUserGuitars(): Error getting guitars');
-        console.error(fail);
-      },
-    });
-  }
-
-  loadUserPictures(guitars: Guitar[]) {
-    this.pictureServ.indexByUser().subscribe({
-      next: (picturesFromDB) => {
-        this.pictureServ.loadPictures(picturesFromDB, guitars);
-      },
-      error: (massiveFail) => {
-        console.error('Login-Register-ModalComponent.loadUserPictures: Error getting pictures');
-        console.error(massiveFail);
-      }
-    });
-  }
-
   loginIcon() {
     if (this.modalOpen) {
       return 'login-register-icon-selected';
     } else {
       return 'login-register-icon-deselected';
     }
+  }
+
+  get loginUsername() { return this.loginForm.get('loginUsername'); }
+
+  get loginPassword() { return this.loginForm.get('loginPassword'); }
+
+  get registrationUsername() { return this.registrationForm.get('registrationUsername'); }
+
+  get registrationPassword() { return this.registrationForm.get('registrationPassword'); }
+
+  get newLoginUser() {
+    const o: any = {};
+    Object.assign(o, this.loginForm.value);
+    return new User(0, o.loginUsername, o.loginPassword, 'player');
   }
 }

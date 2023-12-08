@@ -41,6 +41,7 @@ export class GuitarsComponent implements OnInit, OnDestroy {
 
       if (authServ.checkLogin()) {
         this.userIsLoggedIn = true;
+        localStorage.setItem('justLoggedOut', 'yes');
       }
 
       if (!authServ.checkLogin()) {
@@ -50,7 +51,6 @@ export class GuitarsComponent implements OnInit, OnDestroy {
             this.userIsLoggedIn = true;
           },
           error: (fail) => {
-            // TODO Toast 'error getting user / must be logged in to view this'
             toastServ.show('Must be logged in to view guitars.', { classname: 'bg-danger text-light', delay: 3000 });
             this.userIsLoggedIn = false;
             console.error('constructor(): Error getting user');
@@ -87,6 +87,10 @@ export class GuitarsComponent implements OnInit, OnDestroy {
     } else {
       return false;
     }
+  }
+
+  hasRoute(route: string) {
+    return this.router.url.includes(route);
   }
 
   get guitars() { return this.guitarServ.guitarsList; }

@@ -4,15 +4,28 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<form>
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmitClick()">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" [(ngModel)]="user.username">
+        <input required formControlName="loginUsername" type="text" class="form-control" id="username" name="username" placeholder="Enter username">
       </div>
+
+      <div *ngIf="loginUsername?.invalid && (loginUsername?.dirty || loginUsername?.touched)" class="alert alert-danger">
+        <div *ngIf="loginUsername?.errors?.['required']">
+          Username is required.
+        </div>
+      </div>
+
       <br>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="user.password">
+        <input required formControlName="loginPassword" type="password" class="form-control" id="password" name="password" placeholder="Password">
+      </div>
+
+      <div *ngIf="loginPassword?.invalid && (loginPassword?.dirty || loginPassword?.touched)" class="alert alert-danger">
+        <div *ngIf="loginPassword?.errors?.['required']">
+          Password is required.
+        </div>
       </div>
 		</form>
     <div class="row">
@@ -33,7 +46,7 @@
 
 	<div class="modal-footer">
     <span class="d-block p-2 bg-success text-white">sally/1234 to try it out!</span>
-		<button type="button" class="btn btn-outline-dark" (click)="onSubmitClick()">Submit</button>
+		<button type="button" class="btn btn-outline-dark" (click)="onSubmitClick()" [disabled]="!loginForm.valid">Submit</button>
 	</div>
 </ng-template>
 
@@ -46,12 +59,12 @@
 		<form>
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" [(ngModel)]="user.username">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
       </div>
       <br>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="user.password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
       </div>
 		</form>
     <div class="row">

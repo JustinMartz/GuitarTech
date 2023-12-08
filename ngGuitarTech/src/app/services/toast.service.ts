@@ -10,7 +10,6 @@ export interface ToastInfo {
   providedIn: 'root'
 })
 export class ToastService {
-  // toasts: ToastInfo[] = [];
   toasts: any[] = [];
 
   constructor() { }

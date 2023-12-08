@@ -18,11 +18,8 @@ import { GuitarPicture } from 'src/app/models/guitar-picture';
 })
 export class AddGuitarModalComponent implements OnInit {
   @Input() userHasGuitars: boolean = false;
-  // newGuitar: Guitar = new Guitar();
   isAddSelected: boolean = false;
   closeResult = '';
-  // make = new FormControl('');
-  // model = new FormControl('');
 
   guitarForm = new FormGroup({
     make: new FormControl('', Validators.required),
@@ -39,7 +36,7 @@ export class AddGuitarModalComponent implements OnInit {
     middlePickup: new FormControl(''),
     neckPickup: new FormControl(''),
     serialNumber: new FormControl('')
-  })
+  });
 
   constructor(private modalService: NgbModal,
     private authService: AuthService,
@@ -86,7 +83,7 @@ export class AddGuitarModalComponent implements OnInit {
     console.log('newGuitar(): ' + JSON.stringify(this.newGuitar));
     this.guitarService.create(this.newGuitar).subscribe({
       next: (result) => {
-        // this.reload();
+        // TODO use GuitarService to add and reload
         window.location.reload();
       },
       error: (nojoy) => {
