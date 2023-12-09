@@ -94,13 +94,6 @@ export class LoginRegisterModalComponent implements OnInit {
       this.modalService.dismissAll();
     }
 
-    // if (!this.loginOpen) {
-    //   console.log('modal view is register');
-    //   console.log('username: ' + this.user.username);
-    //   console.log('password: ' + this.user.password);
-    //   this.register(this.user);
-    //   this.modalService.dismissAll();
-    // }
   }
 
 	private getDismissReason(reason: any): string {

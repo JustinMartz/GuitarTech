@@ -29,7 +29,8 @@ export class AppComponent implements OnInit {
 
   loadToasts() {
     if (localStorage.getItem('justLoggedOut') === 'yes') {
-      this.toastServ.show('Successfully logged out.', { classname: 'bg-danger text-light', delay: 3000 });
+      //this.toastServ.show('Successfully logged out.', { classname: 'bg-danger text-light', delay: 3000 });
+      //console.log('calling toast from app.component');
       localStorage.setItem('justLoggedOut', 'no');
     }
   }

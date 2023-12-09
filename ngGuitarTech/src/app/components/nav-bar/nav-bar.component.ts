@@ -27,8 +27,8 @@ export class NavBarComponent {
     this.authService.logout();
     if (!localStorage['credentials']) {
       localStorage.setItem('justLoggedOut', 'yes');
-      console.log('setting justLoggedOut: ' + localStorage.getItem('justLoggedOut'));
-      this.toastServ.show('Successfully logged out.', { classname: 'bg-danger text-light', delay: 3000 });
+      // console.log('setting justLoggedOut: ' + localStorage.getItem('justLoggedOut'));
+      // this.toastServ.show('Successfully logged out.', { classname: 'bg-danger text-light', delay: 3000 });
       this.router.navigateByUrl('/');
     }
   }

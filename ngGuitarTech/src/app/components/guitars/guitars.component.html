@@ -1,5 +1,4 @@
-<div *ngIf="hasRoute('guitars')">
-<div *ngIf="userIsLoggedIn" class="guitars-container">
+<div class="guitars-container">
   <app-guitar-top-nav [userHasGuitars]="guitarsListEmpty()"></app-guitar-top-nav>
   <div class="no-guitars-card" *ngIf="guitars.length === 0">
     <h1>No guitars!</h1>
@@ -9,7 +8,6 @@
     <app-guitar-detail *ngIf="g.id > 0" [isFirstGuitar]="isFirst" [guitar]="g"></app-guitar-detail>
     <!-- <app-guitar-detail *ngIf="g.id > 0 && pictures.length > 0" [isFirstGuitar]="isFirst" [guitar]="g"></app-guitar-detail> -->
   </ng-container>
-</div>
 </div>
 
 
