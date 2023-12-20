@@ -10,6 +10,7 @@ import { AppService } from 'src/app/services/app.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { GuitarPictureService } from 'src/app/services/guitar-picture.service';
 import { GuitarService } from 'src/app/services/guitar.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-login-register-modal',
@@ -38,7 +39,8 @@ export class LoginRegisterModalComponent implements OnInit {
 	constructor(private modalService: NgbModal,
     private authService: AuthService,
     private router: Router,
-    private appServ: AppService) {}
+    private appServ: AppService,
+    private toastServ: ToastService) {}
 
   ngOnInit(): void {
     this.loginOpen = true;
@@ -134,6 +136,7 @@ export class LoginRegisterModalComponent implements OnInit {
       error: (problem) => {
         console.error('LoginRegisterModalComponent.login(): Error logging in user:');
         console.error(problem);
+        this.toastServ.show('Error logging in.', { classname: 'bg-danger text-light', delay: 3000 });
       }
     });
   }

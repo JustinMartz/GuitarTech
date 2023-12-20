@@ -16,8 +16,7 @@ export class GuitarService {
 
   constructor(
     private http: HttpClient,
-    private authServ: AuthService,
-    private guitarPictureServ: GuitarPictureService) {}
+    private authServ: AuthService) {}
 
   getHttpOptions() {
     let options = {
@@ -82,7 +81,7 @@ export class GuitarService {
   updateGuitarInGuitarList(guitar: Guitar) {
     console.log('updated guitar: ' + JSON.stringify(guitar));
     // this.primaryGuitarsList[guitar.id - 1] = guitar;
-    guitar.picture = this.guitarPictureServ.setPicture(guitar);
+    // guitar.picture = pictureFilename;
     const isGuitarId = (element: Guitar) => element.id == guitar.id;
     const guitarIndex = this.primaryGuitarsList.findIndex(isGuitarId);
     this.primaryGuitarsList[guitarIndex] = guitar;

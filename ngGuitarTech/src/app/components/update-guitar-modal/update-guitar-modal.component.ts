@@ -61,6 +61,7 @@ export class UpdateGuitarModalComponent {
       this.router.navigateByUrl('/guitars');
     })).subscribe({
       next: (updatedGuitar) => {
+        updatedGuitar.picture = this.originalCopy.picture;
         this.guitarService.updateGuitarInGuitarList(updatedGuitar);
         // this.reload();
         // close modal
