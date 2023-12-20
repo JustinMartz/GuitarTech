@@ -26,6 +26,7 @@ export class GuitarsComponent implements OnInit, OnDestroy {
     private authServ: AuthService,
     private pictureServ: GuitarPictureService,
     private toastServ: ToastService) {
+      console.log('GuitarComponent.constructor()');
       if (this.guitarServ.guitarsList.length === 0 || this.guitarServ.guitarsList[0].id === 0) {
         guitarServ.indexByUser().subscribe({
           next: (guitarsFromDB) => {

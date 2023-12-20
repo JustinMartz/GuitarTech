@@ -53,4 +53,14 @@ export class GuitarPictureService {
 
     this.guitarServ.loadGuitars(guitars);
   }
+
+  setPicture(guitar: Guitar): string {
+    for (let p of this.primaryPicturesList) {
+      if (p.guitar.id == guitar.id) {
+        return 'assets/' + p.filename;
+      }
+    }
+
+    return '';
+  }
 }

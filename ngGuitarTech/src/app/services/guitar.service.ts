@@ -4,6 +4,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Guitar } from '../models/guitar';
 import { AuthService } from './auth.service';
+import { GuitarPictureService } from './guitar-picture.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class GuitarService {
 
   private primaryGuitarsList: Guitar[] = [new Guitar()];
 
-  constructor(private http: HttpClient, private authServ: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private authServ: AuthService,
+    private guitarPictureServ: GuitarPictureService) {}
 
   getHttpOptions() {
     let options = {
@@ -73,6 +77,15 @@ export class GuitarService {
 
   loadGuitars(guitars: Guitar[]) {
     this.primaryGuitarsList = guitars;
+  }
+
+  updateGuitarInGuitarList(guitar: Guitar) {
+    console.log('updated guitar: ' + JSON.stringify(guitar));
+    // this.primaryGuitarsList[guitar.id - 1] = guitar;
+    guitar.picture = this.guitarPictureServ.setPicture(guitar);
+    const isGuitarId = (element: Guitar) => element.id == guitar.id;
+    const guitarIndex = this.primaryGuitarsList.findIndex(isGuitarId);
+    this.primaryGuitarsList[guitarIndex] = guitar;
   }
 
   get guitarsList(): Guitar[] {

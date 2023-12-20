@@ -4,6 +4,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Guitar } from 'src/app/models/guitar';
 import { AuthService } from 'src/app/services/auth.service';
 import { GuitarService } from 'src/app/services/guitar.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-update-guitar-modal',
@@ -52,17 +53,30 @@ export class UpdateGuitarModalComponent {
 	}
 
   onUpdateClick() {
-    this.guitarService.update(this.originalCopy).subscribe({
-      next: (result) => {
+    this.guitarService.update(this.originalCopy).pipe(
+      finalize(() => {
+      // This code will be executed after the XHR request completes (whether successful or with an error)
+      this.modalService.dismissAll();
+      console.log('calling navigateByUrl()');
+      this.router.navigateByUrl('/guitars');
+    })).subscribe({
+      next: (updatedGuitar) => {
+        this.guitarService.updateGuitarInGuitarList(updatedGuitar);
         // this.reload();
-        window.location.reload();
+        // close modal
+        // navigate to /guitars
+        // this.modalService.dismissAll();
+        // this.router.navigateByUrl('/guitars');
+        // window.location.reload();
+        console.log('getting observables from guitarService.update()');
       },
       error: (nojoy) => {
         console.error('UpdateGuitarModalComponent.onUpdateClick(): error updating Guitar:');
         console.error(nojoy);
       },
     });
-    this.modalService.dismissAll();
+    // console.log('calling navToGuitars()');
+    // this.navToGuitars();
   }
 
   updateGuitarIcon() {
@@ -71,5 +85,10 @@ export class UpdateGuitarModalComponent {
     } else {
       return 'edit-guitar-icon-deselected';
     }
+  }
+
+  navToGuitars() {
+    this.modalService.dismissAll();
+    this.router.navigateByUrl('/guitars');
   }
 }
