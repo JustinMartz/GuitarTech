@@ -7,7 +7,7 @@ app-nav-bar {
   }
 
   .nav-bar {
-    height: 10dvh;
+    height: 10vh;
     width: 100%;
     background-color: #FAF9F6;
     display: flex;
