@@ -1,20 +1,3 @@
-  <!-- <router-outlet></router-outlet> -->
-  <div *ngIf="!hasRoute('guitars') && !hasRoute('setups')" class="landing-container">
-    <div class="landing-card">
-      <div class="landing-logo">
-      </div>
-      <div class="landing-text">
-        <ul>
-          <li>Keep track of your guitars!</li><br>
-          <li>Keep track of your setups!</li><br>
-          <li>Search guitars by color and tuning!</li><br>
-          <li>Filter setups by tuning and guitar!</li>
-        </ul>
-        <br>
-        <p>Log in or register for an account today!</p>
-      </div>
-    </div>
-  </div>
-  <!-- <app-landing *ngIf="!hasRoute('guitars') && !hasRoute('setups')"></app-landing> -->
+  <router-outlet></router-outlet>
   <app-nav-bar></app-nav-bar>
   <app-toast-container aria-live="polite" aria-atomic="true"></app-toast-container>

@@ -19,7 +19,7 @@
       <br>
       <div class="form-group">
         <label for="password">Password</label>
-        <input required formControlName="loginPassword" type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <input required formControlName="loginPassword" type="password" class="form-control" id="password" name="password" placeholder="Enter password">
       </div>
 
       <div *ngIf="loginPassword?.invalid && (loginPassword?.dirty || loginPassword?.touched)" class="alert alert-danger">

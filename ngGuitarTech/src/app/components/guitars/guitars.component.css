@@ -17,3 +17,23 @@
     width: 100%;
   }
 }
+
+@media (min-width: 481px) and (max-width: 1279px) {
+  .guitars-container {
+    height: 90vh;
+    width: 100%;
+    overflow-y: scroll;
+    overscroll-behavior: none;
+    scroll-snap-align: start;
+  }
+
+  .no-guitars-card {
+    margin-top: 10vh;
+    padding: 1rem;
+  }
+
+  .no-access {
+    height: 90vh;
+    width: 100%;
+  }
+}

@@ -56,3 +56,76 @@
   .image-icons {
   }
 }
+
+@media (min-width: 481px) and (max-width: 1279px) {
+  .first-guitar-container {
+    padding-top: 5vh;
+    margin-top: 10vh;
+    height: 80vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5vh 30vh 25vh 10vh;
+    gap: 0px 0px;
+    grid-template-areas:
+      "makemodel makemodel makemodel"
+      "image specs specs"
+      "image specs specs"
+      "image-icons detail-icons detail-icons";
+  }
+
+  .guitar-container {
+    padding-top: 5vh;
+    height: 80vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5vh 30vh 25vh 10vh;
+    gap: 0px 0px;
+    grid-template-areas:
+      "makemodel makemodel makemodel"
+      "image specs specs"
+      "image specs specs"
+      "image-icons detail-icons detail-icons";
+  }
+
+  .guitar-image {
+    margin: 0 5vw;
+    width: 100%;
+    height: 100%;
+    grid-area: image;
+  }
+
+  .guitar-image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left top;
+  }
+
+  .guitar-text {
+    margin-left: 5vw;
+    grid-area: specs;
+  }
+
+  .guitar-text h6 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .make-model {
+    grid-area: makemodel;
+    text-align: center;
+  }
+
+  .make-model h3 {
+    font-size: 2rem;
+  }
+
+  .detail-icons {
+    grid-area: detail-icons;
+  }
+
+  .image-icons {
+  }
+}

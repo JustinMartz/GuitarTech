@@ -7,12 +7,12 @@ import { SetupsComponent } from './components/setups/setups.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  // { path: '', pathMatch: 'full', redirectTo: '/' },
-  // { path: '', component: AppComponent },
+  { path: '', component: LandingComponent },
   // { path: '/', component: AppComponent },
   // { path: 'landing', component: LandingComponent },
   { path: 'guitars', component: GuitarsComponent},
   { path: 'setups', component: SetupsComponent},
+  { path: '', pathMatch: 'full', redirectTo: '/' },
   { path: '**', component: AppComponent } //page not found route
 ];
 
