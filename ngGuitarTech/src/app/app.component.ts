@@ -14,6 +14,7 @@ import { ToastService } from './services/toast.service';
 })
 export class AppComponent implements OnInit {
   title = 'GuitarTech';
+  mobile: boolean = false;
 
   constructor(private router: Router,
     private appServ: AppService,
@@ -21,6 +22,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadToasts();
+    if (window.screen.width < 1280) {
+      this.mobile = true;
+    }
   }
 
   hasRoute(route: string) {

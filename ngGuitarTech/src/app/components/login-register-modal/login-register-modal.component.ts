@@ -17,12 +17,9 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class LoginRegisterModalComponent implements OnInit {
   closeResult = '';
-  // user: User = new User();
   loginOpen: boolean = true;
   modalOpen: boolean = false;
   newUser: User = new User();
-  preloadGuitars: Guitar[] = [];
-  preloadPictures: GuitarPicture[] = [];
 
   loginForm = new FormGroup({
     loginUsername: new FormControl('', Validators.required),
@@ -145,6 +142,10 @@ export class LoginRegisterModalComponent implements OnInit {
     } else {
       return 'login-register-icon-deselected';
     }
+  }
+
+  autoFill() {
+    this.loginForm.setValue({loginUsername: 'sally', loginPassword: '1234'});
   }
 
   get loginUsername() { return this.loginForm.get('loginUsername'); }

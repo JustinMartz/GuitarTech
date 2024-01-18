@@ -45,7 +45,7 @@
 	</div>
 
 	<div class="modal-footer">
-    <span class="d-block p-2 bg-success text-white">sally/1234 to try it out!</span>
+    <button type=button (click)="autoFill()"><span class="d-block p-2 bg-info text-dark">Try it out with a demo user!</span></button>
 		<button type="button" class="btn btn-outline-dark" (click)="onSubmitClick()" [disabled]="!loginForm.valid">Submit</button>
 	</div>
 </ng-template>

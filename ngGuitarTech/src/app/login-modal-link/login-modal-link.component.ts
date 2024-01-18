@@ -146,6 +146,10 @@ export class LoginModalLinkComponent {
     }
   }
 
+  autoFill() {
+    this.loginForm.setValue({loginUsername: 'sally', loginPassword: '1234'});
+  }
+
   get loginUsername() { return this.loginForm.get('loginUsername'); }
 
   get loginPassword() { return this.loginForm.get('loginPassword'); }
