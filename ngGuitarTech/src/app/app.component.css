@@ -1,0 +1,6 @@
+:host {
+  min-height: 100%;
+  display: block;
+  min-height: -webkit-fill-available;
+}
+

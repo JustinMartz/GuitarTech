@@ -1,21 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { User } from '../models/user';
+import { Guitar } from '../models/guitar';
+import { GuitarPicture } from '../models/guitar-picture';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-
-import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Guitar } from 'src/app/models/guitar';
-import { GuitarPicture } from 'src/app/models/guitar-picture';
-import { User } from 'src/app/models/user';
-import { AppService } from 'src/app/services/app.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { ToastService } from 'src/app/services/toast.service';
+import { AppService } from '../services/app.service';
+import { ToastService } from '../services/toast.service';
 
 @Component({
-  selector: 'app-login-register-modal',
-  templateUrl: './login-register-modal.component.html',
-  styleUrls: ['./login-register-modal.component.css'],
+  selector: 'app-login-modal-link',
+  templateUrl: './login-modal-link.component.html',
+  styleUrls: ['./login-modal-link.component.css']
 })
-export class LoginRegisterModalComponent implements OnInit {
+export class LoginModalLinkComponent {
   closeResult = '';
   // user: User = new User();
   loginOpen: boolean = true;

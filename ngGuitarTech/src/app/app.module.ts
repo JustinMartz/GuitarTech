@@ -23,6 +23,7 @@ import { UpdateGuitarModalComponent } from './components/update-guitar-modal/upd
 import { AddGuitarModalComponent } from './components/add-guitar-modal/add-guitar-modal.component';
 import { FilterGuitarColorModalComponent } from './components/filter-guitar-color-modal/filter-guitar-color-modal.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
+import { LoginModalLinkComponent } from './login-modal-link/login-modal-link.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ToastContainerComponent } from './components/toast-container/toast-cont
     UpdateGuitarModalComponent,
     AddGuitarModalComponent,
     FilterGuitarColorModalComponent,
-    ToastContainerComponent
+    ToastContainerComponent,
+    LoginModalLinkComponent
   ],
   imports: [
     BrowserModule,

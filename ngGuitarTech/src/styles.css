@@ -18,3 +18,7 @@ body {
     /* min-height: -webkit-fill-available; */
     min-height: 100%;
 }
+
+:host {
+  height: 100%;
+}
