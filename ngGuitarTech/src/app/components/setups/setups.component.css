@@ -40,15 +40,14 @@
   }
 }
 
+
 @media (min-width: 1280px) {
   .setups-container {
-    height: 100%;
+    margin-top: 10vh;
+    height: 75vh;
     min-width: 100%;
-    background-color: lightcoral;
     overflow-y: scroll;
     overscroll-behavior: none;
-    /* scroll-snap-align: start; */
-    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
   }
 
@@ -64,5 +63,13 @@
 
   :host {
     width: 50%;
+  }
+
+  .bgColor:nth-child(odd) {
+    background-color: red;
+  }
+
+  .bgColor:nth-child(even) {
+    background-color: blue;
   }
 }

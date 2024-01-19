@@ -4,6 +4,6 @@
     <p>Add a setup by clicking the icon on the top left!</p>
   </div>
   <ng-container *ngFor="let s of setups;">
-    <app-setup-detail *ngIf="s.id > 0" [setup]="s"></app-setup-detail>
+    <div class="bgColor"><app-setup-detail *ngIf="s.id > 0" [setup]="s"></app-setup-detail></div>
   </ng-container>
 </div>
