@@ -1,0 +1,6 @@
+@media (min-width: 1280px) {
+  .setup-container {
+    height: 85vh;
+    background-color: aquamarine;
+  }
+}

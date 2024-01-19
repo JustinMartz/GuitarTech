@@ -3,6 +3,7 @@
     <h1>No setups!</h1>
     <p>Add a setup by clicking the icon on the top left!</p>
   </div>
-  <div class="setup-container">
-  </div>
+  <ng-container *ngFor="let s of setups;">
+    <app-setup-detail *ngIf="s.id > 0" [setup]="s"></app-setup-detail>
+  </ng-container>
 </div>

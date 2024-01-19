@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.justinmartz.guitartech.entities.Guitar;
 import dev.justinmartz.guitartech.entities.Setup;
 import dev.justinmartz.guitartech.entities.User;
+
 import dev.justinmartz.guitartech.services.SetupService;
 import dev.justinmartz.guitartech.services.UserService;
 
