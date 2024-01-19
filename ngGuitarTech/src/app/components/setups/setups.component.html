@@ -1,4 +1,8 @@
 <div class="setups-container">
+  <div class="no-guitars-card" *ngIf="setups.length === 0">
+    <h1>No setups!</h1>
+    <p>Add a setup by clicking the icon on the top left!</p>
+  </div>
   <div class="setup-container">
   </div>
 </div>
