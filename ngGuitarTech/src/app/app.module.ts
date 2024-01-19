@@ -24,6 +24,7 @@ import { AddGuitarModalComponent } from './components/add-guitar-modal/add-guita
 import { FilterGuitarColorModalComponent } from './components/filter-guitar-color-modal/filter-guitar-color-modal.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
 import { LoginModalLinkComponent } from './login-modal-link/login-modal-link.component';
+import { DesktopViewComponent } from './desktop-view/desktop-view.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { LoginModalLinkComponent } from './login-modal-link/login-modal-link.com
     AddGuitarModalComponent,
     FilterGuitarColorModalComponent,
     ToastContainerComponent,
-    LoginModalLinkComponent
+    LoginModalLinkComponent,
+    DesktopViewComponent
   ],
   imports: [
     BrowserModule,

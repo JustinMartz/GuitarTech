@@ -6,6 +6,7 @@ import { GuitarsComponent } from './components/guitars/guitars.component';
 import { SetupsComponent } from './components/setups/setups.component';
 import { AppComponent } from './app.component';
 import { LoginRegisterModalComponent } from './components/login-register-modal/login-register-modal.component';
+import { DesktopViewComponent } from './desktop-view/desktop-view.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'guitars', component: GuitarsComponent},
   { path: 'setups', component: SetupsComponent},
   { path: 'login', component: LoginRegisterModalComponent},
+  { path: 'desktop', component: DesktopViewComponent},
   { path: '', pathMatch: 'full', redirectTo: '/' },
   { path: '**', component: AppComponent } //page not found route
 ];

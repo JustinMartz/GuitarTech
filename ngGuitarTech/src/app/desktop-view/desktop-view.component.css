@@ -1,0 +1,70 @@
+.desktop-container {
+  height: 100dvh;
+  width: 100dvw;
+  background-image: url('../../assets/topography.svg');
+}
+
+.logo-and-logout {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: 10vh;
+}
+
+.logo-and-logout > img {
+  margin-left: auto;
+  height: 100%;
+}
+
+.desktop-card-container {
+  border-radius: 10px;
+  margin: 0 auto 5vh;
+  max-height: 85vh;
+  width: 80%;
+  display: flex;
+  filter: drop-shadow(5px 5px 4px #BFBFBF);
+}
+
+/* .logout-icon {
+  height: 32px;
+  width: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='27' height='27'%3E%3Cpath id='logout-icon-path' d='M5 22C4.44772 22 4 21.5523 4 21V3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V6H18V4H6V20H18V18H20V21C20 21.5523 19.5523 22 19 22H5ZM18 16V13H11V11H18V8L23 12L18 16Z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  margin-right: auto;
+  cursor: pointer;
+  background-color: #519988;
+  border-radius: 5px;
+  padding: 5px;
+  filter: drop-shadow(5px 5px 4px #BFBFBF);
+} */
+
+.logout-icon {
+  /* display: inline-block; */
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  height: 32px;
+  width: 32px;
+  margin-right: auto;
+  cursor: pointer;
+  padding: 5px;
+  filter: drop-shadow(5px 5px 4px #BFBFBF);
+  background-color: #519988;
+  border-radius: 5px;
+  padding: 5px;
+  vertical-align: middle; /* Align the inline SVG vertically */
+}
+
+
+.logout-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: black;
+  transition: fill 0.2s ease-in-out;
+}
+
+.logout-icon:hover svg {
+  fill: white;
+}

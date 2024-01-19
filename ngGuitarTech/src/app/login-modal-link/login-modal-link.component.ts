@@ -16,12 +16,9 @@ import { ToastService } from '../services/toast.service';
 })
 export class LoginModalLinkComponent {
   closeResult = '';
-  // user: User = new User();
   loginOpen: boolean = true;
   modalOpen: boolean = false;
   newUser: User = new User();
-  preloadGuitars: Guitar[] = [];
-  preloadPictures: GuitarPicture[] = [];
 
   loginForm = new FormGroup({
     loginUsername: new FormControl('', Validators.required),
@@ -110,7 +107,11 @@ export class LoginModalLinkComponent {
       next: (registeredUser) => {
         this.authService.login(user.username, user.password).subscribe({
           next: (loggedInUser) => {
-            this.router.navigateByUrl('/guitars');
+            if (window.screen.width >= 1280) {
+              this.router.navigateByUrl('/desktop');
+            } else {
+              this.router.navigateByUrl('/guitars');
+            }
           },
           error: (problem) => {
             console.error('LoginRegisterModalComponent.register(): Error logging in user:');
@@ -128,7 +129,11 @@ export class LoginModalLinkComponent {
   login(user: User) {
     this.authService.login(user.username, user.password).subscribe({
       next: (loggedInUser) => {
-        this.router.navigateByUrl('/guitars');
+        if (window.screen.width >= 1280) {
+          this.router.navigateByUrl('/desktop');
+        } else {
+          this.router.navigateByUrl('/guitars');
+        }
       },
       error: (problem) => {
         console.error('LoginRegisterModalComponent.login(): Error logging in user:');

@@ -37,3 +37,28 @@
     width: 100%;
   }
 }
+
+@media (min-width: 1280px) {
+  .guitars-container {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overscroll-behavior: none;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+  }
+
+  .no-guitars-card {
+    margin-top: 10vh;
+    padding: 1rem;
+  }
+
+  .no-access {
+    height: 90vh;
+    width: 100%;
+  }
+
+  :host {
+    width: 50%;
+  }
+}
