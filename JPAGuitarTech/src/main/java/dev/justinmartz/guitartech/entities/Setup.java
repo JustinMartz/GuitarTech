@@ -43,6 +43,8 @@ public class Setup {
 	@JoinColumn(name = "tuning_id")
 	private Tuning tuning;
 	
+	private Boolean deleted;
+	
 	public Setup() {
 		
 	}
@@ -119,11 +121,19 @@ public class Setup {
 		this.tuning = tuning;
 	}
 
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
 	@Override
 	public String toString() {
 		return "Setup [id=" + id + ", stringGauge=" + stringGauge + ", stringBrand=" + stringBrand + ", dateOfSetup="
 				+ dateOfSetup + ", actionTreble=" + actionTreble + ", actionBass=" + actionBass + ", notes=" + notes
-				+ ", guitar=" + guitar + ", tuning=" + tuning + "]";
+				+ ", guitar=" + guitar + ", tuning=" + tuning + ", deleted=" + deleted + "]";
 	}
 
 	@Override

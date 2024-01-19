@@ -143,6 +143,7 @@ CREATE TABLE IF NOT EXISTS `setup` (
   `notes` VARCHAR(2000) NULL,
   `guitar_id` INT NOT NULL,
   `tuning_id` INT NOT NULL,
+  `deleted` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_setup_guitar1_idx` (`guitar_id` ASC),
   INDEX `fk_setup_tuning1_idx` (`tuning_id` ASC),
@@ -230,10 +231,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `guitartechdb`;
-INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`) VALUES (1, '10-46', 'D\'Addario NYXL', '2023-05-05', 3, 3, 'A little light, maybe try 10-48/52 next time', 1, 2);
-INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`) VALUES (2, '11-50', 'D\'Addario XL', '2023-06-02', 3, 4, 'A little light, maybe try 11-52 next time', 2, 3);
-INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`) VALUES (3, '11-49', 'D\'Addario NYXL', '2023-08-15', 3, 4, 'I am stupid. These are lighter than the last set.', 2, 3);
-INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`) VALUES (4, '11-52', 'D\'Addario XL', '2023-10-03', 3, 4, 'Really good. I think this is it for this tuning at this scale length.', 2, 3);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (1, '10-46', 'D\'Addario NYXL', '2023-05-05', 3, 3, 'A little light, maybe try 10-48/52 next time', 1, 2, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (2, '11-50', 'D\'Addario XL', '2023-06-02', 3, 4, 'A little light, maybe try 11-52 next time', 2, 3, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (3, '11-49', 'D\'Addario NYXL', '2023-08-15', 3, 4, 'I am stupid. These are lighter than the last set.', 2, 3, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (4, '11-52', 'D\'Addario XL', '2023-10-03', 3, 4, 'Really good. I think this is it for this tuning at this scale length.', 2, 3, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (5, '9-42', 'Ernie Ball Regular Slinky', '2024-01-02', 5, 4, 'Factory setup.', 3, 1, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (6, '9-46', 'Ernie Ball Regular Slinky', '2024-01-05', 4, 3, 'Trying different string gauge. Lowered the action a bit.', 3, 1, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (7, '10-46', 'Ernie Ball Slinky Cobalt', '2023-11-14', 5, 4, 'I like the action nice and high on this one.', 4, 2, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (8, '10-52', 'D\'Addario XL', '2023-08-02', 4, 3, 'Trying out D standard on this beast.', 5, 3, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (9, '10-46', 'Ernie Ball Slinky Cobalt', '2023-12-25', 5, 4, 'Factory setup. New guitar for Christmas!', 6, 1, 0);
+INSERT INTO `setup` (`id`, `string_gauge`, `string_brand`, `date_of_setup`, `action_treble`, `action_bass`, `notes`, `guitar_id`, `tuning_id`, `deleted`) VALUES (10, '11-52', 'D\'Addario NYXL ', '2024-01-10', 4, 3, 'Going heavier for C#.', 7, 4, 0);
 
 COMMIT;
 

@@ -217,14 +217,6 @@ public class Guitar {
 		this.serialNumber = serialNumber;
 	}
 
-//	public List<Setup> getSetups() {
-//		return setups;
-//	}
-//
-//	public void setSetups(List<Setup> setups) {
-//		this.setups = setups;
-//	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
