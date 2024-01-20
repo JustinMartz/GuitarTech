@@ -26,6 +26,7 @@ import { ToastContainerComponent } from './components/toast-container/toast-cont
 import { LoginModalLinkComponent } from './login-modal-link/login-modal-link.component';
 import { DesktopViewComponent } from './desktop-view/desktop-view.component';
 import { SetupDetailComponent } from './components/setup-detail/setup-detail.component';
+import { SetupTopNavComponent } from './setup-top-nav/setup-top-nav.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { SetupDetailComponent } from './components/setup-detail/setup-detail.com
     ToastContainerComponent,
     LoginModalLinkComponent,
     DesktopViewComponent,
-    SetupDetailComponent
+    SetupDetailComponent,
+    SetupTopNavComponent,
   ],
   imports: [
     BrowserModule,
