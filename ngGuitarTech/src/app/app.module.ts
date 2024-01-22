@@ -23,10 +23,10 @@ import { UpdateGuitarModalComponent } from './components/update-guitar-modal/upd
 import { AddGuitarModalComponent } from './components/add-guitar-modal/add-guitar-modal.component';
 import { FilterGuitarColorModalComponent } from './components/filter-guitar-color-modal/filter-guitar-color-modal.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
-import { LoginModalLinkComponent } from './login-modal-link/login-modal-link.component';
-import { DesktopViewComponent } from './desktop-view/desktop-view.component';
+import { LoginModalLinkComponent } from './components/login-modal-link/login-modal-link.component';
+import { DesktopViewComponent } from './components/desktop-view/desktop-view.component';
 import { SetupDetailComponent } from './components/setup-detail/setup-detail.component';
-import { SetupTopNavComponent } from './setup-top-nav/setup-top-nav.component';
+import { SetupTopNavComponent } from './components/setup-top-nav/setup-top-nav.component';
 
 
 @NgModule({

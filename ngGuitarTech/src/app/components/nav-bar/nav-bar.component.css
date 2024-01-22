@@ -121,3 +121,9 @@ app-nav-bar {
     width: 10vh;
   }
 }
+
+@media (min-width: 1280px) {
+  .navbar {
+    display: none;
+  }
+}

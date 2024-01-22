@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { User } from '../models/user';
-import { Guitar } from '../models/guitar';
-import { GuitarPicture } from '../models/guitar-picture';
+import { User } from '../../models/user';
+import { Guitar } from '../../models/guitar';
+import { GuitarPicture } from '../../models/guitar-picture';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { AppService } from '../services/app.service';
-import { ToastService } from '../services/toast.service';
+import { AppService } from '../../services/app.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-login-modal-link',
@@ -107,7 +107,7 @@ export class LoginModalLinkComponent {
       next: (registeredUser) => {
         this.authService.login(user.username, user.password).subscribe({
           next: (loggedInUser) => {
-            if (window.screen.width >= 1280) {
+            if (window.innerWidth >= 1280) {
               this.router.navigateByUrl('/desktop');
             } else {
               this.router.navigateByUrl('/guitars');

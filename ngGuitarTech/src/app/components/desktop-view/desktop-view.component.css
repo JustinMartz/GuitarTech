@@ -1,7 +1,7 @@
 .desktop-container {
   height: 100dvh;
   width: 100dvw;
-  background-image: url('../../assets/topography.svg');
+  background-image: url('../../../assets/topography.svg');
 }
 
 .logo-and-logout {

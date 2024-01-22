@@ -1,6 +1,7 @@
 @media (min-width: 320px) and (max-width: 480px) {
   .guitars-container {
     height: 90vh;
+    height: 90svh;
     width: 100%;
     overflow-y: scroll;
     overscroll-behavior: none;

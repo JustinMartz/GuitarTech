@@ -1,5 +1,47 @@
 @media (min-width: 1280px) {
   .setup-container {
-    height: 15vh;
+    height: 10vh;
+    display: flex;
+    /* flex-direction: column; */
+  }
+
+  .accordion-icon {
+    height: 10vh;
+    width: 10vh;
+    background-color: green;
+  }
+
+  .setup-title {
+    display: flex;
+    width: 100%;
+    align-items: top;
+    /* justify-content: space-evenly; */
+  }
+
+  .make-model {
+    /* display: inline-block; */
+    margin-left: 1vw;
+    height: 100%;
+    width: 20vw;
+  }
+
+  .make-model h4 {
+    background-color: brown;
+    /* margin-top: auto; */
+    height: 50%;
+  }
+
+  .make-model h5 {
+    background-color: pink;
+    /* margin-bottom: auto; */
+    height: 50%;
+  }
+
+  .date {
+    height: 50%;
+  }
+
+  .tuning {
+    height: 50%;
   }
 }
