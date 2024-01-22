@@ -1,6 +1,6 @@
 @media (min-width: 320px) and (max-width: 480px) {
   .setups-container {
-    height: 90vh;
+    height: 90svh;
     width: 100%;
     background-color: lightcoral;
     overflow-y: scroll;
