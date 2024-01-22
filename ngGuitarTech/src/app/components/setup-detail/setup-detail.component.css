@@ -2,11 +2,34 @@
   .setup-container {
     height: 10vh;
     display: flex;
+    cursor: pointer;
   }
 
   .accordion-icon {
     width: 10vh;
-    background-color: green;
+  }
+
+  .accordion-icon::after {
+    content: '\002B';
+    color: #995186;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .active:after {
+    width: 10vh;
+    content: "\2212";
+    color: #995186;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
   .setup-title {
@@ -16,7 +39,6 @@
   }
 
   .make-model {
-    margin-left: 1vw;
     height: 100%;
     width: 20vw;
     display: flex;
@@ -46,5 +68,15 @@
   .tuning p {
     margin: 0;
     width: fit-content;
+  }
+
+  .showCard {
+    display: block;
+    height: 30vh;
+    background-color: chocolate;
+  }
+
+  .hideCard {
+    display: none;
   }
 }

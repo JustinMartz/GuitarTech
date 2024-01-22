@@ -8,9 +8,18 @@ import { Setup } from 'src/app/models/setup';
 })
 export class SetupDetailComponent implements OnInit {
   @Input() setup: Setup = new Setup();
+  cardShowing: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleSetupCard() {
+    if (this.cardShowing) {
+      this.cardShowing = false;
+    } else {
+      this.cardShowing = true;
+    }
+  }
 }

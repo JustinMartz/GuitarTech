@@ -59,19 +59,21 @@
     width: 100%;
   }
 
-  .setup-container:nth-child(even) {
-    background-color: cornflowerblue;
-  }
-
   :host {
     width: 50%;
   }
 
   .bgColor:nth-child(odd) {
     background-color: #f5f5f5;
+    transition: filter 0.3s;
   }
 
   .bgColor:nth-child(even) {
     background-color: #519988;
+    transition: filter 0.3s;
+  }
+
+  .bgColor:hover {
+    filter: brightness(1.2);
   }
 }
