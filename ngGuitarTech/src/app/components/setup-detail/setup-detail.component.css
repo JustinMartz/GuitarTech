@@ -71,12 +71,52 @@
   }
 
   .showCard {
-    display: block;
+    display: grid;
     height: 30vh;
-    background-color: chocolate;
   }
 
   .hideCard {
     display: none;
   }
+
+  .setup-info {
+    /* height: 30vh; */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "actionTreble notes"
+      "actionBass notes"
+      "stringGauge notes"
+      "stringBrand icons";
+    margin: 1rem;
+
+  }
+
+  .setup-info div h5 {
+    display: inline;
+  }
+
+  .setup-info div p {
+    display: inline;
+  }
+
+  .actionTreble { grid-area: actionTreble; }
+  .actionBass { grid-area: actionBass; }
+  .stringGauge { grid-area: stringGauge; }
+  .stringBrand { grid-area: stringBrand; white-space: nowrap;}
+  .notes {
+    grid-area: notes;
+    border: 2px solid black;
+    background-color: #fff;
+    padding: .5rem;
+  }
+
+  .notes p::before {
+    content: "\A"; /* Unicode for line break */
+    white-space: pre; /* Preserve white space */
+    display: block; /* Display as block-level element */
+  }
+
+  .icons { grid-area: icons; }
 }

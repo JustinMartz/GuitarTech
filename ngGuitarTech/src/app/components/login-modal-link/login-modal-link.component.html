@@ -56,15 +56,28 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<form>
+		<form [formGroup]="registrationForm" (ngSubmit)="onSubmitClick()">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+        <input required formControlName="registrationUsername" type="text" class="form-control" id="username" name="username" placeholder="Enter username">
       </div>
+
+      <div *ngIf="registrationUsername?.invalid && (registrationUsername?.dirty || registrationUsername?.touched)" class="alert alert-danger">
+        <div *ngIf="registrationUsername?.errors?.['required']">
+          Username is required.
+        </div>
+      </div>
+
       <br>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+        <input required formControlName="registrationPassword" type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+      </div>
+
+      <div *ngIf="registrationPassword?.invalid && (registrationPassword?.dirty || registrationPassword?.touched)" class="alert alert-danger">
+        <div *ngIf="registrationPassword?.errors?.['required']">
+          Password is required.
+        </div>
       </div>
 		</form>
     <div class="row">
@@ -84,8 +97,8 @@
 	</div>
 
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="onSubmitClick()">Submit</button>
+		<button type="button" class="btn btn-outline-dark" (click)="onSubmitClick()" [disabled]="!registrationForm.valid">Submit</button>
 	</div>
 </ng-template>
 
-<p><a (click)="open(login)"><span class="link">Log in</span></a> or <a (click)="open(register)"><span class="link">register</span></a> today!</p>
+<p><a (click)="openLoginForm(login)"><span class="link">Log in</span></a> or <a (click)="openRegisterForm(register)"><span class="link">register</span></a> today!</p>
