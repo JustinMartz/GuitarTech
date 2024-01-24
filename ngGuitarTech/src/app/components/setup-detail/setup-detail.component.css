@@ -1,3 +1,252 @@
+@media (min-width: 320px) and (max-width: 480px) {
+  h5 {
+    font-size: 1.1rem;
+  }
+  .setup-container {
+    height: 10vh;
+    display: flex;
+    cursor: pointer;
+  }
+
+  .accordion-icon {
+    width: 10vh;
+  }
+
+  .accordion-icon::after {
+    content: '\002B';
+    color: #995186;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .active:after {
+    width: 10vh;
+    content: "\2212";
+    color: #995186;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .setup-title {
+    display: flex;
+    align-items: top;
+    height: 100%;
+  }
+
+  .make-model {
+    height: 100%;
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .make-model h4 {
+    font-size: 1.5rem;
+    height: fit-content;
+  }
+
+  .make-model h5 {
+    font-size: 1rem;
+    height: fit-content;
+  }
+
+  .date-tuning-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
+  .date h6 {
+    height: fit-content;
+  }
+
+  .tuning p {
+    margin: 0;
+    width: fit-content;
+  }
+
+  .showCard {
+    display: grid;
+    height: 35vh;
+  }
+
+  .hideCard {
+    display: none;
+  }
+
+  .setup-info {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "actionTreble notes"
+      "actionBass notes"
+      "stringGauge notes"
+      "stringBrand icons";
+    padding: 1rem;
+  }
+
+  .setup-info div h5 {
+    display: inline;
+  }
+
+  .setup-info div p {
+    display: inline;
+  }
+
+  .actionTreble { grid-area: actionTreble; }
+  .actionBass { grid-area: actionBass; }
+  .stringGauge { grid-area: stringGauge; }
+  .stringBrand { grid-area: stringBrand; width: 50vw; white-space: nowrap; overflow: visible;}
+  .notes {
+    grid-area: notes;
+    border: 2px solid black;
+    background-color: #fff;
+    padding: .5rem;
+    overflow: scroll;
+  }
+
+  .notes p::before {
+    content: "\A"; /* Unicode for line break */
+    white-space: pre; /* Preserve white space */
+    display: block; /* Display as block-level element */
+  }
+
+  .icons { grid-area: icons; }
+}
+
+@media (min-width: 481px) and (max-width: 1279px) {
+  .setup-container {
+    height: 10vh;
+    display: flex;
+    cursor: pointer;
+  }
+
+  .accordion-icon {
+    width: 10vh;
+  }
+
+  .accordion-icon::after {
+    content: '\002B';
+    color: #995186;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .active:after {
+    width: 10vh;
+    content: "\2212";
+    color: #995186;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .setup-title {
+    display: flex;
+    align-items: top;
+    height: 100%;
+  }
+
+  .make-model {
+    height: 100%;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .make-model h4 {
+    height: fit-content;
+  }
+
+  .make-model h5 {
+    height: fit-content;
+  }
+
+  .date-tuning-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
+  .date h6 {
+    height: fit-content;
+  }
+
+  .tuning p {
+    margin: 0;
+    width: fit-content;
+  }
+
+  .showCard {
+    display: grid;
+    height: 30vh;
+  }
+
+  .hideCard {
+    display: none;
+  }
+
+  .setup-info {
+    /* height: 30vh; */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "actionTreble notes"
+      "actionBass notes"
+      "stringGauge notes"
+      "stringBrand icons";
+      padding: 1rem;
+  }
+
+  .setup-info div h5 {
+    display: inline;
+  }
+
+  .setup-info div p {
+    display: inline;
+  }
+
+  .actionTreble { grid-area: actionTreble; }
+  .actionBass { grid-area: actionBass; }
+  .stringGauge { grid-area: stringGauge; }
+  .stringBrand { grid-area: stringBrand; white-space: nowrap;}
+  .notes {
+    grid-area: notes;
+    border: 2px solid black;
+    background-color: #fff;
+    padding: .5rem;
+  }
+
+  .notes p::before {
+    content: "\A"; /* Unicode for line break */
+    white-space: pre; /* Preserve white space */
+    display: block; /* Display as block-level element */
+  }
+
+  .icons { grid-area: icons; }
+}
+
 @media (min-width: 1280px) {
   .setup-container {
     height: 10vh;
