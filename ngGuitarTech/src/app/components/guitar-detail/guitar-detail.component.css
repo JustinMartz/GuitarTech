@@ -151,7 +151,7 @@
   .guitar-container {
     scroll-snap-type: y proximity;
     padding-top: 10vh;
-    height: 85vh;
+    height: 86vh;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

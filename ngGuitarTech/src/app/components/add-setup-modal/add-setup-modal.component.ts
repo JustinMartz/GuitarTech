@@ -5,6 +5,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Setup } from 'src/app/models/setup';
 import { Tuning } from 'src/app/models/tuning';
 import { SetupService } from 'src/app/services/setup.service';
+import { GuitarService } from 'src/app/services/guitar.service';
 
 @Component({
   selector: 'app-add-setup-modal',
@@ -13,8 +14,12 @@ import { SetupService } from 'src/app/services/setup.service';
 })
 export class AddSetupModalComponent {
   @Input() userHasSetups: boolean = false;
+  @Input() guitars: Guitar[] = [];
   isAddSelected: boolean = false;
   closeResult = '';
+  guitarList: Guitar[] = [];
+  guitar: Guitar = new Guitar();
+  selectedGuitar: number = 0;
 
   setupForm = new FormGroup({
     stringGauge: new FormControl('', Validators.required),
@@ -23,18 +28,29 @@ export class AddSetupModalComponent {
     actionTreble: new FormControl(''),
     actionBass: new FormControl(''),
     notes: new FormControl(''),
-    guitar: new FormControl(''),
+    guitarControl: new FormControl(null as Guitar | null, Validators.required),
     tuning: new FormControl('')
   });
 
-  constructor(private modalService: NgbModal, private setupService: SetupService) {}
+  constructor(private modalService: NgbModal, private setupService: SetupService,
+    private guitarService: GuitarService) {
+
+    }
 
   ngOnInit(): void {
     this.resetForm();
+
+
   }
 
+
   open(content: any) {
+    console.log('in open()');
+    console.log(this.guitars);
     this.isAddSelected = true;
+    if (this.guitars.length > 0) {
+      this.selectedGuitar = this.guitars[0].id;
+    }
 
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', scrollable: true }).result.then(
 			(result) => {
@@ -118,7 +134,7 @@ export class AddSetupModalComponent {
 
   get dateOfSetup() { return this.setupForm.get('dateOfSetup'); }
 
-  get guitar() { return this.setupForm.get('guitar'); }
+  // get guitar() { return this.setupForm.get('guitar'); }
 
   get newSetup() {
     const o: any = {};
@@ -127,4 +143,6 @@ export class AddSetupModalComponent {
     parseInt(o.actionBass), o.notes, new Guitar(o.Guitar), new Tuning(parseInt(o.tuning), ''),
     false);
   }
+
+  // get guitars() { return this.guitarList; }
 }
