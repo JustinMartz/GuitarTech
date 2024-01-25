@@ -16,16 +16,88 @@
         </select>
       </div>
 
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend col-4">
+          <span class="input-group-text">String gauge</span>
+        </div>
+        <input placeholder="e.g. 9-42" required id="stringGauge" formControlName="stringGauge" aria-label="String gauge" type="text" class="form-control" name="stringGauge">
+      </div>
+
       <div *ngIf="stringGauge?.invalid && (stringGauge?.dirty || stringGauge?.touched)" class="alert alert-danger">
         <div *ngIf="stringGauge?.errors?.['required']">
           String gauge is required.
         </div>
       </div>
 
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend col-4">
+          <span class="input-group-text">String brand</span>
+        </div>
+        <input placeholder="e.g. D&#39;Addario" required id="stringBrand" formControlName="stringBrand" aria-label="String brand" type="text" class="form-control" name="stringBrand">
+      </div>
+
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend col-4">
+          <span class="input-group-text">Date of setup</span>
+        </div>
+        <input type="date" name="dateOfSetup" value="{{currentDate | date: 'y-MM-dd'}}" max="{{currentDate | date: 'y-MM-dd'}}" />
+      </div>
+
       <div *ngIf="dateOfSetup?.invalid && (dateOfSetup?.dirty || dateOfSetup?.touched)" class="alert alert-danger">
         <div *ngIf="dateOfSetup?.errors?.['required']">
           Date of setup is required.
         </div>
+      </div>
+
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend col-4">
+          <span class="input-group-text">Action treble</span>
+        </div>
+        <select formControlName="actionTreble" aria-label="Action treble" class="form-control" name="actionTreble">
+          <option [value]="1">1/64"</option>
+          <option [value]="2">2/64"</option>
+          <option [value]="3">3/64"</option>
+          <option [value]="4">4/64"</option>
+          <option [value]="5">5/64"</option>
+          <option [value]="6">6/64"</option>
+          <option [value]="7">7/64"</option>
+          <option [value]="8">8/64"</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend col-4">
+          <span class="input-group-text">Action bass</span>
+        </div>
+        <select formControlName="actionBass" aria-label="Action bass" class="form-control" name="actionBass">
+          <option [value]="1">1/64"</option>
+          <option [value]="2">2/64"</option>
+          <option [value]="3">3/64"</option>
+          <option [value]="4">4/64"</option>
+          <option [value]="5">5/64"</option>
+          <option [value]="6">6/64"</option>
+          <option [value]="7">7/64"</option>
+          <option [value]="8">8/64"</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend col-4">
+          <span class="input-group-text">Tuning</span>
+        </div>
+        <select formControlName="tuning" aria-label="Setup tuning" class="form-control" name="tuning">
+          <option [value]="1">E Standard</option>
+          <option [value]="2">Eb Standard</option>
+          <option [value]="3">D Standard</option>
+          <option [value]="4">C# Standard</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend col-4">
+          <span class="input-group-text">Notes</span>
+        </div>
+        <textarea name="notes" rows="5"></textarea>
       </div>
 
       <div class="modal-footer">

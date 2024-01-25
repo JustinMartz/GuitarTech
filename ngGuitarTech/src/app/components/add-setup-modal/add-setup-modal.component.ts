@@ -17,9 +17,8 @@ export class AddSetupModalComponent {
   @Input() guitars: Guitar[] = [];
   isAddSelected: boolean = false;
   closeResult = '';
-  guitarList: Guitar[] = [];
-  guitar: Guitar = new Guitar();
   selectedGuitar: number = 0;
+  currentDate = new Date();
 
   setupForm = new FormGroup({
     stringGauge: new FormControl('', Validators.required),
@@ -32,17 +31,11 @@ export class AddSetupModalComponent {
     tuning: new FormControl('')
   });
 
-  constructor(private modalService: NgbModal, private setupService: SetupService,
-    private guitarService: GuitarService) {
-
-    }
+  constructor(private modalService: NgbModal, private setupService: SetupService) {}
 
   ngOnInit(): void {
     this.resetForm();
-
-
   }
-
 
   open(content: any) {
     console.log('in open()');
@@ -70,8 +63,8 @@ export class AddSetupModalComponent {
   resetForm() {
     this.setupForm.reset();
     this.setupForm.get('tuning')?.setValue('1');
-    this.setupForm.get('stringGauge')?.setValue('9-42');
-    this.setupForm.get('stringBrand')?.setValue("D'Addario");
+    this.setupForm.get('stringGauge')?.setValue('');
+    this.setupForm.get('stringBrand')?.setValue('');
     this.setupForm.get('dateOfSetup')?.setValue(new Date().toDateString());
     this.setupForm.get('actionTreble')?.setValue('4');
     this.setupForm.get('actionBass')?.setValue('5');
@@ -143,6 +136,4 @@ export class AddSetupModalComponent {
     parseInt(o.actionBass), o.notes, new Guitar(o.Guitar), new Tuning(parseInt(o.tuning), ''),
     false);
   }
-
-  // get guitars() { return this.guitarList; }
 }

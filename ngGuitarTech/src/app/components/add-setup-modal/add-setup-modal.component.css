@@ -95,4 +95,10 @@
     animation: pulse 2s infinite;
     filter: invert(100%) sepia(5%) saturate(102%) hue-rotate(209deg) brightness(115%) contrast(92%);
   }
+
+
+textarea {
+  width: 100%;
+}
+
 }
