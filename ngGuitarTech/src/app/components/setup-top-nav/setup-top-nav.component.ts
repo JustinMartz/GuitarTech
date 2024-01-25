@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-setup-top-nav',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./setup-top-nav.component.css']
 })
 export class SetupTopNavComponent {
-
+  @Input() userHasSetups: boolean = false;
 }

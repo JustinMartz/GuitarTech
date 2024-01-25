@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { SetupService } from 'src/app/services/setup.service';
+import { GuitarService } from 'src/app/services/guitar.service';
 
 @Component({
   selector: 'app-desktop-view',
@@ -9,15 +11,15 @@ import { Router } from '@angular/router';
 })
 export class DesktopViewComponent {
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,
+    private setupService: SetupService, private guitarService: GuitarService) {}
 
   logout() {
-    console.log('logout');
     this.authService.logout();
     if (!localStorage['credentials']) {
       localStorage.setItem('justLoggedOut', 'yes');
-      // console.log('setting justLoggedOut: ' + localStorage.getItem('justLoggedOut'));
-      // this.toastServ.show('Successfully logged out.', { classname: 'bg-danger text-light', delay: 3000 });
+      this.setupService.clearSetups();
+      this.guitarService.clearGuitars();
       this.router.navigateByUrl('/');
     }
   }

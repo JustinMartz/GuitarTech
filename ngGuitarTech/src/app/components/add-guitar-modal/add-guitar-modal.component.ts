@@ -38,10 +38,7 @@ export class AddGuitarModalComponent implements OnInit {
     serialNumber: new FormControl('')
   });
 
-  constructor(private modalService: NgbModal,
-    private authService: AuthService,
-    private router: Router,
-    private guitarService: GuitarService) {}
+  constructor(private modalService: NgbModal, private guitarService: GuitarService) {}
 
   ngOnInit(): void {
     this.resetForm();
@@ -58,10 +55,7 @@ export class AddGuitarModalComponent implements OnInit {
   }
 
   onAddClick() {
-    console.log('Add clicked');
-
     let tmpMake = this.guitarForm.value.make;
-
     let tmpYear: any = this.guitarForm.value.year;
 
     if (tmpMake !== null) {
@@ -73,9 +67,7 @@ export class AddGuitarModalComponent implements OnInit {
       console.log("model is not null and contains " + this.guitarForm.value.model)
       this.newGuitar.model = this.newGuitar.model;
     }
-    console.log(this.newGuitar);
 
-    console.log('year: ' + this.guitarForm.value.year);
     if (/^\d+$/.test(tmpYear)) {
       console.log(tmpYear + ' is a number!');
     }

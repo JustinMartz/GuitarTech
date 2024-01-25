@@ -62,7 +62,7 @@ export class AuthService {
     );
   }
 
-  logout(): any{
+  logout(): any {
     localStorage.removeItem('credentials');
     return 'logged out';
   }

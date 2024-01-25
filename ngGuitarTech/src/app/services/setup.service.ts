@@ -38,8 +38,23 @@ export class SetupService {
     );
   }
 
+  create(newSetup: Setup): Observable<Setup> {
+    return this.http.post<Setup>(this.url, newSetup, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'SetupService.create(): error creating Guitar: ' + err )
+        );
+      })
+    );
+  }
+
   loadSetups(setups: Setup[]) {
     this.primarySetupsList = setups;
+  }
+
+  clearSetups() {
+    this.primarySetupsList = [];
   }
 
   get setupsList(): Setup[] {

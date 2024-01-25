@@ -207,7 +207,6 @@
   }
 
   .setup-info {
-    /* height: 30vh; */
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
@@ -338,7 +337,7 @@
       "actionBass notes"
       "stringGauge notes"
       "stringBrand icons";
-    margin: 1rem;
+    padding: 1rem;
 
   }
 

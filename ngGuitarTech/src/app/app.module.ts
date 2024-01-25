@@ -27,6 +27,7 @@ import { LoginModalLinkComponent } from './components/login-modal-link/login-mod
 import { DesktopViewComponent } from './components/desktop-view/desktop-view.component';
 import { SetupDetailComponent } from './components/setup-detail/setup-detail.component';
 import { SetupTopNavComponent } from './components/setup-top-nav/setup-top-nav.component';
+import { AddSetupModalComponent } from './components/add-setup-modal/add-setup-modal.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { SetupTopNavComponent } from './components/setup-top-nav/setup-top-nav.c
     DesktopViewComponent,
     SetupDetailComponent,
     SetupTopNavComponent,
+    AddSetupModalComponent,
   ],
   imports: [
     BrowserModule,

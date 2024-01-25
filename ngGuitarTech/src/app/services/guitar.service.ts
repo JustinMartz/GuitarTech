@@ -78,6 +78,10 @@ export class GuitarService {
     this.primaryGuitarsList = guitars;
   }
 
+  clearGuitars() {
+    this.primaryGuitarsList = [];
+  }
+
   updateGuitarInGuitarList(guitar: Guitar) {
     console.log('updated guitar: ' + JSON.stringify(guitar));
     // this.primaryGuitarsList[guitar.id - 1] = guitar;

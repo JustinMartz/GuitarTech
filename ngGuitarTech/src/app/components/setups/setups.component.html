@@ -1,4 +1,4 @@
-<app-setup-top-nav></app-setup-top-nav>
+<app-setup-top-nav [userHasSetups]="setupsListEmpty()"></app-setup-top-nav>
 <div class="setups-container">
   <div class="no-setups-card" *ngIf="setups.length === 0">
     <h1>No setups!</h1>
