@@ -19,6 +19,7 @@ export class AddSetupModalComponent {
   closeResult = '';
   selectedGuitar: number = 0;
   currentDate = new Date();
+  private newSetup: Setup | null;
 
   setupForm = new FormGroup({
     stringGauge: new FormControl('', Validators.required),
@@ -31,7 +32,7 @@ export class AddSetupModalComponent {
     tuning: new FormControl('')
   });
 
-  constructor(private modalService: NgbModal, private setupService: SetupService) {}
+  constructor(private modalService: NgbModal, private setupService: SetupService) { this.newSetup = null; }
 
   ngOnInit(): void {
     this.resetForm();
@@ -41,6 +42,7 @@ export class AddSetupModalComponent {
     console.log('in open()');
     console.log(this.guitars);
     this.isAddSelected = true;
+
     if (this.guitars.length > 0) {
       this.selectedGuitar = this.guitars[0].id;
     }
@@ -72,6 +74,13 @@ export class AddSetupModalComponent {
   }
 
   onAddClick() {
+    this.newSetup = this.getNewSetup;
+
+    for (let g of this.guitars) {
+      if (g.id === this.selectedGuitar)
+      Object.assign(this.newSetup.guitar, g);
+    }
+
     let tmpStringGauge = this.setupForm.value.stringGauge;
     let tmpDateOfSetup: any = this.setupForm.value.dateOfSetup;
 
@@ -80,16 +89,6 @@ export class AddSetupModalComponent {
       this.newSetup.stringGauge = tmpStringGauge!;
     }
 
-    // if (this.guitarForm.value.model !== null) {
-    //   console.log("model is not null and contains " + this.guitarForm.value.model)
-    //   this.newGuitar.model = this.newGuitar.model;
-    // }
-
-    // if (/^\d+$/.test(tmpYear)) {
-    //   console.log(tmpYear + ' is a number!');
-    // }
-
-    console.log('newSetup(): ' + JSON.stringify(this.newSetup));
     this.setupService.create(this.newSetup).subscribe({
       next: (result) => {
         // TODO use SetupService to add and reload
@@ -129,7 +128,7 @@ export class AddSetupModalComponent {
 
   // get guitar() { return this.setupForm.get('guitar'); }
 
-  get newSetup() {
+  get getNewSetup() {
     const o: any = {};
     Object.assign(o, this.setupForm.value);
     return new Setup(0, o.stringGauge, o.stringBrand, new Date(), parseInt(o.actionTreble),

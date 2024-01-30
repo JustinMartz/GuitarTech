@@ -91,9 +91,6 @@ public class GuitarServiceImpl implements GuitarService {
 
 	@Override
 	public Guitar createNewGuitar(Guitar guitar, String username) {
-		System.out.println("**********************************");
-		System.out.println(guitar);
-		
 		if (guitar != null && !guitarRepo.existsById(guitar.getId())) {
 			if (guitar.getMake() == null || "".equals(guitar.getMake())) {
 				return null;
@@ -119,7 +116,6 @@ public class GuitarServiceImpl implements GuitarService {
 			
 			guitar.setOwner(userRepo.findByUsername(username));
 			guitar.setDeleted(false);
-			System.out.println("new guitar: " + guitar);
 
 			return guitarRepo.saveAndFlush(guitar);
 		}

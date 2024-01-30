@@ -38,7 +38,7 @@
 
       <div class="input-group mb-3 input-group-sm">
         <div class="input-group-prepend col-4">
-          <span class="input-group-text">Date of setup</span>
+          <span class="input-group-text">Setup date</span>
         </div>
         <input type="date" name="dateOfSetup" value="{{currentDate | date: 'y-MM-dd'}}" max="{{currentDate | date: 'y-MM-dd'}}" />
       </div>
@@ -97,7 +97,7 @@
         <div class="input-group-prepend col-4">
           <span class="input-group-text">Notes</span>
         </div>
-        <textarea name="notes" rows="5"></textarea>
+        <textarea formControlName="notes" name="notes" rows="5"></textarea>
       </div>
 
       <div class="modal-footer">

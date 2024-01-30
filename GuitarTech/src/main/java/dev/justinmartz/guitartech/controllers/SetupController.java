@@ -3,11 +3,14 @@ package dev.justinmartz.guitartech.controllers;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,5 +48,19 @@ public class SetupController {
 			response.setStatus(404);
 			return null;
 		}
+	}
+	
+	@PostMapping("setups")
+	public Setup createNewSetup(Principal principal, @RequestBody Setup setup, HttpServletResponse response, HttpServletRequest request) {
+		Setup newSetup = setupServ.createNewSetup(setup, principal.getName());
+		if (newSetup == null) {
+			response.setStatus(400);
+		} else {
+			response.setStatus(201);
+			StringBuffer url = request.getRequestURL().append("/" + newSetup.getId());
+			response.setHeader("Location", url.toString());
+		}
+		
+		return newSetup;
 	}
 }

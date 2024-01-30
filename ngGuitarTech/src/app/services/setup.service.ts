@@ -43,7 +43,7 @@ export class SetupService {
       catchError((err: any) => {
         console.error(err);
         return throwError(
-           () => new Error( 'SetupService.create(): error creating Guitar: ' + err )
+           () => new Error( 'SetupService.create(): error creating Setup: ' + err )
         );
       })
     );
