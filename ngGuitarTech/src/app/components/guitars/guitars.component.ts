@@ -26,7 +26,6 @@ export class GuitarsComponent implements OnInit, OnDestroy {
     private authServ: AuthService,
     private pictureServ: GuitarPictureService,
     private toastServ: ToastService) {
-      console.log('GuitarComponent.constructor()');
       if (this.guitarServ.guitarsList.length === 0 || this.guitarServ.guitarsList[0].id === 0) {
         guitarServ.indexByUser().subscribe({
           next: (guitarsFromDB) => {
@@ -43,8 +42,6 @@ export class GuitarsComponent implements OnInit, OnDestroy {
       if (authServ.checkLogin()) {
         this.userIsLoggedIn = true;
         localStorage.setItem('justLoggedOut', 'yes');
-        console.log('checkLogin(): true');
-        console.log('justLoggedOut: yes');
       }
 
       if (!authServ.checkLogin()) {
@@ -66,7 +63,6 @@ export class GuitarsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.viewService.setGuitarsSelected(true);
-    console.log('in GuitarsComponent:ngOnInit()');
   }
 
   ngOnDestroy(): void {

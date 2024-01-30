@@ -26,19 +26,14 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    console.log('App.ngOnInit()');
-    console.log('setting viewport height to: ' + window.innerHeight);
     this.loadToasts();
     if (window.screen.width < 1280 || window.innerWidth < 1280) {
-      console.log('screen.width = ' + window.screen.width);
-      console.log('innerWidth = ' + window.innerWidth);
       this.mobile = true;
     }
   }
 
   ngAfterViewInit() {
     this.renderer.setStyle(this.el.nativeElement, 'offsetHeight', window.innerHeight);
-    console.log(this.el.nativeElement);
   }
 
   hasRoute(route: string) {

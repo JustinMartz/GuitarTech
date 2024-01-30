@@ -25,7 +25,6 @@ export class SetupsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('in SetupsComponent.ngOnInit()');
     this.viewService.setGuitarsSelected(false);
   }
 

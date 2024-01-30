@@ -10,7 +10,6 @@ export class LandingComponent implements OnInit {
   @ViewChild('loginModal', { static: false }) loginModal: LoginRegisterModalComponent | undefined;
 
   ngOnInit(): void {
-    console.log('LandingComponent.ngOnInit()');
   }
 
   openLoginModal() {

@@ -18,7 +18,6 @@ export class SetupTopNavComponent implements OnInit {
       next: (guitarsFromDB) => {
         this.guitarService.loadGuitars(guitarsFromDB);
         this.guitarList = JSON.parse(JSON.stringify(guitarsFromDB));
-        console.log(this.guitarList);
       },
       error: (massiveFail) => {
         console.error('AddSetupModalComponent.ngOnInit(): Error getting guitars from database');

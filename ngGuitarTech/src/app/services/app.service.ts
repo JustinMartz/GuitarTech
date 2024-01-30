@@ -9,7 +9,7 @@ export class AppService {
     this.justLoggedOut = foo;
   }
 
-  constructor() { console.log('AppService created'); }
+  constructor() {}
 
   get justLoggedOutStatus(): boolean {
     return this.justLoggedOut;
