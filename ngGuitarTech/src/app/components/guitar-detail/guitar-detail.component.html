@@ -6,18 +6,18 @@
     <img [src]="guitar.picture" />
   </div>
   <div class="guitar-text">
-    <h6 *ngIf="guitar.year">Year: {{ guitar.year }}</h6>
-    <h6 *ngIf="guitar.color">Color: {{ guitar.color }}</h6>
-    <h6 *ngIf="guitar.tuning.name">Tuned to: {{ guitar.tuning.name }}</h6>
-    <h6 *ngIf="guitar.scaleLength">Scale length: {{ guitar.scaleLength }}</h6>
-    <h6 *ngIf="guitar.numberOfFrets">Number of frets: {{ guitar.numberOfFrets }}</h6>
-    <h6 *ngIf="guitar.numberOfStrings">Number of strings: {{ guitar.numberOfStrings }}</h6>
-    <h6 *ngIf="guitar.purchasePrice">Purchase price: {{ guitar.purchasePrice }}</h6>
-    <h6 *ngIf="guitar.bridge">Bridge: {{ guitar.bridge }}</h6>
-    <h6 *ngIf="guitar.neckPickup">Bridge pickup: {{ guitar.bridgePickup }}</h6>
-    <h6 *ngIf="guitar.middlePickup">Middle pickup: {{ guitar.middlePickup }}</h6>
-    <h6 *ngIf="guitar.neckPickup">Neck pickup: {{ guitar.neckPickup }}</h6>
-    <h6 *ngIf="guitar.serialNumber">Serial number: {{ guitar.serialNumber }}</h6>
+    <h5 *ngIf="guitar.year">Year: <span>{{ guitar.year }}</span></h5>
+    <h5 *ngIf="guitar.color">Color: <span>{{ guitar.color }}</span></h5>
+    <h5 *ngIf="guitar.tuning.name">Tuned to: <span>{{ guitar.tuning.name }}</span></h5>
+    <h5 *ngIf="guitar.scaleLength">Scale length: <span>{{ guitar.scaleLength }}</span></h5>
+    <h5 *ngIf="guitar.numberOfFrets">Number of frets: <span>{{ guitar.numberOfFrets }}</span></h5>
+    <h5 *ngIf="guitar.numberOfStrings">Number of strings: <span>{{ guitar.numberOfStrings }}</span></h5>
+    <h5 *ngIf="guitar.purchasePrice">Purchase price: <span>{{ guitar.purchasePrice }}</span></h5>
+    <h5 *ngIf="guitar.bridge">Bridge: <span>{{ guitar.bridge }}</span></h5>
+    <h5 *ngIf="guitar.neckPickup">Bridge pickup: <span>{{ guitar.bridgePickup }}</span></h5>
+    <h5 *ngIf="guitar.middlePickup">Middle pickup: <span>{{ guitar.middlePickup }}</span></h5>
+    <h5 *ngIf="guitar.neckPickup">Neck pickup: <span>{{ guitar.neckPickup }}</span></h5>
+    <h5 *ngIf="guitar.serialNumber">Serial number: <span>{{ guitar.serialNumber }}</span></h5>
   </div>
   <div class="image-icons"></div>
   <div class="detail-icons">
