@@ -1,26 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
-span {
-  font-family: "Noto Sans", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: normal;
-  font-size: 1rem;
-}
 
-h5 {
-  font-weight: bold;
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-h3 {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
 
 @media (min-width: 320px) and (max-width: 480px) {
   .first-guitar-container {
@@ -155,6 +136,27 @@ h3 {
 }
 
 @media (min-width: 1280px) {
+  span {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-weight: bold;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
   .first-guitar-container {
     scroll-snap-type: y proximity;
     padding-top: 10vh;

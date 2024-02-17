@@ -9,6 +9,7 @@
   .setup-top-nav-container {
     background-color: #995186;
     height: 10dvh;
+    border-top-right-radius: 10px;
   }
 }
 
