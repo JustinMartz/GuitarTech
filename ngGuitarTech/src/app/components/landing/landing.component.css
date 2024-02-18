@@ -58,7 +58,7 @@
   }
 
   .landing-container {
-    height: 90dvh;
+    height: 100dvh;
     width: 100%;
     background-color: #f5f5f5;
     background-image: url('../../../assets/topography.svg');

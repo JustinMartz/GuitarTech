@@ -121,7 +121,7 @@ export class LoginModalLinkComponent {
       next: (registeredUser) => {
         this.authService.login(user.username, user.password).subscribe({
           next: (loggedInUser) => {
-            if (window.innerWidth >= 1280) {
+            if (window.innerWidth >= 481) {
               this.router.navigateByUrl('/desktop');
             } else {
               this.router.navigateByUrl('/guitars');
