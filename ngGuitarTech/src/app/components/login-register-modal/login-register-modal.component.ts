@@ -148,7 +148,7 @@ export class LoginRegisterModalComponent implements OnInit {
   login(user: User) {
     this.authService.login(user.username, user.password).subscribe({
       next: (loggedInUser) => {
-        if (window.screen.width >= 1280) {
+        if (window.screen.width >= 481) {
           this.router.navigateByUrl('/desktop');
         } else {
           this.router.navigateByUrl('/guitars');

@@ -27,9 +27,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadToasts();
-    if (window.screen.width < 1280 || window.innerWidth < 1280) {
-      this.mobile = true;
-    }
   }
 
   ngAfterViewInit() {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,6 +12,7 @@ import { GuitarService } from 'src/app/services/guitar.service';
 })
 export class FilterGuitarColorModalComponent {
   isFilterSelected: boolean = false;
+  colorControl = new FormControl('');
 
   closeResult = '';
 
@@ -55,5 +57,7 @@ export class FilterGuitarColorModalComponent {
   onFilterClick() {
     // eventemit the color back to filter() in guitar-top-nav
     // or just make the guitarList available through GuitarService :/
+    //1. get color passed in correctly
+    console.log('onFilterClick(): ' + this.colorControl.value);
   }
 }
