@@ -74,6 +74,21 @@ export class GuitarService {
     );
   }
 
+  filterByColor(color: string): Observable<Guitar[]> {
+    // encode string
+    // const queryString = encodeURIComponent(color);
+    return this.http.get<Guitar[]>(this.url + "/colors/" + color, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+              'GuitarService.filterByColor(): error retrieving Guitar list: ' + err
+          )
+        );
+      })
+    );
+  }
+
   loadGuitars(guitars: Guitar[]) {
     this.primaryGuitarsList = guitars;
   }
