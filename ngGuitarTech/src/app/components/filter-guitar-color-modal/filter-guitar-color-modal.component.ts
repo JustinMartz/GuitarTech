@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
+import { GuitarPictureService } from 'src/app/services/guitar-picture.service';
 import { GuitarService } from 'src/app/services/guitar.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class FilterGuitarColorModalComponent {
     private modalService: NgbModal,
     private authService: AuthService,
     private router: Router,
-    private guitarService: GuitarService) {}
+    private guitarService: GuitarService,
+    private pictureService: GuitarPictureService) {}
 
   open(content: any) {
     this.isFilterSelected = true;
@@ -59,5 +61,48 @@ export class FilterGuitarColorModalComponent {
     // or just make the guitarList available through GuitarService :/
     //1. get color passed in correctly
     console.log('onFilterClick(): ' + this.colorControl.value);
+    if (this.colorControl.value == null || this.colorControl.value == '') {
+      return;
+    }
+    // 2. hit endpoint with 'color' and get results returned correctly
+    this.guitarService.filterByColor(this.colorControl.value).subscribe({
+      next: (guitarsFromDB) => {
+        this.guitarService.loadGuitars(guitarsFromDB);
+        this.loadUserGuitarPictures();
+      },
+      error: (massiveFail) => {
+        console.error('filter-guitar-color-modal.onFilterClick(): Error getting guitars from database');
+        console.error(massiveFail);
+      }
+    });
+    // 6. close modal
+    this.modalService.dismissAll();
+    // 7. update guitarList
+  }
+
+  loadUserGuitarPictures() {
+    this.pictureService.indexByUser().subscribe({
+      next: (picturesFromDB) => {
+        this.pictureService.loadPictures(picturesFromDB, this.guitarService.guitarsList);
+      },
+      error: (fail) => {
+        console.error('FilterGuitarColorModalComponent.loadUserGuitarPictures(): Error getting pictures');
+        console.error(fail);
+      },
+    });
+  }
+
+  resetGuitars() {
+    this.guitarService.indexByUser().subscribe({
+      next: (guitarsFromDB) => {
+        this.guitarService.loadGuitars(guitarsFromDB);
+        this.loadUserGuitarPictures();
+      },
+      error: (massiveFail) => {
+        console.error('filter-guitar-color-modal.resetGuitars(): Error getting guitars from database');
+        console.error(massiveFail);
+      }
+    });
+    this.modalService.dismissAll();
   }
 }
