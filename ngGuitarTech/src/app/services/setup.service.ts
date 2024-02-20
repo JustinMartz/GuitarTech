@@ -38,6 +38,19 @@ export class SetupService {
     );
   }
 
+  indexBySortedDate(): Observable<Setup[]> {
+    return this.http.get<Setup[]>(this.url + "/sorted", this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+              'SetupService.indexBySortedDate(): error retrieving Setups: ' + err
+          )
+        );
+      })
+    );
+  }
+
   create(newSetup: Setup): Observable<Setup> {
     return this.http.post<Setup>(this.url, newSetup, this.getHttpOptions()).pipe(
       catchError((err: any) => {

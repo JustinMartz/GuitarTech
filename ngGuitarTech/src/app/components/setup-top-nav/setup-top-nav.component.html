@@ -1,3 +1,4 @@
 <div class="setup-top-nav-container">
   <app-add-setup-modal [userHasSetups]="userHasSetups" [guitars]="guitarList"></app-add-setup-modal>
+  <app-sorted-setups-button (click)="toggleSort()" [sortedDescending]="sortedDescending"></app-sorted-setups-button>
 </div>
