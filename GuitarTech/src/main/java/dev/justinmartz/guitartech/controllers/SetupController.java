@@ -50,6 +50,19 @@ public class SetupController {
 		}
 	}
 	
+	@GetMapping("setups/sorted")
+	public List<Setup> getSortedSetupsOfLoggedInUser(Principal principal, HttpServletResponse response) {
+		User user = userServ.getLoggedInUser(principal.getName());
+		
+		if (user != null) {
+			response.setStatus(200);
+			return setupServ.findAllSorted(user.getId());
+		} else {
+			response.setStatus(404);
+			return null;
+		}
+	}
+	
 	@PostMapping("setups")
 	public Setup createNewSetup(Principal principal, @RequestBody Setup setup, HttpServletResponse response, HttpServletRequest request) {
 		Setup newSetup = setupServ.createNewSetup(setup, principal.getName());

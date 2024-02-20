@@ -13,4 +13,5 @@ public interface SetupRepository extends JpaRepository<Setup, Integer>{
 	public List<Setup> findByGuitar_IdOrderByDateOfSetupDesc(int guitarId);
 //	public List<Setup> findByOwner_Id(int userId);
 	public List<Setup> findByDeletedFalseAndGuitar_Owner_Id(int userId);
+	public List<Setup> findByDeletedFalseAndGuitar_Owner_IdOrderByDateOfSetupDesc(int userId);
 }

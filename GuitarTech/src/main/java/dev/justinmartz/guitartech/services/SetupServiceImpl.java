@@ -82,4 +82,14 @@ public class SetupServiceImpl implements SetupService {
 		return null;
 	}
 
+	@Override
+	public List<Setup> findAllSorted(int userId) {
+		if (userRepo.existsById(userId)) {
+			List<Setup> setups = setupRepo.findByDeletedFalseAndGuitar_Owner_IdOrderByDateOfSetupDesc(userId);
+			return setups;
+		}
+		
+		return null;
+	}
+
 }
