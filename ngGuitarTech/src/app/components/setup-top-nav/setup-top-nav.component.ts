@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Guitar } from 'src/app/models/guitar';
 import { GuitarService } from 'src/app/services/guitar.service';
 
@@ -10,6 +10,9 @@ import { GuitarService } from 'src/app/services/guitar.service';
 export class SetupTopNavComponent implements OnInit {
   @Input() userHasSetups: boolean = false;
   guitarList: Guitar[] = [];
+  sortedDescending: boolean = false;
+  @Output() sortSetups: EventEmitter<any> = new EventEmitter();
+  @Output() getSetups: EventEmitter<any> = new EventEmitter();
 
   constructor(private guitarService: GuitarService) {}
 
@@ -24,5 +27,17 @@ export class SetupTopNavComponent implements OnInit {
         console.error(massiveFail);
       }
     });
+  }
+
+  toggleSort() {
+    this.sortedDescending = !this.sortedDescending;
+
+    if (this.sortedDescending) {
+      // get sorted setups
+      this.sortSetups.emit(null);
+    } else {
+      // get regular setups
+      this.getSetups.emit(null);
+    }
   }
 }
