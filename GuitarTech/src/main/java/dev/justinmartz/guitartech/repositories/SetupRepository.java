@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import dev.justinmartz.guitartech.entities.Guitar;
 import dev.justinmartz.guitartech.entities.Setup;
 
 public interface SetupRepository extends JpaRepository<Setup, Integer>{
 	public List<Setup> findAll();
 	public List<Setup> findByTuning_Id(int tuningId);
+	public List<Setup> findByTuning_IdAndGuitar_Owner_Id(int tuningId, int userId);
+
 	public List<Setup> findByGuitar_Id(int guitarId);
 	public List<Setup> findByGuitar_IdOrderByDateOfSetupDesc(int guitarId);
 //	public List<Setup> findByOwner_Id(int userId);

@@ -30,6 +30,7 @@ import { SetupTopNavComponent } from './components/setup-top-nav/setup-top-nav.c
 import { AddSetupModalComponent } from './components/add-setup-modal/add-setup-modal.component';
 import { FilterGuitarTuningComponent } from './components/filter-guitar-tuning/filter-guitar-tuning.component';
 import { SortedSetupsButtonComponent } from './components/sorted-setups-button/sorted-setups-button.component';
+import { FilterSetupsTuningComponent } from './components/filter-setups-tuning/filter-setups-tuning.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { SortedSetupsButtonComponent } from './components/sorted-setups-button/s
     AddSetupModalComponent,
     FilterGuitarTuningComponent,
     SortedSetupsButtonComponent,
+    FilterSetupsTuningComponent,
   ],
   imports: [
     BrowserModule,

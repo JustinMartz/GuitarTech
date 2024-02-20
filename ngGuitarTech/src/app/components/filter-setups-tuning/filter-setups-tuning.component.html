@@ -1,0 +1,29 @@
+<ng-template #filtersetupsbytuning let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Filter setups by tuning</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+    <form>
+      <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend col-4">
+          <span class="input-group-text">Tuning</span>
+        </div>
+        <select [formControl]="tuningControl" aria-label="Tuning to filter by" class="form-control" id="tuning" name="tuning">
+          <option [value]="1">E Standard</option>
+          <option [value]="2">Eb Standard</option>
+          <option [value]="3">D Standard</option>
+          <option [value]="4">C# Standard</option>
+        </select>
+      </div>
+    </form>
+	</div>
+
+	<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" (click)="onFilterClick()">Filter</button>
+    <button type="submit" class="btn btn-light" (click)="resetSetups()">Reset</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Cancel clicked')">Cancel</button>
+	</div>
+</ng-template>
+
+<a (click)="open(filtersetupsbytuning)"><div [ngClass]="filterByTuningIcon()"></div></a>
