@@ -1,12 +1,5 @@
 <div class="guitar-top-nav-container">
   <app-add-guitar-modal [userHasGuitars]="userHasGuitars"></app-add-guitar-modal>
-
   <app-filter-guitar-color-modal></app-filter-guitar-color-modal>
-
-  <ng-container *ngIf="filterTuning()">
-  </ng-container>
-  <ng-container *ngIf="!filterTuning()">
-    <div class="filter-tuning-deselected">
-    </div>
-  </ng-container>
+  <app-filter-guitar-tuning></app-filter-guitar-tuning>
 </div>

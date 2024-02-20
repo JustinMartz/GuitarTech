@@ -9,7 +9,7 @@ public interface GuitarService {
 	public List<Guitar> findAllGuitars();
 	public List<Guitar> findAllByUser(int userId);
 	public List<Guitar> findAllByUserNotDeleted(int userId);
-	public List<Guitar> findAllByTuning(int tuningId);
+	public List<Guitar> findAllByTuning(int tuningId, int userId);
 	public List<Guitar> findAllByBridge(String bridge);
 	public List<Guitar> findAllByColor(String color);
 	public Guitar createNewGuitar(Guitar guitar, String username);

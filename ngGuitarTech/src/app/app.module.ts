@@ -28,6 +28,7 @@ import { DesktopViewComponent } from './components/desktop-view/desktop-view.com
 import { SetupDetailComponent } from './components/setup-detail/setup-detail.component';
 import { SetupTopNavComponent } from './components/setup-top-nav/setup-top-nav.component';
 import { AddSetupModalComponent } from './components/add-setup-modal/add-setup-modal.component';
+import { FilterGuitarTuningComponent } from './components/filter-guitar-tuning/filter-guitar-tuning.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { AddSetupModalComponent } from './components/add-setup-modal/add-setup-m
     SetupDetailComponent,
     SetupTopNavComponent,
     AddSetupModalComponent,
+    FilterGuitarTuningComponent,
   ],
   imports: [
     BrowserModule,
