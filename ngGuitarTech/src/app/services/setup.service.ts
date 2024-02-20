@@ -51,6 +51,19 @@ export class SetupService {
     );
   }
 
+  indexByTuning(tuningId: number): Observable<Setup[]> {
+    return this.http.get<Setup[]>(this.url + "/tunings/" + tuningId, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+              'SetupService.indexByTuning(): error retrieving Setups: ' + err
+          )
+        );
+      })
+    );
+  }
+
   create(newSetup: Setup): Observable<Setup> {
     return this.http.post<Setup>(this.url, newSetup, this.getHttpOptions()).pipe(
       catchError((err: any) => {

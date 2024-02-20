@@ -58,10 +58,7 @@ public class GuitarServiceImpl implements GuitarService {
 		// TODO: need to do this for color too
 		if (userRepo.existsById(userId)) {
 			if (tuningRepo.existsById(tuningId)) {
-				System.out.println("*** Tuning " + tuningId + " exists!");
 				List<Guitar> guitars = guitarRepo.findByTuning_IdAndOwner_Id(tuningId, userId);
-				for (Guitar g : guitars)
-					System.out.println("*** " + g.getMake() + " " + g.getModel());
 				return guitars;
 			} else {
 				System.out.println("*** Guitar with tuning " + tuningId + " not found :(");

@@ -10,6 +10,7 @@ import dev.justinmartz.guitartech.entities.Guitar;
 import dev.justinmartz.guitartech.entities.Setup;
 import dev.justinmartz.guitartech.repositories.GuitarRepository;
 import dev.justinmartz.guitartech.repositories.SetupRepository;
+import dev.justinmartz.guitartech.repositories.TuningRepository;
 import dev.justinmartz.guitartech.repositories.UserRepository;
 
 @Service
@@ -22,6 +23,9 @@ public class SetupServiceImpl implements SetupService {
 	
 	@Autowired
 	private GuitarRepository guitarRepo;
+	
+	@Autowired
+	private TuningRepository tuningRepo;
 
 	@Override
 	public List<Setup> findAllSetups() {
@@ -87,6 +91,24 @@ public class SetupServiceImpl implements SetupService {
 		if (userRepo.existsById(userId)) {
 			List<Setup> setups = setupRepo.findByDeletedFalseAndGuitar_Owner_IdOrderByDateOfSetupDesc(userId);
 			return setups;
+		}
+		
+		return null;
+	}
+
+	@Override
+	public List<Setup> findByTuningAndUser(int tuningId, int userId) {
+		System.out.println("*** Getting passed tuningId: " + tuningId);
+		// only return guitars owned by user
+		// TODO: need to do this for color too
+		if (userRepo.existsById(userId)) {
+			if (tuningRepo.existsById(tuningId)) {
+				List<Setup> setups = setupRepo.findByTuning_IdAndGuitar_Owner_Id(tuningId, userId);
+				return setups;
+			} else {
+				System.out.println("*** Setup with tuning " + tuningId + " not found :(");
+			}
+			
 		}
 		
 		return null;

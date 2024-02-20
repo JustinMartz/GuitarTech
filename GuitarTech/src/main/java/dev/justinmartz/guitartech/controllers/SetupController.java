@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,6 +62,19 @@ public class SetupController {
 			response.setStatus(404);
 			return null;
 		}
+	}
+	
+	@GetMapping("setups/tunings/{tuningId}")
+	public List<Setup> getSetupsByTuning(@PathVariable int tuningId, Principal principal, HttpServletResponse response) {
+		User user = userServ.getLoggedInUser(principal.getName());
+		
+		if (user != null) {
+			response.setStatus(200);
+			return setupServ.findByTuningAndUser(tuningId, user.getId());
+		} else {
+			response.setStatus(404);
+			return null;
+		}	
 	}
 	
 	@PostMapping("setups")
