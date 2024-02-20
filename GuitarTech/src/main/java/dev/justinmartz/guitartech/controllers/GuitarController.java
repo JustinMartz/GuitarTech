@@ -66,8 +66,17 @@ public class GuitarController {
 //	}
 	
 	@GetMapping("guitars/tunings/{tuningId}")
-	public List<Guitar> getAllGuitarsTuning(@PathVariable int tuningId) {
-		return guitarServ.findAllByTuning(tuningId);
+	public List<Guitar> getAllGuitarsTuning(@PathVariable int tuningId, Principal principal, HttpServletResponse response) {
+		User user = userServ.getLoggedInUser(principal.getName());
+		
+		if (user != null) {
+			response.setStatus(200);
+			return guitarServ.findAllByTuning(tuningId, user.getId());			
+		} else {
+			response.setStatus(404);
+			return null;
+		}
+		
 	}
 	
 	@GetMapping("guitars/bridges/{bridge}")

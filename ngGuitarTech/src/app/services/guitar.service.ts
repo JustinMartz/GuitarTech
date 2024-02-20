@@ -89,6 +89,19 @@ export class GuitarService {
     );
   }
 
+  filterByTuning(tuningId: number): Observable<Guitar[]> {
+    return this.http.get<Guitar[]>(this.url + "/tunings/" + tuningId, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+              'GuitarService.filterByTuning(): error retrieving Guitar list: ' + err
+          )
+        );
+      })
+    );
+  }
+
   loadGuitars(guitars: Guitar[]) {
     this.primaryGuitarsList = guitars;
   }
