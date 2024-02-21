@@ -67,6 +67,8 @@ export class GuitarsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 		// this.toastServ.clear();
+    console.log('leaving guitars');
+    localStorage.setItem('guitars', JSON.stringify(this.guitars));
 	}
 
   loadUserGuitarPictures() {
@@ -94,5 +96,13 @@ export class GuitarsComponent implements OnInit, OnDestroy {
     return this.router.url.includes(route);
   }
 
-  get guitars() { return this.guitarServ.guitarsList; }
+  get guitars() {
+    const guitarsString = localStorage.getItem('guitars');
+
+    if (guitarsString !== null) {
+      this.guitarServ.loadGuitars(JSON.parse(guitarsString));
+      localStorage.removeItem('guitars');
+    }
+
+    return this.guitarServ.guitarsList; }
 }
