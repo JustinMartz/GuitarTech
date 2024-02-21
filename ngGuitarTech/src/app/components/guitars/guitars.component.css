@@ -25,7 +25,7 @@
 @media (min-width: 481px) and (max-width: 1279px) {
   .guitars-container {
     height: 90vh;
-    width: 40vw;
+    width: 100vw;
     overflow-y: scroll;
     overscroll-behavior: none;
     scroll-snap-align: start;

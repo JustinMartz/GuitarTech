@@ -58,12 +58,11 @@
 @media (min-width: 481px) and (max-width: 1279px) {
   .guitar-top-nav-container {
     height: 10dvh;
-    width: 50%;
+    width: 100%;
     background-color: #519988;
     display: flex;
     justify-content: space-between;
     position: fixed;
-    border-top-left-radius: 10px;
   }
 
   .add-new-guitar-deselected {
