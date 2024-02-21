@@ -94,7 +94,7 @@
     font-weight: 400;
     font-style: normal;
     letter-spacing: normal;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   h5 {
@@ -102,7 +102,7 @@
     font-family: "Bebas Neue", sans-serif;
     font-weight: bold;
     letter-spacing: 1px;
-    line-height: 90%;
+    font-size: 1.75rem;
   }
 
   h3 {
@@ -117,7 +117,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 5vh 30vh 25vh 10vh;
+    grid-template-rows: 10vh 30vh 25vh 5vh;
     gap: 0px 0px;
     grid-template-areas:
       "makemodel makemodel makemodel"
@@ -127,19 +127,17 @@
   }
 
   .guitar-container {
-    /* padding-top: 5vh; */
     height: 80vh;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 5vh 30vh 25vh 10vh;
+    grid-template-rows: 10vh 30vh 25vh 5vh;
     gap: 0px 0px;
     grid-template-areas:
       "makemodel makemodel makemodel"
       "image specs specs"
       "image specs specs"
       "image-icons detail-icons detail-icons";
-    /* background-color: pink; */
   }
 
   .guitar-image {
@@ -157,7 +155,7 @@
 
   .guitar-text {
     padding-top: 5vh;
-    padding-left: 1vw;
+    padding-left: 5vw;
     grid-area: specs;
   }
 
@@ -169,10 +167,13 @@
   .make-model {
     grid-area: makemodel;
     text-align: center;
+    display: flex;
   }
 
   .make-model h3 {
-    font-size: 2rem;
+    font-size: 3rem;
+    align-items: center;
+    margin: auto;
   }
 
   .detail-icons {
