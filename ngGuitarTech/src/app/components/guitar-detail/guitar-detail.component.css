@@ -4,13 +4,36 @@
 
 
 @media (min-width: 320px) and (max-width: 480px) {
+  span {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: .9;
+  }
+
+  h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+  }
+
   .first-guitar-container {
     margin-top: 10vh;
     height: 80vh;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 5vh 30vh 25vh 10vh;
+    grid-template-rows: 10vh 30vh 25vh 5vh;
     gap: 0px 0px;
     grid-template-areas:
       "makemodel makemodel makemodel"
@@ -24,7 +47,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 5vh 30vh 25vh 10vh;
+    grid-template-rows: 10vh 30vh 25vh 5vh;
     gap: 0px 0px;
     grid-template-areas:
       "makemodel makemodel makemodel"
@@ -53,6 +76,9 @@
   .make-model {
     grid-area: makemodel;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .detail-icons {
     grid-area: detail-icons;
